@@ -1,0 +1,197 @@
+C51 COMPILER V9.01   LESSON7_1                                                             09/07/2016 17:53:42 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LESSON7_1
+OBJECT MODULE PLACED IN Lesson7_1.OBJ
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE Lesson7_1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          /*¶Ô¼Ä´æÆ÷µÄÉè¶¨*/
+   3          sbit HC595_SCK = P1^1;
+   4          sbit HC595_RCK = P1^0;
+   5          sbit HC595_DATA = P1^4;
+   6          /*¶ÔÊý×ÖÐý×ª±àÂëÆ÷µÄÈý¸ö¼üµÄÉè¶¨*/
+   7          sbit B_Key = P2^1;                                                       //Ðý×ª±àÂëÆ÷Èý¸ö½Ó¿Ú¶¨Òå
+   8          sbit A_Key = P2^0;
+   9          sbit Down_Key = P2^2;
+  10          
+  11          code unsigned char Shu_Ma_Duan[10] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
+  12          code unsigned char Shu_Ma_Wei[8] = {0xfe,0xfd,0xfb,0xf7,0x0f,0xdf,0xbf,0x7f};
+  13          unsigned char Show[8]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};        //Ó¦¸ÃÔÙÊÔÒ»ÊÔ°Ñ°Ë¸öÖµ¶¼ÖÃ³É0x00
+  14          
+  15          unsigned char Last_B_Value,Current_B_Value;
+  16          unsigned char Down_Flag = 0;                    //µ±Ê±Ã»ÓÐ¼ÓÕâ¾ä           //°´¼ü3µÄ±êÖ¾Î»
+  17          unsigned char Down_Key_Value = 0;               //µ±Ê±Ã»ÓÐ¼ÓÕâ¾ä           //¼ÇÂ¼°´¼ü3µÄÖµ£¬µ±Ðý×ª±àÂëÆ÷°´ÏÂÊ±°ÑÖµÖÃ1
+  18          //¸ù±¾¾ÍÃ»ÓÐÕâÒ»¾äunsigned char Counter = 0;
+  19          //¸ù±¾¾ÍÃ»ÓÐÕâÒ»¾äunsigned char k = 0;
+  20          
+  21          void Send_Data(unsigned char Shu_Duan,unsigned char Shu_Wei);
+  22          //void Data_Of_Key();
+  23          void Time0_Init()                         //¶¨Ê±Æ÷0³õÊ¼»¯
+  24          {
+  25   1              TMOD = 0X01;
+  26   1              TH0 = 0XF8;
+  27   1              TL0 = 0XF0;                //¾­¼ÆËãµÃµ½ÊÇ2msÒ»´Î
+  28   1              ET0 = 1;
+  29   1              EA = 1;
+  30   1              TR0 = 1;                 //µ±Ê±ÍüÁË¼ÓÕâÒ»¾ä£¬±ØÐëÒª°ÑTR0(TR1)ÖÃ1
+  31   1      }
+  32          
+  33          void Display()
+  34          {
+  35   1              static unsigned char i;
+  36   1              Show[0] = Shu_Ma_Duan[Down_Key_Value/100];
+  37   1              Show[1] = Shu_Ma_Duan[Down_Key_Value%100/10];
+  38   1              Show[2] = Shu_Ma_Duan[Down_Key_Value%10];
+  39   1              if(i < 2)                                       //±£Ö¤Ö»ÓÐÊýÂë¹ÜµÄÇ°ÈýÎ»£¬¼´0,1,2ÈýÎ»ÏÔÊ¾Êý×Ö
+  40   1              {
+  41   2                      i++;
+  42   2              }
+  43   1              else
+  44   1              {
+  45   2                      i = 0;
+  46   2              }
+  47   1              Send_Data(Show[i],Shu_Ma_Wei[i]);
+  48   1      }
+  49          
+  50          
+  51          void Send_Data(unsigned char Shu_Duan,unsigned char Shu_Wei)
+  52          {
+  53   1          unsigned char i;
+  54   1              HC595_RCK = 0;
+  55   1              for(i = 0;i < 8;i++)
+C51 COMPILER V9.01   LESSON7_1                                                             09/07/2016 17:53:42 PAGE 2   
+
+  56   1              {
+  57   2                      HC595_SCK = 0;
+  58   2                      if(0 != (Shu_Duan&0x80))
+  59   2                      {
+  60   3                              HC595_DATA = 1;
+  61   3                      }
+  62   2                      else
+  63   2                      {
+  64   3                              HC595_DATA = 0;
+  65   3                      }
+  66   2                      HC595_SCK = 1;
+  67   2                      Shu_Duan = Shu_Duan << 1;
+  68   2              }
+  69   1              for(i = 0;i < 8;i++)
+  70   1              {
+  71   2                      HC595_SCK = 0;
+  72   2                      if(0 != (Shu_Wei&0x80))
+  73   2                      {
+  74   3                              HC595_DATA = 1;
+  75   3                      }
+  76   2                      else
+  77   2                      {
+  78   3                              HC595_DATA = 0;
+  79   3                      }
+  80   2                      HC595_SCK = 1;
+  81   2                      Shu_Wei = Shu_Wei << 1;
+  82   2              }
+  83   1              HC595_RCK = 1;
+  84   1      }
+  85          
+  86          void Data_Of_Key()
+  87          {
+  88   1              Last_B_Value = B_Key;
+  89   1              while(!A_Key)
+  90   1              {
+  91   2                      Current_B_Value = B_Key;
+  92   2                      Down_Flag = 1;
+  93   2              }
+  94   1              if(1 == Down_Flag)                          //ÆäÊµDown_FlagµÄ×÷ÓÃ¾ÍÊÇÔÚifÓï¾äµ±ÖÐµÄÅÐ¶Ï   
+  95   1              {
+  96   2                      Down_Flag = 0;                                        //ÖØÐÂ°ÑDown_FlagÇåÁã£¬ÒÔÃâÔÚÃ»°´ÏÂÈ¥Ê±£¬ÖØ¸´½øÈëi
+             -fÓï¾ä
+  97   2                      //Õâ¾äÔÚwhileÓï¾äÀï   Current_B_Value = B_Key;
+  98   2                      if((0 == Last_B_Value)&&(1 == Current_B_Value))      //¼ì²â±àÂëÆ÷ÊÇ·ñË³Ê±Õë×ª¶¯
+  99   2                      {
+ 100   3                              if(Down_Key_Value < 255)
+ 101   3                              {
+ 102   4                                      Down_Key_Value++;
+ 103   4                              }
+ 104   3                              else
+ 105   3                              {
+ 106   4                                      Down_Key_Value = 0;
+ 107   4                              }
+ 108   3                      }
+ 109   2                      if((1 == Last_B_Value)&&(0 == Current_B_Value))    //¼ì²â±àÂëÆ÷ÊÇ·ñÄæÊ±Õë×ª¶¯
+ 110   2                      {
+ 111   3                              if(Down_Key_Value > 0)
+ 112   3                              {
+ 113   4                                      Down_Key_Value--;
+ 114   4                                      
+ 115   4                          }
+ 116   3                              else
+C51 COMPILER V9.01   LESSON7_1                                                             09/07/2016 17:53:42 PAGE 3   
+
+ 117   3                              {
+ 118   4                                      Down_Key_Value = 255;
+ 119   4                              }
+ 120   3                      }
+ 121   2              }
+ 122   1      }
+ 123          
+ 124          void Timer0_interrupt()  interrupt 1     //ÉèÖÃÖÐ¶Ï,µ±Ê±Ò²ÍüÁËÐ´Õâ¸öÖÐ¶Ïº¯Êý
+ 125          {
+ 126   1              //¿¼ÂÇÒ»ÏÂÖÐ¶ÏÓ¦¸ÃÔÙÊ²Ã´ÑùµÄÇé¿öÏÂ½øÐÐ
+ 127   1              //IT0 = 0;                         //ÕâÁ½¸öÓï¾äÒÑ¾­ÔÚ¶¨Ê±Æ÷º¯ÊýÀï¶¨ÒåÁË
+ 128   1              //TR0 = 1;      
+ 129   1              TH0 = 0XF8;                                //Ã¿´ÎÔÚ½øÈëÖÐ¶ÏµÄÊ±ºò¶¼Òª°ÑTH0 ºÍTL0ÖØÐÂ¶¨ÒåÒ»ÏÂ£¬·ÀÖ¹Öµ±»ÐÞ¸Ä
+ 130   1              TL0 = 0XF0;                                //2ms
+ 131   1              Display();
+ 132   1              if(!Down_Key)   //ÒÑ¾­ÁË½â          //²»Ã÷°×Õâ¾äÅÐ¶ÏµÄ×÷ÓÃ£¬ÆäÊµÊÇ²»ÁË½âDown_KeyÕâ¸ö²ÎÊýÊÇÔÚÊ²Ã´Çé¿öÏÂµÈÓ
+             -Ú1£¬Ê²Ã´Çé¿öÏÂµÈÓÚ0
+ 133   1              {
+ 134   2                      Down_Key_Value = 0;        //¸ù¾ÝÊµÑéÒÔ¼°·ÖÎö¿ÉµÃ£¬µ±°´ÏÂÊ±Îª0£¬ËùÒÔ´ËÊ±½øÈëifÓï¾ä£¬°Ñ¸ÃÖµ±ä³É1
+ 135   2              }
+ 136   1      }       
+ 137          
+ 138          
+ 139          
+ 140          void main()                                                //Ö÷º¯Êý
+ 141          {
+ 142   1              Time0_Init();
+ 143   1              while(1)
+ 144   1              {
+ 145   2                      Data_Of_Key();  
+ 146   2              }
+ 147   1      
+ 148   1      }
+ 149          
+ 150          
+ 151          
+ 152          
+ 153                  
+ 154                          
+ 155                  
+ 156                  
+ 157                  
+ 158                  
+ 159                  
+ 160                  
+ 161          
+ 162          
+ 163          
+ 164          
+ 165          
+ 166          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    291    ----
+   CONSTANT SIZE    =     18    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     13    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V9.01   LESSON7_1                                                             09/07/2016 17:53:42 PAGE 4   
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

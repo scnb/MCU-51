@@ -1,0 +1,3 @@
+".\output\18B20.obj" 
+TO ".\output\18b20" 
+PRINT(".\18b20.m51")

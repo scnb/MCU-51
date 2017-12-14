@@ -1,0 +1,171 @@
+C51 COMPILER V9.01   DIGITAL_BIANMAQI                                                      11/19/2016 11:55:51 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE DIGITAL_BIANMAQI
+OBJECT MODULE PLACED IN .\output\digital_bianmaqi.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE digital_bianmaqi.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output\digital_bianmaqi
+                    -.obj)
+
+line level    source
+
+   1          /*¸Ã³ÌÐòÒÔA½ÅÎª¸ßµçÆ½£¨1£©Îª»ù×¼£¬Í¨¹ý¼ì²âB½ÅÉÏÒ»´ÎÓëµ±Ç°µÄ×´Ì¬±ä»¯£¬À´ÅÐ¶ÏÐý×ª±àÂëÆ÷ÊÇË³Ê±Õë»¹ÊÇÄæÊ±ÕëÐý×
+             -ª
+   2          ²¢ÏàÓ¦µØÔö¼Ó»ò¼õÉÙ¼ÆÊýÖµ£¬²¢Í¨¹ýdisplayº¯Êý½«¼ÆÊýÖµÔÚÊýÂë¹ÜÉÏ¶¯Ì¬É¨ÃèÏÔÊ¾*/
+   3          
+   4          #include<reg52.h>
+   5          /*Ðý×ª±àÂëÆ÷Èý¸öÒý½ÅÓëIO¿ÚµÄÉèÖÃ*/
+   6          sbit press_down = P2^2; //°´ÏÂ
+   7          sbit pin_A = P2^0;         //A½Å
+   8          sbit pin_B = P2^1;         //B½Å
+   9          
+  10          /*16¸öledµÄ¼Ä´æÆ÷µÄÉèÖÃ*/
+  11          sbit HC595_SCK = P0^5;
+  12          sbit HC595_RCK = P0^6;
+  13          sbit HC595_DATA = P0^7;
+  14          
+  15          unsigned char Last_B_value;//¼ÇÂ¼B½ÅÉÏÒ»´ÎµÄ×´Ì¬£¬ÊÇ0»¹ÊÇ1
+  16          unsigned char Current_B_value;//¼ÇÂ¼B½Åµ±Ç°µÄ×´Ì¬£¬ÊÇ0»¹ÊÇ1
+  17          unsigned char Rotate_flag;//¼ì²âÊÇ·ñÐý×ªÁË  RotateµÄÒâË¼ÊÇÐý×ª£¬ËùÒÔ¿ÉÒÔÀí½âÎªÐý×ª±êÖ¾Î»
+  18          unsigned char value = 0;//¼ÇÂ¼¼ÆÊýÖµ
+  19          
+  20          /*16¸öledµÄÆ¬Ñ¡±í*/
+  21          code unsigned char Led_One[16] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x80,0x40,0x20,0x10,0x08,0x04,0x
+             -02,0x01};
+  22          code unsigned char Led_Two[16] = {0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x
+             -00,0x00};
+  23          
+  24          /*·¢ËÍÊý¾Ýº¯ÊýÉùÃ÷*/
+  25          //void Send_Data(unsigned char Shu_Duan,unsigned char Shu_Wei);
+  26          
+  27          /*·¢ËÍÊý¾Ýº¯Êý*/
+  28          void Send_data(unsigned char Shu_Duan,unsigned char Shu_Wei)
+  29          {
+  30   1          unsigned char i;
+  31   1              HC595_RCK = 0;
+  32   1              for(i = 0;i < 8;i++)
+  33   1              {
+  34   2                      HC595_SCK = 0;
+  35   2                      if(0 != (Shu_Duan&0x80))
+  36   2                      {
+  37   3                              HC595_DATA = 1;
+  38   3                      }
+  39   2                      else
+  40   2                      {
+  41   3                              HC595_DATA = 0;
+  42   3                      }
+  43   2                      HC595_SCK = 1;
+  44   2                      Shu_Duan = Shu_Duan << 1;
+  45   2              }
+  46   1              for(i = 0;i < 8;i++)
+  47   1              {
+  48   2                      HC595_SCK = 0;
+  49   2                      if(0 != (Shu_Wei&0x80))
+  50   2                      {
+  51   3                              HC595_DATA = 1;
+C51 COMPILER V9.01   DIGITAL_BIANMAQI                                                      11/19/2016 11:55:51 PAGE 2   
+
+  52   3                      }
+  53   2                      else
+  54   2                      {
+  55   3                              HC595_DATA = 0;
+  56   3                      }
+  57   2                      HC595_SCK = 1;
+  58   2                      Shu_Wei = Shu_Wei << 1;
+  59   2              }
+  60   1              HC595_RCK = 1;
+  61   1      }
+  62          
+  63          /*½«¼ÆÊýÖµÍ¨¹ýÊýÂë¹Ü¶¯Ì¬É¨ÃèÏÔÊ¾µÄº¯Êý*/
+  64          void display()
+  65          {
+  66   1              Send_data(Led_One[15-value],Led_Two[15-value]);
+  67   1      }
+  68          
+  69          /*¶¨Ê±Æ÷0µÄ³õÊ¼»¯³ÌÐò*/
+  70          void Timer0Init(void)           //1ºÁÃë@11.0592MHz
+  71          {
+  72   1              //AUXR &= 0x7F;         //¶¨Ê±Æ÷Ê±ÖÓ12TÄ£Ê½
+  73   1              TMOD &= 0xF0;           //ÉèÖÃ¶¨Ê±Æ÷Ä£Ê½
+  74   1              TMOD |= 0x01;           //ÉèÖÃ¶¨Ê±Æ÷Ä£Ê½
+  75   1              TL0 = 0x00;             //ÉèÖÃ¶¨Ê±³õÖµ
+  76   1              TH0 = 0xDC;
+  77   1              TF0 = 0;                //Çå³ýTF0±êÖ¾
+  78   1              TR0 = 1;                //¶¨Ê±Æ÷0¿ªÊ¼¼ÆÊ±
+  79   1              EA = 1;
+  80   1              ET0 = 1;
+  81   1      }
+  82          
+  83          
+  84          void Rotate_encoder()
+  85          {
+  86   1              Last_B_value = pin_B;
+  87   1              while(!pin_A)    //×¢ÒâÊÇwhile¶ø²»ÊÇif,µ±pin_AÊÇ1Ê±£¬Ìø³öÑ­»·,ÒòÎªÒÔA½ÅÎª¸ßµçÆ½Îª»ù×¼
+  88   1              {
+  89   2                      Rotate_flag = 1;
+  90   2                      Current_B_value = pin_B;
+  91   2              }
+  92   1              if(1 == Rotate_flag)//ÏÈÔÚÍâ²¿ifÖÐÅÐ¶ÏÊÇ·ñÐý×ª£¬ÔÙÔÚÄÚ²¿Á½¸öifÖÐ·Ö±ðÅÐ¶ÏÊÇË³Ê±Õë»¹ÊÇÄæÊ±Õë
+  93   1              {
+  94   2                      Rotate_flag = 0;
+  95   2                      if((Last_B_value==0)&&(Current_B_value==1))
+  96   2                      {
+  97   3                              if(value < 15)
+  98   3                              {
+  99   4                                      value++;
+ 100   4                              }
+ 101   3                              else
+ 102   3                              {
+ 103   4                                      value = 0;
+ 104   4                              }
+ 105   3                      }
+ 106   2                      if((Last_B_value==1)&&(Current_B_value==0))
+ 107   2                      {
+ 108   3                              if(value > 0)
+ 109   3                              {
+ 110   4                                      value--;
+ 111   4                              }
+ 112   3                              else
+ 113   3                              {
+C51 COMPILER V9.01   DIGITAL_BIANMAQI                                                      11/19/2016 11:55:51 PAGE 3   
+
+ 114   4                                      value = 15;
+ 115   4                              }
+ 116   3                      }
+ 117   2              }
+ 118   1      }
+ 119          
+ 120          /*Ö÷º¯Êý*/
+ 121          void main()
+ 122          {
+ 123   1              Timer0Init();
+ 124   1              while(1)
+ 125   1              {
+ 126   2                      Rotate_encoder();
+ 127   2              }
+ 128   1      }
+ 129          
+ 130          /*¶¨Ê±Æ÷0µÄÖÐ¶Ïº¯Êý*/
+ 131          void interrupt_1() interrupt 1
+ 132          {
+ 133   1              TL0 = 0x00;             //ÉèÖÃ¶¨Ê±³õÖµ
+ 134   1              TH0 = 0xDC;
+ 135   1              display();
+ 136   1              if(!press_down)
+ 137   1              {
+ 138   2                      value = 0;
+ 139   2              }
+ 140   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    246    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

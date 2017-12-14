@@ -1,0 +1,249 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/19/2016  01:20:39  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE .\output\digital_bianmaqi.obj TO .\output\digital_bianmaqi PRINT (.\digital_bianmaqi.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\digital_bianmaqi.obj (DIGITAL_BIANMAQI)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\output\digital_bianmaqi (DIGITAL_BIANMAQI)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000DH     UNIT         ?DT?DIGITAL_BIANMAQI
+            IDATA   0015H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0008H     UNIT         ?PR?MAIN?DIGITAL_BIANMAQI
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     004AH     UNIT         ?PR?ROTATE_ENCODER?DIGITAL_BIANMAQI
+            CODE    00E4H     0045H     UNIT         ?PR?DISPLAY?DIGITAL_BIANMAQI
+            CODE    0129H     0037H     UNIT         ?PR?INTERRUPT_1?DIGITAL_BIANMAQI
+            CODE    0160H     0035H     UNIT         ?PR?_SEND_DATA?DIGITAL_BIANMAQI
+            CODE    0195H     0015H     UNIT         ?PR?TIMER0INIT?DIGITAL_BIANMAQI
+            CODE    01AAH     0012H     UNIT         ?CO?DIGITAL_BIANMAQI
+            CODE    01BCH     000EH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\output\digital_bianmaqi (DIGITAL_BIANMAQI)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?INTERRUPT_1?DIGITAL_BIANMAQI
+  +--> ?PR?DISPLAY?DIGITAL_BIANMAQI
+
+?PR?DISPLAY?DIGITAL_BIANMAQI
+  +--> ?CO?DIGITAL_BIANMAQI
+  +--> ?PR?_SEND_DATA?DIGITAL_BIANMAQI
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?DIGITAL_BIANMAQI
+  +--> ?C_INITSEG
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  01:20:39  PAGE 2
+
+
+?PR?MAIN?DIGITAL_BIANMAQI
+  +--> ?PR?TIMER0INIT?DIGITAL_BIANMAQI
+  +--> ?PR?ROTATE_ENCODER?DIGITAL_BIANMAQI
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\digital_bianmaqi (DIGITAL_BIANMAQI)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DIGITAL_BIANMAQI
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0129H         PUBLIC        interrupt_1
+  B:00A8H.7       PUBLIC        EA
+  C:0160H         PUBLIC        _Send_data
+  D:0009H         PUBLIC        Current_B_value
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:000AH         PUBLIC        display_arry
+  D:0012H         PUBLIC        value
+  C:0003H         PUBLIC        main
+  C:01AAH         PUBLIC        Shu_Ma_Duan
+  B:0090H.4       PUBLIC        HC595_DATA
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  C:009AH         PUBLIC        Rotate_encoder
+  D:0013H         PUBLIC        Last_B_value
+  C:01B4H         PUBLIC        Shu_Ma_Wei
+  B:00A8H.1       PUBLIC        ET0
+  B:0088H.5       PUBLIC        TF0
+  C:0195H         PUBLIC        Timer0Init
+  B:00A0H.2       PUBLIC        press_down
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  B:00A0H.0       PUBLIC        pin_A
+  B:00A0H.1       PUBLIC        pin_B
+  D:0014H         PUBLIC        Rotate_flag
+  B:0090H.0       PUBLIC        HC595_RCK
+  B:0090H.1       PUBLIC        HC595_SCK
+  C:00E4H         PUBLIC        display
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _SEND_DATA
+  D:0007H         SYMBOL        Shu_Duan
+  D:0005H         SYMBOL        Shu_Wei
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0160H         LINE#         29
+  C:0160H         LINE#         30
+  C:0160H         LINE#         32
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  01:20:39  PAGE 3
+
+
+  C:0162H         LINE#         33
+  C:0164H         LINE#         34
+  C:0164H         LINE#         35
+  C:0166H         LINE#         36
+  C:016AH         LINE#         37
+  C:016AH         LINE#         38
+  C:016CH         LINE#         39
+  C:016EH         LINE#         41
+  C:016EH         LINE#         42
+  C:0170H         LINE#         43
+  C:0170H         LINE#         44
+  C:0172H         LINE#         45
+  C:0176H         LINE#         46
+  C:017AH         LINE#         47
+  C:017CH         LINE#         48
+  C:017CH         LINE#         49
+  C:017EH         LINE#         50
+  C:0182H         LINE#         51
+  C:0182H         LINE#         52
+  C:0184H         LINE#         53
+  C:0186H         LINE#         55
+  C:0186H         LINE#         56
+  C:0188H         LINE#         57
+  C:0188H         LINE#         58
+  C:018AH         LINE#         59
+  C:018EH         LINE#         60
+  C:0192H         LINE#         61
+  C:0194H         LINE#         62
+  -------         ENDPROC       _SEND_DATA
+  -------         PROC          DISPLAY
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:00E4H         LINE#         65
+  C:00E4H         LINE#         66
+  C:00E4H         LINE#         68
+  C:00F2H         LINE#         69
+  C:0101H         LINE#         70
+  C:010AH         LINE#         71
+  C:0111H         LINE#         72
+  C:0111H         LINE#         73
+  C:0113H         LINE#         74
+  C:0115H         LINE#         76
+  C:0115H         LINE#         77
+  C:0118H         LINE#         78
+  C:0118H         LINE#         79
+  -------         ENDPROC       DISPLAY
+  -------         PROC          TIMER0INIT
+  C:0195H         LINE#         83
+  C:0195H         LINE#         84
+  C:0195H         LINE#         86
+  C:0198H         LINE#         87
+  C:019BH         LINE#         88
+  C:019EH         LINE#         89
+  C:01A1H         LINE#         90
+  C:01A3H         LINE#         91
+  C:01A5H         LINE#         92
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  01:20:39  PAGE 4
+
+
+  C:01A7H         LINE#         93
+  C:01A9H         LINE#         94
+  -------         ENDPROC       TIMER0INIT
+  -------         PROC          ROTATE_ENCODER
+  C:009AH         LINE#         97
+  C:009AH         LINE#         98
+  C:009AH         LINE#         99
+  C:00A0H         LINE#         100
+  C:00A3H         LINE#         101
+  C:00A3H         LINE#         102
+  C:00A6H         LINE#         103
+  C:00ACH         LINE#         104
+  C:00AEH         LINE#         105
+  C:00B4H         LINE#         106
+  C:00B4H         LINE#         107
+  C:00B6H         LINE#         108
+  C:00BFH         LINE#         109
+  C:00BFH         LINE#         110
+  C:00C6H         LINE#         111
+  C:00C6H         LINE#         112
+  C:00C8H         LINE#         113
+  C:00CAH         LINE#         115
+  C:00CAH         LINE#         116
+  C:00CDH         LINE#         117
+  C:00CDH         LINE#         118
+  C:00CDH         LINE#         119
+  C:00D6H         LINE#         120
+  C:00D6H         LINE#         121
+  C:00DDH         LINE#         122
+  C:00DDH         LINE#         123
+  C:00DFH         LINE#         124
+  C:00E0H         LINE#         126
+  C:00E0H         LINE#         127
+  C:00E3H         LINE#         128
+  C:00E3H         LINE#         129
+  C:00E3H         LINE#         130
+  C:00E3H         LINE#         131
+  -------         ENDPROC       ROTATE_ENCODER
+  -------         PROC          MAIN
+  C:0003H         LINE#         134
+  C:0003H         LINE#         135
+  C:0003H         LINE#         136
+  C:0006H         LINE#         137
+  C:0006H         LINE#         138
+  C:0006H         LINE#         139
+  C:0009H         LINE#         140
+  -------         ENDPROC       MAIN
+  -------         PROC          INTERRUPT_1
+  C:0129H         LINE#         144
+  C:013EH         LINE#         146
+  C:0141H         LINE#         147
+  C:0144H         LINE#         148
+  C:0147H         LINE#         149
+  C:014AH         LINE#         150
+  C:014AH         LINE#         151
+  C:014DH         LINE#         152
+  C:014DH         LINE#         153
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  01:20:39  PAGE 5
+
+
+  -------         ENDPROC       INTERRUPT_1
+  -------         ENDMOD        DIGITAL_BIANMAQI
+
+Program Size: data=22.0 xdata=0 code=458
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,174 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/17/2016  23:51:41  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE .\output\ultra_Timer.obj TO .\output\ultra_Timer PRINT (.\ultra_Timer.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\ultra_Timer.obj (ULTRA_TIMER)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\output\ultra_Timer (ULTRA_TIMER)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?ULTRA_TIMER
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0050H     UNIT         ?PR?MAIN?ULTRA_TIMER
+            CODE    00DFH     0035H     UNIT         ?PR?_SEND_DATA?ULTRA_TIMER
+            CODE    0114H     0020H     UNIT         ?CO?ULTRA_TIMER
+            CODE    0134H     0012H     UNIT         ?PR?TIMER0INIT?ULTRA_TIMER
+            CODE    0146H     0008H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\output\ultra_Timer (ULTRA_TIMER)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?ULTRA_TIMER
+  +--> ?C_INITSEG
+
+?PR?MAIN?ULTRA_TIMER
+  +--> ?PR?TIMER0INIT?ULTRA_TIMER
+  +--> ?CO?ULTRA_TIMER
+  +--> ?PR?_SEND_DATA?ULTRA_TIMER
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\ultra_Timer (ULTRA_TIMER)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ULTRA_TIMER
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/17/2016  23:51:41  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:00DFH         PUBLIC        _Send_data
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0114H         PUBLIC        Led_One
+  C:008FH         PUBLIC        main
+  B:0080H.7       PUBLIC        HC595_DATA
+  C:0124H         PUBLIC        Led_Two
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  B:0088H.5       PUBLIC        TF0
+  C:0134H         PUBLIC        Timer0Init
+  D:008AH         PUBLIC        TL0
+  D:0008H         PUBLIC        num
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:000AH         PUBLIC        k
+  B:0080H.6       PUBLIC        HC595_RCK
+  B:0080H.5       PUBLIC        HC595_SCK
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TIMER0INIT
+  C:0134H         LINE#         25
+  C:0134H         LINE#         26
+  C:0134H         LINE#         27
+  C:0137H         LINE#         28
+  C:013AH         LINE#         29
+  C:013DH         LINE#         30
+  C:013FH         LINE#         31
+  C:0141H         LINE#         32
+  C:0143H         LINE#         33
+  C:0145H         LINE#         34
+  -------         ENDPROC       TIMER0INIT
+  -------         PROC          _SEND_DATA
+  D:0007H         SYMBOL        Led8_one
+  D:0005H         SYMBOL        Led8_two
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:00DFH         LINE#         37
+  C:00DFH         LINE#         38
+  C:00DFH         LINE#         40
+  C:00E1H         LINE#         41
+  C:00E3H         LINE#         42
+  C:00E3H         LINE#         43
+  C:00E5H         LINE#         44
+  C:00E9H         LINE#         45
+  C:00E9H         LINE#         46
+  C:00EBH         LINE#         47
+  C:00EDH         LINE#         49
+  C:00EDH         LINE#         50
+  C:00EFH         LINE#         51
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/17/2016  23:51:41  PAGE 3
+
+
+  C:00EFH         LINE#         52
+  C:00F3H         LINE#         53
+  C:00F5H         LINE#         54
+  C:00F9H         LINE#         55
+  C:00FBH         LINE#         56
+  C:00FBH         LINE#         57
+  C:00FDH         LINE#         58
+  C:0101H         LINE#         59
+  C:0101H         LINE#         60
+  C:0103H         LINE#         61
+  C:0105H         LINE#         63
+  C:0105H         LINE#         64
+  C:0107H         LINE#         65
+  C:0107H         LINE#         66
+  C:010BH         LINE#         67
+  C:010DH         LINE#         68
+  C:0111H         LINE#         69
+  C:0113H         LINE#         70
+  -------         ENDPROC       _SEND_DATA
+  -------         PROC          MAIN
+  C:008FH         LINE#         74
+  C:008FH         LINE#         75
+  C:008FH         LINE#         77
+  C:0092H         LINE#         78
+  C:00A1H         LINE#         79
+  C:00A1H         LINE#         80
+  C:00A1H         LINE#         81
+  C:00A4H         LINE#         82
+  C:00A4H         LINE#         83
+  C:00A6H         LINE#         84
+  C:00A9H         LINE#         85
+  C:00B1H         LINE#         86
+  C:00B1H         LINE#         87
+  C:00BBH         LINE#         88
+  C:00BBH         LINE#         89
+  C:00CCH         LINE#         90
+  C:00D1H         LINE#         91
+  C:00D1H         LINE#         92
+  C:00D4H         LINE#         93
+  C:00D6H         LINE#         95
+  C:00D6H         LINE#         96
+  C:00D8H         LINE#         97
+  C:00D8H         LINE#         98
+  C:00DDH         LINE#         99
+  C:00DDH         LINE#         100
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        ULTRA_TIMER
+
+Program Size: data=12.0 xdata=0 code=334
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

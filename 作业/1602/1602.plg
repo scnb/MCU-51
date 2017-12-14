@@ -1,0 +1,34 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\作业\1602\1602.uvproj
+Project File Date:  11/23/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling 1602.c...
+1602.C(12): warning C206: '_nop_': missing function-prototype
+1602.C(12): error C264: intrinsic '_nop_': declaration/activation error
+Target not created
+Build target 'Target 1'
+compiling 1602.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_READ_STATUS?1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_READ_DATA?1602
+Program Size: data=9.0 xdata=0 code=127
+creating hex file from ".\output\1602"...
+".\output\1602" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling 1602.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_READ_STATUS?1602
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_READ_DATA?1602
+Program Size: data=9.0 xdata=0 code=131
+creating hex file from ".\output\1602"...
+".\output\1602" - 0 Error(s), 2 Warning(s).

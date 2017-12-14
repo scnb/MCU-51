@@ -1,0 +1,255 @@
+C51 COMPILER V9.01   LED_SHUMAGUAN                                                         11/19/2016 12:56:34 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LED_SHUMAGUAN
+OBJECT MODULE PLACED IN .\output\Led_shumaguan.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE Led_shumaguan.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output\Led_shumaguan.obj)
+
+line level    source
+
+   1          /*¸Ã³ÌÐòÒÔA½ÅÎª¸ßµçÆ½£¨1£©Îª»ù×¼£¬Í¨¹ý¼ì²âB½ÅÉÏÒ»´ÎÓëµ±Ç°µÄ×´Ì¬±ä»¯£¬À´ÅÐ¶ÏÐý×ª±àÂëÆ÷ÊÇË³Ê±Õë»¹ÊÇÄæÊ±ÕëÐý×
+             -ª
+   2          ²¢ÏàÓ¦µØÔö¼Ó»ò¼õÉÙ¼ÆÊýÖµ£¬²¢Í¨¹ýdisplayº¯Êý½«¼ÆÊýÖµÔÚÊýÂë¹ÜÉÏ¶¯Ì¬É¨ÃèÏÔÊ¾*/
+   3          
+   4          #include<reg52.h>
+   5          /*Ðý×ª±àÂëÆ÷Èý¸öÒý½ÅÓëIO¿ÚµÄÉèÖÃ*/
+   6          sbit press_down = P2^2; //°´ÏÂ
+   7          sbit pin_A = P2^0;         //A½Å
+   8          sbit pin_B = P2^1;         //B½Å
+   9          
+  10          /*ÊýÂë¹Ü¼Ä´æÆ÷µÄÉèÖÃ*/
+  11          sbit HC595_SCK = P1^1;
+  12          sbit HC595_RCK = P1^0;
+  13          sbit HC595_DATA = P1^4;
+  14          
+  15          
+  16          /*16¸öledµÄ¼Ä´æÆ÷µÄÉèÖÃ*/
+  17          sbit HC595_SCK1 = P0^5;
+  18          sbit HC595_RCK1 = P0^6;
+  19          sbit HC595_DATA1 = P0^7;
+  20          
+  21          
+  22          unsigned char Last_B_value;//¼ÇÂ¼B½ÅÉÏÒ»´ÎµÄ×´Ì¬£¬ÊÇ0»¹ÊÇ1
+  23          unsigned char Current_B_value;//¼ÇÂ¼B½Åµ±Ç°µÄ×´Ì¬£¬ÊÇ0»¹ÊÇ1
+  24          unsigned char Rotate_flag;//¼ì²âÊÇ·ñÐý×ªÁË  RotateµÄÒâË¼ÊÇÐý×ª£¬ËùÒÔ¿ÉÒÔÀí½âÎªÐý×ª±êÖ¾Î»
+  25          unsigned char value_shumaguan = 0;//¼ÇÂ¼¼ÆÊýÖµ
+  26          unsigned char value_led = 0;
+  27          
+  28          /*ÊýÂë¹Ü¶ÎÑ¡ºÍÎ»Ñ¡±í*/
+  29          code unsigned char Shu_Ma_Duan[10] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f}; //0--9
+  30          code unsigned char Shu_Ma_Wei[8] = {0xfb,0xfd,0xfe,0xf7,0x0f,0xdf,0xbf,0x7f};//×¢Òâ¸ÃÎ»Âë±íµÚÒ»¸öºÍµÚÈý¸ö±
+             -ä»¯ÁËÎ»ÖÃ£¬Ö»ÊÇ³ÌÐòµÄÌØÊâÐèÒª
+  31          unsigned char display_arry[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+  32          
+  33          /*16¸öledµÄÆ¬Ñ¡±í*/
+  34          code unsigned char Led_One[16] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x80,0x40,0x20,0x10,0x08,0x04,0x
+             -02,0x01};
+  35          code unsigned char Led_Two[16] = {0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x
+             -00,0x00};
+  36          
+  37          /*·¢ËÍÊý¾Ýº¯ÊýÉùÃ÷*/
+  38          //void Send_Data(unsigned char Shu_Duan,unsigned char Shu_Wei);
+  39          
+  40          /*·¢ËÍÊý¾Ýº¯Êý*/
+  41          void Send_data_shumaguan(unsigned char Shu_Duan,unsigned char Shu_Wei)
+  42          {
+  43   1          unsigned char i;
+  44   1              HC595_RCK = 0;
+  45   1              for(i = 0;i < 8;i++)
+  46   1              {
+  47   2                      HC595_SCK = 0;
+  48   2                      if(0 != (Shu_Duan&0x80))
+  49   2                      {
+  50   3                              HC595_DATA = 1;
+  51   3                      }
+C51 COMPILER V9.01   LED_SHUMAGUAN                                                         11/19/2016 12:56:34 PAGE 2   
+
+  52   2                      else
+  53   2                      {
+  54   3                              HC595_DATA = 0;
+  55   3                      }
+  56   2                      HC595_SCK = 1;
+  57   2                      Shu_Duan = Shu_Duan << 1;
+  58   2              }
+  59   1              for(i = 0;i < 8;i++)
+  60   1              {
+  61   2                      HC595_SCK = 0;
+  62   2                      if(0 != (Shu_Wei&0x80))
+  63   2                      {
+  64   3                              HC595_DATA = 1;
+  65   3                      }
+  66   2                      else
+  67   2                      {
+  68   3                              HC595_DATA = 0;
+  69   3                      }
+  70   2                      HC595_SCK = 1;
+  71   2                      Shu_Wei = Shu_Wei << 1;
+  72   2              }
+  73   1              HC595_RCK = 1;
+  74   1      }
+  75          
+  76          /*ledµÄÊý¾Ý·¢ËÍº¯Êý*/
+  77          void Send_data_led(unsigned char Led_one,unsigned char Led_two)
+  78          {
+  79   1          unsigned char i;
+  80   1              HC595_RCK1 = 0;
+  81   1              for(i = 0;i < 8;i++)
+  82   1              {
+  83   2                      HC595_SCK1 = 0;
+  84   2                      if(0 != (Led_one&0x80))
+  85   2                      {
+  86   3                              HC595_DATA1 = 1;
+  87   3                      }
+  88   2                      else
+  89   2                      {
+  90   3                              HC595_DATA1 = 0;
+  91   3                      }
+  92   2                      HC595_SCK1 = 1;
+  93   2                      Led_one = Led_one << 1;
+  94   2              }
+  95   1              for(i = 0;i < 8;i++)
+  96   1              {
+  97   2                      HC595_SCK1 = 0;
+  98   2                      if(0 != (Led_two&0x80))
+  99   2                      {
+ 100   3                              HC595_DATA1 = 1;
+ 101   3                      }
+ 102   2                      else
+ 103   2                      {
+ 104   3                              HC595_DATA1 = 0;
+ 105   3                      }
+ 106   2                      HC595_SCK1 = 1;
+ 107   2                      Led_two = Led_two << 1;
+ 108   2              }
+ 109   1              HC595_RCK1 = 1;
+ 110   1      }
+ 111          
+ 112          /*½«¼ÆÊýÖµÍ¨¹ýÊýÂë¹Ü¶¯Ì¬É¨ÃèÏÔÊ¾µÄº¯Êý*/
+ 113          void display()
+C51 COMPILER V9.01   LED_SHUMAGUAN                                                         11/19/2016 12:56:34 PAGE 3   
+
+ 114          {
+ 115   1              static unsigned char i;
+ 116   1              display_arry[0] = Shu_Ma_Duan[value_shumaguan%10];  //ÒòÎªdisplay_arryÊý×éÐèÒª¸Ä±äÖµ£¬ËùÒÔ²»ÄÜ¶¨Òå³ÉcodeÀ
+             -àÐÍ
+ 117   1              display_arry[1] = Shu_Ma_Duan[value_shumaguan%100/10];
+ 118   1              display_arry[2] = Shu_Ma_Duan[value_shumaguan/100];
+ 119   1              if(i < 2)
+ 120   1              {
+ 121   2                      i++;
+ 122   2              }
+ 123   1              else
+ 124   1              {
+ 125   2                      i = 0;//ÕâÒ»¸öÓï¾ä»¹³Ðµ£×ÅµÚÒ»´ÎÎªi¸³ÖµµÄ¹¦ÄÜ£¬ÒòÎªÖ®Ç°Ö»¶¨ÒåÁËiµ«ÊÇ²¢Ã»ÓÐ¸³Öµ
+ 126   2              }
+ 127   1              Send_data_shumaguan(display_arry[i],Shu_Ma_Wei[i]);
+ 128   1              Send_data_led(Led_One[15-value_led],Led_Two[15-value_led]);
+ 129   1      }
+ 130          
+ 131          /*¶¨Ê±Æ÷0µÄ³õÊ¼»¯³ÌÐò*/
+ 132          void Timer0Init(void)           //1ºÁÃë@11.0592MHz
+ 133          {
+ 134   1              //AUXR &= 0x7F;         //¶¨Ê±Æ÷Ê±ÖÓ12TÄ£Ê½
+ 135   1              TMOD &= 0xF0;           //ÉèÖÃ¶¨Ê±Æ÷Ä£Ê½
+ 136   1              TMOD |= 0x01;           //ÉèÖÃ¶¨Ê±Æ÷Ä£Ê½
+ 137   1              TL0 = 0x66;             //ÉèÖÃ¶¨Ê±³õÖµ
+ 138   1              TH0 = 0xFC;             //ÉèÖÃ¶¨Ê±³õÖµ
+ 139   1              TF0 = 0;                //Çå³ýTF0±êÖ¾
+ 140   1              TR0 = 1;                //¶¨Ê±Æ÷0¿ªÊ¼¼ÆÊ±
+ 141   1              EA = 1;
+ 142   1              ET0 = 1;
+ 143   1      }
+ 144          
+ 145          
+ 146          
+ 147          
+ 148          void Rotate_encoder()
+ 149          {
+ 150   1              Last_B_value = pin_B;
+ 151   1              while(!pin_A)    //×¢ÒâÊÇwhile¶ø²»ÊÇif,µ±pin_AÊÇ1Ê±£¬Ìø³öÑ­»·,ÒòÎªÒÔA½ÅÎª¸ßµçÆ½Îª»ù×¼
+ 152   1              {
+ 153   2                      Rotate_flag = 1;
+ 154   2                      Current_B_value = pin_B;
+ 155   2              }
+ 156   1              if(1 == Rotate_flag)//ÏÈÔÚÍâ²¿ifÖÐÅÐ¶ÏÊÇ·ñÐý×ª£¬ÔÙÔÚÄÚ²¿Á½¸öifÖÐ·Ö±ðÅÐ¶ÏÊÇË³Ê±Õë»¹ÊÇÄæÊ±Õë
+ 157   1              {
+ 158   2                      Rotate_flag = 0;
+ 159   2                      if((Last_B_value==0)&&(Current_B_value==1))
+ 160   2                      {
+ 161   3                              if(value_led < 15)
+ 162   3                              {
+ 163   4                                      value_led++;
+ 164   4                              }
+ 165   3                              else
+ 166   3                              {
+ 167   4                                      value_led = 0;
+ 168   4                              }
+ 169   3                              if(value_shumaguan < 255)
+ 170   3                              {
+ 171   4                                      value_shumaguan++;
+ 172   4                              }
+ 173   3                              else
+ 174   3                              {
+C51 COMPILER V9.01   LED_SHUMAGUAN                                                         11/19/2016 12:56:34 PAGE 4   
+
+ 175   4                                      value_shumaguan = 0;
+ 176   4                              }
+ 177   3                      }
+ 178   2                      if((Last_B_value==1)&&(Current_B_value==0))
+ 179   2                      {
+ 180   3                              if(value_led > 0)
+ 181   3                              {
+ 182   4                                      value_led--;
+ 183   4                              }
+ 184   3                              else
+ 185   3                              {
+ 186   4                                      value_led = 15;
+ 187   4                              }
+ 188   3                              if(value_shumaguan > 0)
+ 189   3                              {
+ 190   4                                      value_shumaguan--;
+ 191   4                              }
+ 192   3                              else
+ 193   3                              {
+ 194   4                                      value_shumaguan = 255;
+ 195   4                              }
+ 196   3                      }
+ 197   2              }
+ 198   1      }
+ 199          
+ 200          /*Ö÷º¯Êý*/
+ 201          void main()
+ 202          {
+ 203   1              Timer0Init();
+ 204   1              while(1)
+ 205   1              {
+ 206   2                      Rotate_encoder();
+ 207   2              }
+ 208   1      }
+ 209          
+ 210          /*¶¨Ê±Æ÷0µÄÖÐ¶Ïº¯Êý*/
+ 211          void interrupt_1() interrupt 1
+ 212          {
+ 213   1              TL0 = 0x66;             //ÉèÖÃ¶¨Ê±³õÖµ
+ 214   1              TH0 = 0xFC;             //ÉèÖÃ¶¨Ê±³õÖµ
+ 215   1              display();
+ 216   1              if(!press_down)
+ 217   1              {
+ 218   2                      value_shumaguan = 0;
+ 219   2                      value_led = 0;
+ 220   2              }
+ 221   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    407    ----
+   CONSTANT SIZE    =     50    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     14    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,208 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/19/2016  14:43:31  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE .\output\Independent_button.obj TO .\output\Independent_button PRINT (.\Independent_button.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\Independent_button.obj (INDEPENDENT_BUTTON)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\Independent_button (INDEPENDENT_BUTTON)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?INDEPENDENT_BUTTON
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     0035H     UNIT         ?PR?_SEND_DATA?INDEPENDENT_BUTTON
+            CODE    003BH     0031H     UNIT         ?PR?INTERRUPT_0?INDEPENDENT_BUTTON
+            CODE    006CH     002AH     UNIT         ?PR?WHICH_DOWN?INDEPENDENT_BUTTON
+            CODE    0096H     0015H     UNIT         ?PR?MAIN?INDEPENDENT_BUTTON
+            CODE    00ABH     000CH     UNIT         ?C_C51STARTUP
+            CODE    00B7H     0009H     UNIT         ?CO?INDEPENDENT_BUTTON
+            CODE    00C0H     0007H     UNIT         ?PR?INIT_INTERRUPT?INDEPENDENT_BUTTON
+
+
+
+OVERLAY MAP OF MODULE:   .\output\Independent_button (INDEPENDENT_BUTTON)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?INTERRUPT_0?INDEPENDENT_BUTTON
+  +--> ?CO?INDEPENDENT_BUTTON
+  +--> ?PR?_SEND_DATA?INDEPENDENT_BUTTON
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?INDEPENDENT_BUTTON
+
+?PR?MAIN?INDEPENDENT_BUTTON
+  +--> ?PR?INIT_INTERRUPT?INDEPENDENT_BUTTON
+  +--> ?CO?INDEPENDENT_BUTTON
+  +--> ?PR?_SEND_DATA?INDEPENDENT_BUTTON
+  +--> ?PR?WHICH_DOWN?INDEPENDENT_BUTTON
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  14:43:31  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\Independent_button (INDEPENDENT_BUTTON)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        INDEPENDENT_BUTTON
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:003BH         PUBLIC        interrupt_0
+  B:00A8H.7       PUBLIC        EA
+  C:0006H         PUBLIC        _Send_data
+  C:00BCH         PUBLIC        Wei_choose
+  D:00A8H         PUBLIC        IE
+  C:006CH         PUBLIC        Which_down
+  D:00B8H         PUBLIC        IP
+  C:0096H         PUBLIC        main
+  B:0090H.4       PUBLIC        HC595_DATA
+  B:00A0H.0       PUBLIC        sw_20
+  B:00A0H.3       PUBLIC        sw_17
+  B:00A0H.2       PUBLIC        sw_18
+  D:0098H         PUBLIC        SCON
+  B:00A0H.1       PUBLIC        sw_19
+  D:0088H         PUBLIC        TCON
+  B:00B0H.2       PUBLIC        down_flag
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  D:00C8H         PUBLIC        T2CON
+  D:0008H         PUBLIC        i
+  C:00C0H         PUBLIC        Init_interrupt
+  C:00B7H         PUBLIC        Duan_choose
+  B:0090H.0       PUBLIC        HC595_RCK
+  B:0090H.1       PUBLIC        HC595_SCK
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _SEND_DATA
+  D:0007H         SYMBOL        duan
+  D:0005H         SYMBOL        wei
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0006H         LINE#         21
+  C:0006H         LINE#         22
+  C:0006H         LINE#         24
+  C:0008H         LINE#         25
+  C:000AH         LINE#         26
+  C:000AH         LINE#         27
+  C:000CH         LINE#         28
+  C:0010H         LINE#         29
+  C:0010H         LINE#         30
+  C:0012H         LINE#         31
+  C:0014H         LINE#         33
+  C:0014H         LINE#         34
+  C:0016H         LINE#         35
+  C:0016H         LINE#         36
+  C:0018H         LINE#         37
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  14:43:31  PAGE 3
+
+
+  C:001CH         LINE#         38
+  C:0020H         LINE#         39
+  C:0022H         LINE#         40
+  C:0022H         LINE#         41
+  C:0024H         LINE#         42
+  C:0028H         LINE#         43
+  C:0028H         LINE#         44
+  C:002AH         LINE#         45
+  C:002CH         LINE#         47
+  C:002CH         LINE#         48
+  C:002EH         LINE#         49
+  C:002EH         LINE#         50
+  C:0030H         LINE#         51
+  C:0034H         LINE#         52
+  C:0038H         LINE#         53
+  C:003AH         LINE#         54
+  -------         ENDPROC       _SEND_DATA
+  -------         PROC          WHICH_DOWN
+  C:006CH         LINE#         58
+  C:006CH         LINE#         59
+  C:006CH         LINE#         60
+  C:006FH         LINE#         61
+  C:006FH         LINE#         62
+  C:0071H         LINE#         63
+  C:0074H         LINE#         64
+  C:0074H         LINE#         65
+  C:0077H         LINE#         66
+  C:0077H         LINE#         67
+  C:007AH         LINE#         68
+  C:007AH         LINE#         69
+  C:007AH         LINE#         70
+  C:007DH         LINE#         71
+  C:007DH         LINE#         72
+  C:0080H         LINE#         73
+  C:0080H         LINE#         74
+  C:0083H         LINE#         75
+  C:0083H         LINE#         76
+  C:0083H         LINE#         77
+  C:0086H         LINE#         78
+  C:0086H         LINE#         79
+  C:0089H         LINE#         80
+  C:0089H         LINE#         81
+  C:008CH         LINE#         82
+  C:008CH         LINE#         83
+  C:008CH         LINE#         84
+  C:008FH         LINE#         85
+  C:008FH         LINE#         86
+  C:0092H         LINE#         87
+  C:0092H         LINE#         88
+  C:0095H         LINE#         89
+  C:0095H         LINE#         90
+  C:0095H         LINE#         91
+  C:0095H         LINE#         92
+  -------         ENDPROC       WHICH_DOWN
+  -------         PROC          INIT_INTERRUPT
+  C:00C0H         LINE#         96
+  C:00C0H         LINE#         97
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  14:43:31  PAGE 4
+
+
+  C:00C0H         LINE#         98
+  C:00C2H         LINE#         99
+  C:00C4H         LINE#         100
+  C:00C6H         LINE#         101
+  -------         ENDPROC       INIT_INTERRUPT
+  -------         PROC          MAIN
+  C:0096H         LINE#         105
+  C:0096H         LINE#         106
+  C:0096H         LINE#         107
+  C:0099H         LINE#         108
+  C:00A6H         LINE#         109
+  C:00A6H         LINE#         110
+  C:00A6H         LINE#         111
+  C:00A9H         LINE#         112
+  -------         ENDPROC       MAIN
+  -------         PROC          INTERRUPT_0
+  C:003BH         LINE#         117
+  C:004CH         LINE#         119
+  C:005DH         LINE#         120
+  -------         ENDPROC       INTERRUPT_0
+  -------         ENDMOD        INDEPENDENT_BUTTON
+
+Program Size: data=10.0 xdata=0 code=199
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

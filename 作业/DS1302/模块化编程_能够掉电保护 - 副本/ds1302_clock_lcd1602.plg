@@ -1,0 +1,877 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\作业\DS1302\模块化编程_能够掉电保护\ds1302_clock_lcd1602.uvproj
+Project File Date:  11/25/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling ds1302.c...
+SOURCE\DS1302.C(109): error C202: 'write_addr': undefined identifier
+SOURCE\DS1302.C(123): error C202: 'read_addr': undefined identifier
+compiling i2c_eeprom.c...
+compiling lcd1602.c...
+F:\51\C51\INC\REG52.H(13): error C141: syntax error near 'sfr'
+compiling main.c...
+source\main.c(3): warning C318: can't open file 'lcd1602.h'
+source\main.c(4): warning C318: can't open file 'ds1302.h'
+source\main.c(5): warning C318: can't open file 'i2c_eeprom.h'
+SOURCE\MAIN.C(50): warning C206: 'Init_1602': missing function-prototype
+SOURCE\MAIN.C(52): warning C206: 'set_time_ds1302': missing function-prototype
+SOURCE\MAIN.C(52): error C267: 'set_time_ds1302': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling ds1302.c...
+SOURCE\DS1302.C(109): error C202: 'write_addr': undefined identifier
+SOURCE\DS1302.C(123): error C202: 'read_addr': undefined identifier
+compiling lcd1602.c...
+F:\51\C51\INC\REG52.H(13): error C141: syntax error near 'sfr'
+compiling main.c...
+INC/DS1302.H(4): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(5): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(6): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(8): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(9): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(10): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_read_time_ds1302': invalid storage class
+SOURCE\MAIN.C(11): error C244: 'time': can't initialize, bad type or class
+SOURCE\MAIN.C(11): error C132: 'time': not in formal parameter list
+SOURCE\MAIN.C(15): error C132: 'uart_init': not in formal parameter list
+SOURCE\MAIN.C(15): error C141: syntax error near '{'
+SOURCE\MAIN.C(16): error C136: 'TMOD': 'void' on variable
+SOURCE\MAIN.C(16): error C244: 'TMOD': can't initialize, bad type or class
+SOURCE\MAIN.C(16): error C136: 'TMOD': 'void' on variable
+SOURCE\MAIN.C(16): error C132: 'TMOD': not in formal parameter list
+SOURCE\MAIN.C(17): error C244: 'SCON': can't initialize, bad type or class
+SOURCE\MAIN.C(17): error C132: 'SCON': not in formal parameter list
+SOURCE\MAIN.C(19): error C244: 'TH1': can't initialize, bad type or class
+SOURCE\MAIN.C(19): error C132: 'TH1': not in formal parameter list
+SOURCE\MAIN.C(20): error C244: 'TL1': can't initialize, bad type or class
+SOURCE\MAIN.C(20): error C132: 'TL1': not in formal parameter list
+SOURCE\MAIN.C(22): error C244: 'TR1': can't initialize, bad type or class
+SOURCE\MAIN.C(22): error C132: 'TR1': not in formal parameter list
+SOURCE\MAIN.C(23): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling ds1302.c...
+SOURCE\DS1302.C(109): error C202: 'write_addr': undefined identifier
+SOURCE\DS1302.C(123): error C202: 'read_addr': undefined identifier
+compiling lcd1602.c...
+F:\51\C51\INC\REG52.H(13): error C141: syntax error near 'sfr'
+compiling main.c...
+INC/DS1302.H(4): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(5): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(6): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(8): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(9): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(10): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_read_time_ds1302': invalid storage class
+SOURCE\MAIN.C(11): error C244: 'time': can't initialize, bad type or class
+SOURCE\MAIN.C(11): error C132: 'time': not in formal parameter list
+SOURCE\MAIN.C(15): error C132: 'uart_init': not in formal parameter list
+SOURCE\MAIN.C(15): error C141: syntax error near '{'
+SOURCE\MAIN.C(16): error C136: 'TMOD': 'void' on variable
+SOURCE\MAIN.C(16): error C244: 'TMOD': can't initialize, bad type or class
+SOURCE\MAIN.C(16): error C136: 'TMOD': 'void' on variable
+SOURCE\MAIN.C(16): error C132: 'TMOD': not in formal parameter list
+SOURCE\MAIN.C(17): error C244: 'SCON': can't initialize, bad type or class
+SOURCE\MAIN.C(17): error C132: 'SCON': not in formal parameter list
+SOURCE\MAIN.C(19): error C244: 'TH1': can't initialize, bad type or class
+SOURCE\MAIN.C(19): error C132: 'TH1': not in formal parameter list
+SOURCE\MAIN.C(20): error C244: 'TL1': can't initialize, bad type or class
+SOURCE\MAIN.C(20): error C132: 'TL1': not in formal parameter list
+SOURCE\MAIN.C(22): error C244: 'TR1': can't initialize, bad type or class
+SOURCE\MAIN.C(22): error C132: 'TR1': not in formal parameter list
+SOURCE\MAIN.C(23): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling ds1302.c...
+compiling i2c_eeprom.c...
+compiling lcd1602.c...
+F:\51\C51\INC\REG52.H(13): error C141: syntax error near 'sfr'
+compiling main.c...
+INC/DS1302.H(4): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(5): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(6): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(8): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(9): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(10): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_read_time_ds1302': invalid storage class
+SOURCE\MAIN.C(11): error C244: 'time': can't initialize, bad type or class
+SOURCE\MAIN.C(11): error C132: 'time': not in formal parameter list
+SOURCE\MAIN.C(15): error C132: 'uart_init': not in formal parameter list
+SOURCE\MAIN.C(15): error C141: syntax error near '{'
+SOURCE\MAIN.C(16): error C136: 'TMOD': 'void' on variable
+SOURCE\MAIN.C(16): error C244: 'TMOD': can't initialize, bad type or class
+SOURCE\MAIN.C(16): error C136: 'TMOD': 'void' on variable
+SOURCE\MAIN.C(16): error C132: 'TMOD': not in formal parameter list
+SOURCE\MAIN.C(17): error C244: 'SCON': can't initialize, bad type or class
+SOURCE\MAIN.C(17): error C132: 'SCON': not in formal parameter list
+SOURCE\MAIN.C(19): error C244: 'TH1': can't initialize, bad type or class
+SOURCE\MAIN.C(19): error C132: 'TH1': not in formal parameter list
+SOURCE\MAIN.C(20): error C244: 'TL1': can't initialize, bad type or class
+SOURCE\MAIN.C(20): error C132: 'TL1': not in formal parameter list
+SOURCE\MAIN.C(22): error C244: 'TR1': can't initialize, bad type or class
+SOURCE\MAIN.C(22): error C132: 'TR1': not in formal parameter list
+SOURCE\MAIN.C(23): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling lcd1602.c...
+F:\51\C51\INC\REG52.H(13): error C141: syntax error near 'sfr'
+compiling main.c...
+INC/DS1302.H(4): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(5): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(6): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(8): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(9): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(10): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_read_time_ds1302': invalid storage class
+SOURCE\MAIN.C(11): error C244: 'time': can't initialize, bad type or class
+SOURCE\MAIN.C(11): error C132: 'time': not in formal parameter list
+SOURCE\MAIN.C(18): error C132: 'main': not in formal parameter list
+SOURCE\MAIN.C(18): error C141: syntax error near '{'
+SOURCE\MAIN.C(19): error C132: 'Init_1602': not in formal parameter list
+SOURCE\MAIN.C(20): error C132: 'uart_init': not in formal parameter list
+SOURCE\MAIN.C(21): error C141: syntax error near '&'
+SOURCE\MAIN.C(21): error C132: 'set_time_ds1302': not in formal parameter list
+SOURCE\MAIN.C(22): error C141: syntax error near 'while'
+SOURCE\MAIN.C(22): error C141: syntax error near '1'
+SOURCE\MAIN.C(24): error C141: syntax error near '&'
+SOURCE\MAIN.C(25): error C141: syntax error near '0x80'
+SOURCE\MAIN.C(26): error C141: syntax error near '0x81'
+SOURCE\MAIN.C(27): error C141: syntax error near '0x82'
+SOURCE\MAIN.C(28): error C141: syntax error near '0x83'
+SOURCE\MAIN.C(29): error C141: syntax error near '0x85'
+SOURCE\MAIN.C(30): error C141: syntax error near '0x86'
+SOURCE\MAIN.C(31): error C141: syntax error near '0x87'
+SOURCE\MAIN.C(32): error C141: syntax error near '0x88'
+SOURCE\MAIN.C(33): error C141: syntax error near '0x89'
+SOURCE\MAIN.C(34): error C141: syntax error near '0x8a'
+SOURCE\MAIN.C(35): error C141: syntax error near '0x8b'
+SOURCE\MAIN.C(36): error C141: syntax error near '0x8c'
+SOURCE\MAIN.C(38): error C141: syntax error near '0xc0'
+SOURCE\MAIN.C(39): error C141: syntax error near '0xc1'
+SOURCE\MAIN.C(40): error C141: syntax error near '0xc2'
+SOURCE\MAIN.C(41): error C141: syntax error near '0xc3'
+SOURCE\MAIN.C(42): error C141: syntax error near '0xc5'
+SOURCE\MAIN.C(43): error C141: syntax error near '0xc6'
+SOURCE\MAIN.C(44): error C141: syntax error near '0xc7'
+SOURCE\MAIN.C(45): error C141: syntax error near '0xc8'
+SOURCE\MAIN.C(46): error C141: syntax error near '0xc9'
+SOURCE\MAIN.C(47): error C141: syntax error near '0xca'
+SOURCE\MAIN.C(48): error C141: syntax error near '0xcb'
+SOURCE\MAIN.C(49): error C141: syntax error near '0xcc'
+SOURCE\MAIN.C(50): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling ds1302.c...
+SOURCE\DS1302.C(8): error C141: syntax error near 'sbit'
+compiling lcd1602.c...
+INC/DS1302.H(4): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(5): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(6): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(8): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(9): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(10): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_read_time_ds1302': invalid storage class
+F:\51\C51\INC\REG52.H(13): error C141: syntax error near 'sfr'
+compiling main.c...
+INC/DS1302.H(4): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(5): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(6): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(8): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(9): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(10): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_read_time_ds1302': invalid storage class
+SOURCE\MAIN.C(11): error C244: 'time': can't initialize, bad type or class
+SOURCE\MAIN.C(11): error C132: 'time': not in formal parameter list
+SOURCE\MAIN.C(18): error C132: 'main': not in formal parameter list
+SOURCE\MAIN.C(18): error C141: syntax error near '{'
+SOURCE\MAIN.C(19): error C132: 'Init_1602': not in formal parameter list
+SOURCE\MAIN.C(20): error C132: 'uart_init': not in formal parameter list
+SOURCE\MAIN.C(21): error C141: syntax error near '&'
+SOURCE\MAIN.C(21): error C132: 'set_time_ds1302': not in formal parameter list
+SOURCE\MAIN.C(22): error C141: syntax error near 'while'
+SOURCE\MAIN.C(22): error C141: syntax error near '1'
+SOURCE\MAIN.C(24): error C141: syntax error near '&'
+SOURCE\MAIN.C(25): error C141: syntax error near '0x80'
+SOURCE\MAIN.C(26): error C141: syntax error near '0x81'
+SOURCE\MAIN.C(27): error C141: syntax error near '0x82'
+SOURCE\MAIN.C(28): error C141: syntax error near '0x83'
+SOURCE\MAIN.C(29): error C141: syntax error near '0x85'
+SOURCE\MAIN.C(30): error C141: syntax error near '0x86'
+SOURCE\MAIN.C(31): error C141: syntax error near '0x87'
+SOURCE\MAIN.C(32): error C141: syntax error near '0x88'
+SOURCE\MAIN.C(33): error C141: syntax error near '0x89'
+SOURCE\MAIN.C(34): error C141: syntax error near '0x8a'
+SOURCE\MAIN.C(35): error C141: syntax error near '0x8b'
+SOURCE\MAIN.C(36): error C141: syntax error near '0x8c'
+SOURCE\MAIN.C(38): error C141: syntax error near '0xc0'
+SOURCE\MAIN.C(39): error C141: syntax error near '0xc1'
+SOURCE\MAIN.C(40): error C141: syntax error near '0xc2'
+SOURCE\MAIN.C(41): error C141: syntax error near '0xc3'
+SOURCE\MAIN.C(42): error C141: syntax error near '0xc5'
+SOURCE\MAIN.C(43): error C141: syntax error near '0xc6'
+SOURCE\MAIN.C(44): error C141: syntax error near '0xc7'
+SOURCE\MAIN.C(45): error C141: syntax error near '0xc8'
+SOURCE\MAIN.C(46): error C141: syntax error near '0xc9'
+SOURCE\MAIN.C(47): error C141: syntax error near '0xca'
+SOURCE\MAIN.C(48): error C141: syntax error near '0xcb'
+SOURCE\MAIN.C(49): error C141: syntax error near '0xcc'
+SOURCE\MAIN.C(50): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling ds1302.c...
+SOURCE\DS1302.C(8): error C141: syntax error near 'sbit'
+compiling lcd1602.c...
+INC/DS1302.H(4): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(5): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(6): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(8): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(9): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(10): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_read_time_ds1302': invalid storage class
+F:\51\C51\INC\REG52.H(13): error C141: syntax error near 'sfr'
+compiling main.c...
+INC/DS1302.H(4): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(5): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(6): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(8): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(9): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(10): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_read_time_ds1302': invalid storage class
+SOURCE\MAIN.C(11): error C244: 'time': can't initialize, bad type or class
+SOURCE\MAIN.C(11): error C132: 'time': not in formal parameter list
+SOURCE\MAIN.C(18): error C132: 'main': not in formal parameter list
+SOURCE\MAIN.C(18): error C141: syntax error near '{'
+SOURCE\MAIN.C(19): error C132: 'Init_1602': not in formal parameter list
+SOURCE\MAIN.C(20): error C132: 'uart_init': not in formal parameter list
+SOURCE\MAIN.C(21): error C141: syntax error near '&'
+SOURCE\MAIN.C(21): error C132: 'set_time_ds1302': not in formal parameter list
+SOURCE\MAIN.C(22): error C141: syntax error near 'while'
+SOURCE\MAIN.C(22): error C141: syntax error near '1'
+SOURCE\MAIN.C(24): error C141: syntax error near '&'
+SOURCE\MAIN.C(25): error C141: syntax error near '0x80'
+SOURCE\MAIN.C(26): error C141: syntax error near '0x81'
+SOURCE\MAIN.C(27): error C141: syntax error near '0x82'
+SOURCE\MAIN.C(28): error C141: syntax error near '0x83'
+SOURCE\MAIN.C(29): error C141: syntax error near '0x85'
+SOURCE\MAIN.C(30): error C141: syntax error near '0x86'
+SOURCE\MAIN.C(31): error C141: syntax error near '0x87'
+SOURCE\MAIN.C(32): error C141: syntax error near '0x88'
+SOURCE\MAIN.C(33): error C141: syntax error near '0x89'
+SOURCE\MAIN.C(34): error C141: syntax error near '0x8a'
+SOURCE\MAIN.C(35): error C141: syntax error near '0x8b'
+SOURCE\MAIN.C(36): error C141: syntax error near '0x8c'
+SOURCE\MAIN.C(38): error C141: syntax error near '0xc0'
+SOURCE\MAIN.C(39): error C141: syntax error near '0xc1'
+SOURCE\MAIN.C(40): error C141: syntax error near '0xc2'
+SOURCE\MAIN.C(41): error C141: syntax error near '0xc3'
+SOURCE\MAIN.C(42): error C141: syntax error near '0xc5'
+SOURCE\MAIN.C(43): error C141: syntax error near '0xc6'
+SOURCE\MAIN.C(44): error C141: syntax error near '0xc7'
+SOURCE\MAIN.C(45): error C141: syntax error near '0xc8'
+SOURCE\MAIN.C(46): error C141: syntax error near '0xc9'
+SOURCE\MAIN.C(47): error C141: syntax error near '0xca'
+SOURCE\MAIN.C(48): error C141: syntax error near '0xcb'
+SOURCE\MAIN.C(49): error C141: syntax error near '0xcc'
+SOURCE\MAIN.C(50): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling ds1302.c...
+SOURCE\DS1302.C(8): error C141: syntax error near 'sbit'
+compiling lcd1602.c...
+INC/DS1302.H(5): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(6): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(8): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(9): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(10): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(12): error C127: '_read_time_ds1302': invalid storage class
+F:\51\C51\INC\REG52.H(13): error C141: syntax error near 'sfr'
+compiling main.c...
+INC/DS1302.H(5): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(6): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(8): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(9): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(10): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(12): error C127: '_read_time_ds1302': invalid storage class
+SOURCE\MAIN.C(11): error C244: 'time': can't initialize, bad type or class
+SOURCE\MAIN.C(11): error C132: 'time': not in formal parameter list
+SOURCE\MAIN.C(18): error C132: 'main': not in formal parameter list
+SOURCE\MAIN.C(18): error C141: syntax error near '{'
+SOURCE\MAIN.C(19): error C132: 'Init_1602': not in formal parameter list
+SOURCE\MAIN.C(20): error C132: 'uart_init': not in formal parameter list
+SOURCE\MAIN.C(21): error C141: syntax error near '&'
+SOURCE\MAIN.C(21): error C132: 'set_time_ds1302': not in formal parameter list
+SOURCE\MAIN.C(22): error C141: syntax error near 'while'
+SOURCE\MAIN.C(22): error C141: syntax error near '1'
+SOURCE\MAIN.C(24): error C141: syntax error near '&'
+SOURCE\MAIN.C(25): error C141: syntax error near '0x80'
+SOURCE\MAIN.C(26): error C141: syntax error near '0x81'
+SOURCE\MAIN.C(27): error C141: syntax error near '0x82'
+SOURCE\MAIN.C(28): error C141: syntax error near '0x83'
+SOURCE\MAIN.C(29): error C141: syntax error near '0x85'
+SOURCE\MAIN.C(30): error C141: syntax error near '0x86'
+SOURCE\MAIN.C(31): error C141: syntax error near '0x87'
+SOURCE\MAIN.C(32): error C141: syntax error near '0x88'
+SOURCE\MAIN.C(33): error C141: syntax error near '0x89'
+SOURCE\MAIN.C(34): error C141: syntax error near '0x8a'
+SOURCE\MAIN.C(35): error C141: syntax error near '0x8b'
+SOURCE\MAIN.C(36): error C141: syntax error near '0x8c'
+SOURCE\MAIN.C(38): error C141: syntax error near '0xc0'
+SOURCE\MAIN.C(39): error C141: syntax error near '0xc1'
+SOURCE\MAIN.C(40): error C141: syntax error near '0xc2'
+SOURCE\MAIN.C(41): error C141: syntax error near '0xc3'
+SOURCE\MAIN.C(42): error C141: syntax error near '0xc5'
+SOURCE\MAIN.C(43): error C141: syntax error near '0xc6'
+SOURCE\MAIN.C(44): error C141: syntax error near '0xc7'
+SOURCE\MAIN.C(45): error C141: syntax error near '0xc8'
+SOURCE\MAIN.C(46): error C141: syntax error near '0xc9'
+SOURCE\MAIN.C(47): error C141: syntax error near '0xca'
+SOURCE\MAIN.C(48): error C141: syntax error near '0xcb'
+SOURCE\MAIN.C(49): error C141: syntax error near '0xcc'
+SOURCE\MAIN.C(50): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling ds1302.c...
+SOURCE\DS1302.C(8): error C141: syntax error near 'sbit'
+compiling lcd1602.c...
+INC/DS1302.H(5): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(6): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(8): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(9): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(10): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(12): error C127: '_read_time_ds1302': invalid storage class
+F:\51\C51\INC\REG52.H(13): error C141: syntax error near 'sfr'
+compiling main.c...
+INC/DS1302.H(5): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(6): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(8): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(9): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(10): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(12): error C127: '_read_time_ds1302': invalid storage class
+SOURCE\MAIN.C(11): error C244: 'time': can't initialize, bad type or class
+SOURCE\MAIN.C(11): error C132: 'time': not in formal parameter list
+SOURCE\MAIN.C(18): error C132: 'main': not in formal parameter list
+SOURCE\MAIN.C(18): error C141: syntax error near '{'
+SOURCE\MAIN.C(19): error C132: 'Init_1602': not in formal parameter list
+SOURCE\MAIN.C(20): error C132: 'uart_init': not in formal parameter list
+SOURCE\MAIN.C(21): error C141: syntax error near '&'
+SOURCE\MAIN.C(21): error C132: 'set_time_ds1302': not in formal parameter list
+SOURCE\MAIN.C(22): error C141: syntax error near 'while'
+SOURCE\MAIN.C(22): error C141: syntax error near '1'
+SOURCE\MAIN.C(24): error C141: syntax error near '&'
+SOURCE\MAIN.C(25): error C141: syntax error near '0x80'
+SOURCE\MAIN.C(26): error C141: syntax error near '0x81'
+SOURCE\MAIN.C(27): error C141: syntax error near '0x82'
+SOURCE\MAIN.C(28): error C141: syntax error near '0x83'
+SOURCE\MAIN.C(29): error C141: syntax error near '0x85'
+SOURCE\MAIN.C(30): error C141: syntax error near '0x86'
+SOURCE\MAIN.C(31): error C141: syntax error near '0x87'
+SOURCE\MAIN.C(32): error C141: syntax error near '0x88'
+SOURCE\MAIN.C(33): error C141: syntax error near '0x89'
+SOURCE\MAIN.C(34): error C141: syntax error near '0x8a'
+SOURCE\MAIN.C(35): error C141: syntax error near '0x8b'
+SOURCE\MAIN.C(36): error C141: syntax error near '0x8c'
+SOURCE\MAIN.C(38): error C141: syntax error near '0xc0'
+SOURCE\MAIN.C(39): error C141: syntax error near '0xc1'
+SOURCE\MAIN.C(40): error C141: syntax error near '0xc2'
+SOURCE\MAIN.C(41): error C141: syntax error near '0xc3'
+SOURCE\MAIN.C(42): error C141: syntax error near '0xc5'
+SOURCE\MAIN.C(43): error C141: syntax error near '0xc6'
+SOURCE\MAIN.C(44): error C141: syntax error near '0xc7'
+SOURCE\MAIN.C(45): error C141: syntax error near '0xc8'
+SOURCE\MAIN.C(46): error C141: syntax error near '0xc9'
+SOURCE\MAIN.C(47): error C141: syntax error near '0xca'
+SOURCE\MAIN.C(48): error C141: syntax error near '0xcb'
+SOURCE\MAIN.C(49): error C141: syntax error near '0xcc'
+SOURCE\MAIN.C(50): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling ds1302.c...
+SOURCE\DS1302.C(8): error C141: syntax error near 'sbit'
+compiling lcd1602.c...
+INC/DS1302.H(5): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(6): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(8): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(9): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(10): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(12): error C127: '_read_time_ds1302': invalid storage class
+F:\51\C51\INC\REG52.H(13): error C141: syntax error near 'sfr'
+compiling main.c...
+INC/DS1302.H(5): error C127: 'reset_1302': invalid storage class
+INC/DS1302.H(6): error C127: '_write_data_1302': invalid storage class
+INC/DS1302.H(7): error C127: 'read_data_1302': invalid storage class
+INC/DS1302.H(8): error C127: 'write_protect': invalid storage class
+INC/DS1302.H(9): error C127: 'clear_write_protect': invalid storage class
+INC/DS1302.H(10): error C127: '_write_ds1302': invalid storage class
+INC/DS1302.H(11): error C127: '_set_time_ds1302': invalid storage class
+INC/DS1302.H(12): error C127: '_read_time_ds1302': invalid storage class
+SOURCE\MAIN.C(11): error C244: 'time': can't initialize, bad type or class
+SOURCE\MAIN.C(11): error C132: 'time': not in formal parameter list
+SOURCE\MAIN.C(18): error C132: 'main': not in formal parameter list
+SOURCE\MAIN.C(18): error C141: syntax error near '{'
+SOURCE\MAIN.C(19): error C132: 'Init_1602': not in formal parameter list
+SOURCE\MAIN.C(20): error C132: 'uart_init': not in formal parameter list
+SOURCE\MAIN.C(21): error C141: syntax error near '&'
+SOURCE\MAIN.C(21): error C132: 'set_time_ds1302': not in formal parameter list
+SOURCE\MAIN.C(22): error C141: syntax error near 'while'
+SOURCE\MAIN.C(22): error C141: syntax error near '1'
+SOURCE\MAIN.C(24): error C141: syntax error near '&'
+SOURCE\MAIN.C(25): error C141: syntax error near '0x80'
+SOURCE\MAIN.C(26): error C141: syntax error near '0x81'
+SOURCE\MAIN.C(27): error C141: syntax error near '0x82'
+SOURCE\MAIN.C(28): error C141: syntax error near '0x83'
+SOURCE\MAIN.C(29): error C141: syntax error near '0x85'
+SOURCE\MAIN.C(30): error C141: syntax error near '0x86'
+SOURCE\MAIN.C(31): error C141: syntax error near '0x87'
+SOURCE\MAIN.C(32): error C141: syntax error near '0x88'
+SOURCE\MAIN.C(33): error C141: syntax error near '0x89'
+SOURCE\MAIN.C(34): error C141: syntax error near '0x8a'
+SOURCE\MAIN.C(35): error C141: syntax error near '0x8b'
+SOURCE\MAIN.C(36): error C141: syntax error near '0x8c'
+SOURCE\MAIN.C(38): error C141: syntax error near '0xc0'
+SOURCE\MAIN.C(39): error C141: syntax error near '0xc1'
+SOURCE\MAIN.C(40): error C141: syntax error near '0xc2'
+SOURCE\MAIN.C(41): error C141: syntax error near '0xc3'
+SOURCE\MAIN.C(42): error C141: syntax error near '0xc5'
+SOURCE\MAIN.C(43): error C141: syntax error near '0xc6'
+SOURCE\MAIN.C(44): error C141: syntax error near '0xc7'
+SOURCE\MAIN.C(45): error C141: syntax error near '0xc8'
+SOURCE\MAIN.C(46): error C141: syntax error near '0xc9'
+SOURCE\MAIN.C(47): error C141: syntax error near '0xca'
+SOURCE\MAIN.C(48): error C141: syntax error near '0xcb'
+SOURCE\MAIN.C(49): error C141: syntax error near '0xcc'
+SOURCE\MAIN.C(50): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling ds1302.c...
+compiling lcd1602.c...
+compiling main.c...
+SOURCE\MAIN.C(20): warning C206: 'uart_init': missing function-prototype
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  UART_INIT
+    MODULE:  .\output\main.obj (MAIN)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  UART_INIT
+    MODULE:  .\output\main.obj (MAIN)
+    ADDRESS: 0007H
+Program Size: data=20.0 xdata=0 code=978
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=20.0 xdata=0 code=975
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling i2c_eeprom.c...
+source\i2c_eeprom.c(3): warning C318: can't open file 'i2c_eeprom.h'
+SOURCE\I2C_EEPROM.C(22): warning C206: 'Delay_i2c': missing function-prototype
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INITI2C?I2C_EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_I2C_WRITE_EEPROM?I2C_EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_I2C_READ_EEPROM?I2C_EEPROM
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 043EH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0443H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0448H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0406H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 040BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0410H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0415H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 02D3H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 02E8H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 02EDH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 02FDH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0308H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0317H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 031CH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 032BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 033BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0340H
+Program Size: data=31.0 xdata=0 code=1207
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 23 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(20): error C141: syntax error near 'void'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_I2C_WRITE_EEPROM?I2C_EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_I2C_READ_EEPROM?I2C_EEPROM
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0463H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0468H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 046DH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 042BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0430H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0435H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 043AH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 02D6H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 02EBH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 02F0H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0300H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 030BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 031AH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 031FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 032EH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 033EH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0343H
+Program Size: data=38.0 xdata=0 code=1231
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 20 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(25): error C202: 'addr': undefined identifier
+SOURCE\MAIN.C(34): error C202: 'addr': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  ADDR
+    MODULE:  .\output\main.obj (MAIN)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 049EH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 04A3H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 04A8H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0466H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 046BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0470H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0475H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 030EH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0323H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0328H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0338H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0343H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0352H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0357H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0366H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0376H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 037BH
+Program Size: data=32.0 xdata=0 code=1290
+Target not created
+Build target 'Target 1'
+compiling i2c_eeprom.c...
+source\i2c_eeprom.c(3): warning C318: can't open file 'i2c_eeprom.h'
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA1 skipped
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA2 skipped
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA1 skipped
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA2 skipped
+compiling main.c...
+Target not created
+Build target 'Target 1'
+compiling i2c_eeprom.c...
+source\i2c_eeprom.c(3): warning C318: can't open file 'i2ceeprom.h'
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA1 skipped
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA2 skipped
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA1 skipped
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA2 skipped
+compiling main.c...
+source\main.c(5): warning C318: can't open file 'inc/i2c_eeprom.h'
+SOURCE\MAIN.C(22): warning C206: 'InitI2C': missing function-prototype
+SOURCE\MAIN.C(26): warning C206: 'i2c_read_eeprom': missing function-prototype
+SOURCE\MAIN.C(26): error C267: 'i2c_read_eeprom': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling i2c_eeprom.c...
+source\i2c_eeprom.c(3): warning C318: can't open file 'i2ceeprom.h'
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA1 skipped
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA2 skipped
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA1 skipped
+SOURCE\I2C_EEPROM.C(9): error C100: unprintable character 0xA2 skipped
+compiling main.c...
+Target not created
+Build target 'Target 1'
+compiling i2c_eeprom.c...
+source\i2c_eeprom.c(3): warning C318: can't open file 'i2ceeprom.h'
+SOURCE\I2C_EEPROM.C(22): warning C206: 'Delay_i2c': missing function-prototype
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 049BH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 04A0H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 04A5H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0463H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0468H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 046DH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0472H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 030EH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0323H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0328H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0338H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0343H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0352H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0357H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0366H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 0376H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY_I2C
+    MODULE:  .\output\i2c_eeprom.obj (I2C_EEPROM)
+    ADDRESS: 037BH
+Program Size: data=31.0 xdata=0 code=1287
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 20 Warning(s).
+Build target 'Target 1'
+compiling i2c_eeprom.c...
+source\i2c_eeprom.c(3): warning C318: can't open file 'i2ceeprom.h'
+linking...
+Program Size: data=29.0 xdata=0 code=1238
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling i2c_eeprom.c...
+linking...
+Program Size: data=29.0 xdata=0 code=1238
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=29.0 xdata=0 code=1238
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=29.0 xdata=0 code=1229
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 0 Warning(s).

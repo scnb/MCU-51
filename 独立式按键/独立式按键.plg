@@ -1,0 +1,682 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\独立式按键\独立式按键.uvproj
+Project File Date:  09/09/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling Independent_Button.c...
+Independent_Button.c(1): error C318: can't open file 'Independent_Button.c'
+Target not created
+Build target 'Target 1'
+compiling Independent_Button.c...
+Independent_Button.c(1): error C318: can't open file 'Independent_Button.c'
+compiling delay.c...
+compiling hc595.c...
+SOURCE\HC595.C(1): error C129: missing ';' before '<string>'
+Target not created
+Build target 'Target 1'
+compiling delay.c...
+SOURCE\DELAY.C(9): error C141: syntax error near '}'
+compiling hc595.c...
+SOURCE\HC595.C(11): error C141: syntax error near 'unsigned'
+SOURCE\HC595.C(11): error C202: 'i': undefined identifier
+SOURCE\HC595.C(12): error C202: 'i': undefined identifier
+SOURCE\HC595.C(26): error C202: 'i': undefined identifier
+SOURCE\HC595.C(38): error C202: 'HC595_Two': undefined identifier
+compiling Independent_Button.c...
+Target not created
+Build target 'Target 1'
+compiling delay.c...
+SOURCE\DELAY.C(9): error C141: syntax error near '}'
+compiling hc595.c...
+SOURCE\HC595.C(38): error C202: 'HC595_Two': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling delay.c...
+compiling hc595.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_DATA?HC595
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?C_INITSEG
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+*** WARNING L10: CANNOT DETERMINE ROOT SEGMENT
+Program Size: data=10.0 xdata=0 code=108
+"独立式按键" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_DATA?HC595
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?C_INITSEG
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+*** WARNING L10: CANNOT DETERMINE ROOT SEGMENT
+Program Size: data=10.0 xdata=0 code=108
+"独立式按键" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+"独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling delay.c...
+compiling hc595.c...
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+Program Size: data=11.0 xdata=0 code=328
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling hc595.c...
+SOURCE\HC595.C(4): error C202: 'P0': undefined identifier
+SOURCE\HC595.C(5): error C202: 'P0': undefined identifier
+SOURCE\HC595.C(6): error C202: 'P0': undefined identifier
+SOURCE\HC595.C(11): error C202: 'HC595_RCK': undefined identifier
+SOURCE\HC595.C(14): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(17): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(21): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(23): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(28): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(31): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(35): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(37): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(40): error C202: 'HC595_RCK': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling hc595.c...
+SOURCE\HC595.C(4): error C202: 'P0': undefined identifier
+SOURCE\HC595.C(5): error C202: 'P0': undefined identifier
+SOURCE\HC595.C(6): error C202: 'P0': undefined identifier
+SOURCE\HC595.C(11): error C202: 'HC595_RCK': undefined identifier
+SOURCE\HC595.C(14): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(17): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(21): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(23): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(28): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(31): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(35): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(37): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(40): error C202: 'HC595_RCK': undefined identifier
+compiling Independent_Button.c...
+F:\51\C51\INC\REG52.H(13): error C231: 'P0': redefinition
+F:\51\C51\INC\REG52.H(14): error C231: 'P1': redefinition
+F:\51\C51\INC\REG52.H(15): error C231: 'P2': redefinition
+F:\51\C51\INC\REG52.H(16): error C231: 'P3': redefinition
+F:\51\C51\INC\REG52.H(17): error C231: 'PSW': redefinition
+F:\51\C51\INC\REG52.H(18): error C231: 'ACC': redefinition
+F:\51\C51\INC\REG52.H(19): error C231: 'B': redefinition
+F:\51\C51\INC\REG52.H(20): error C231: 'SP': redefinition
+F:\51\C51\INC\REG52.H(21): error C231: 'DPL': redefinition
+F:\51\C51\INC\REG52.H(22): error C231: 'DPH': redefinition
+F:\51\C51\INC\REG52.H(23): error C231: 'PCON': redefinition
+F:\51\C51\INC\REG52.H(24): error C231: 'TCON': redefinition
+F:\51\C51\INC\REG52.H(25): error C231: 'TMOD': redefinition
+F:\51\C51\INC\REG52.H(26): error C231: 'TL0': redefinition
+F:\51\C51\INC\REG52.H(27): error C231: 'TL1': redefinition
+F:\51\C51\INC\REG52.H(28): error C231: 'TH0': redefinition
+F:\51\C51\INC\REG52.H(29): error C231: 'TH1': redefinition
+F:\51\C51\INC\REG52.H(30): error C231: 'IE': redefinition
+F:\51\C51\INC\REG52.H(31): error C231: 'IP': redefinition
+F:\51\C51\INC\REG52.H(32): error C231: 'SCON': redefinition
+F:\51\C51\INC\REG52.H(33): error C231: 'SBUF': redefinition
+F:\51\C51\INC\REG52.H(45): error C231: 'CY': redefinition
+F:\51\C51\INC\REG52.H(46): error C231: 'AC': redefinition
+F:\51\C51\INC\REG52.H(47): error C231: 'F0': redefinition
+F:\51\C51\INC\REG52.H(48): error C231: 'RS1': redefinition
+F:\51\C51\INC\REG52.H(49): error C231: 'RS0': redefinition
+F:\51\C51\INC\REG52.H(50): error C231: 'OV': redefinition
+F:\51\C51\INC\REG52.H(51): error C231: 'P': redefinition
+F:\51\C51\INC\REG52.H(54): error C231: 'TF1': redefinition
+F:\51\C51\INC\REG52.H(55): error C231: 'TR1': redefinition
+F:\51\C51\INC\REG52.H(56): error C231: 'TF0': redefinition
+F:\51\C51\INC\REG52.H(57): error C231: 'TR0': redefinition
+F:\51\C51\INC\REG52.H(58): error C231: 'IE1': redefinition
+F:\51\C51\INC\REG52.H(59): error C231: 'IT1': redefinition
+F:\51\C51\INC\REG52.H(60): error C231: 'IE0': redefinition
+F:\51\C51\INC\REG52.H(61): error C231: 'IT0': redefinition
+F:\51\C51\INC\REG52.H(64): error C231: 'EA': redefinition
+F:\51\C51\INC\REG52.H(66): error C231: 'ES': redefinition
+F:\51\C51\INC\REG52.H(67): error C231: 'ET1': redefinition
+F:\51\C51\INC\REG52.H(68): error C231: 'EX1': redefinition
+F:\51\C51\INC\REG52.H(69): error C231: 'ET0': redefinition
+F:\51\C51\INC\REG52.H(70): error C231: 'EX0': redefinition
+F:\51\C51\INC\REG52.H(74): error C231: 'PS': redefinition
+F:\51\C51\INC\REG52.H(75): error C231: 'PT1': redefinition
+F:\51\C51\INC\REG52.H(76): error C231: 'PX1': redefinition
+F:\51\C51\INC\REG52.H(77): error C231: 'PT0': redefinition
+F:\51\C51\INC\REG52.H(78): error C231: 'PX0': redefinition
+F:\51\C51\INC\REG52.H(81): error C231: 'RD': redefinition
+F:\51\C51\INC\REG52.H(82): error C231: 'WR': redefinition
+F:\51\C51\INC\REG52.H(83): error C231: 'T1': redefinition
+F:\51\C51\INC\REG52.H(84): error C231: 'T0': redefinition
+F:\51\C51\INC\REG52.H(85): error C231: 'INT1': redefinition
+F:\51\C51\INC\REG52.H(86): error C231: 'INT0': redefinition
+F:\51\C51\INC\REG52.H(87): error C231: 'TXD': redefinition
+F:\51\C51\INC\REG52.H(88): error C231: 'RXD': redefinition
+F:\51\C51\INC\REG52.H(91): error C231: 'SM0': redefinition
+F:\51\C51\INC\REG52.H(92): error C231: 'SM1': redefinition
+F:\51\C51\INC\REG52.H(93): error C231: 'SM2': redefinition
+F:\51\C51\INC\REG52.H(94): error C231: 'REN': redefinition
+F:\51\C51\INC\REG52.H(95): error C231: 'TB8': redefinition
+F:\51\C51\INC\REG52.H(96): error C231: 'RB8': redefinition
+F:\51\C51\INC\REG52.H(97): error C231: 'TI': redefinition
+F:\51\C51\INC\REG52.H(98): error C231: 'RI': redefinition
+Target not created
+Build target 'Target 1'
+compiling hc595.c...
+SOURCE\HC595.C(4): error C202: 'P0': undefined identifier
+SOURCE\HC595.C(5): error C202: 'P0': undefined identifier
+SOURCE\HC595.C(6): error C202: 'P0': undefined identifier
+SOURCE\HC595.C(11): error C202: 'HC595_RCK': undefined identifier
+SOURCE\HC595.C(14): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(17): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(21): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(23): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(28): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(31): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(35): error C202: 'HC595_DATA': undefined identifier
+SOURCE\HC595.C(37): error C202: 'HC595_SCK': undefined identifier
+SOURCE\HC595.C(40): error C202: 'HC595_RCK': undefined identifier
+compiling Independent_Button.c...
+Target not created
+Build target 'Target 1'
+compiling hc595.c...
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+Program Size: data=11.0 xdata=0 code=334
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=366
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=369
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=369
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=369
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=369
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=363
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=363
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=363
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=363
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=11.0 xdata=0 code=360
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+INCLUDE/MAIN.H(10): error C129: missing ';' before 'k'
+Target not created
+Build target 'Target 1'
+compiling Independent_Button.c...
+INCLUDE/MAIN.H(10): error C129: missing ';' before 'k'
+Target not created
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  DIS
+    MODULE:  .\output\Independent_Button.obj (INDEPENDENT_BUTTON)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=45.4 xdata=0 code=402
+Target not created
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  DIS
+    MODULE:  .\output\Independent_Button.obj (INDEPENDENT_BUTTON)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=407
+Target not created
+Build target 'Target 1'
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  DIS
+    MODULE:  .\output\Independent_Button.obj (INDEPENDENT_BUTTON)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=407
+Target not created
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  DIS
+    MODULE:  .\output\Independent_Button.obj (INDEPENDENT_BUTTON)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=407
+Target not created
+Build target 'Target 1'
+compiling hc595.c...
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  DIS
+    MODULE:  .\output\Independent_Button.obj (INDEPENDENT_BUTTON)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=423
+Target not created
+Build target 'Target 1'
+compiling delay.c...
+SOURCE\DELAY.C(4): warning C235: parameter 1: different types
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  DIS
+    MODULE:  .\output\Independent_Button.obj (INDEPENDENT_BUTTON)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=437
+Target not created
+Build target 'Target 1'
+compiling delay.c...
+SOURCE\DELAY.C(4): warning C235: parameter 1: different types
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  DIS
+    MODULE:  .\output\Independent_Button.obj (INDEPENDENT_BUTTON)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=437
+Target not created
+Build target 'Target 1'
+linking...
+*** ERROR L104: MULTIPLE PUBLIC DEFINITIONS
+    SYMBOL:  DIS
+    MODULE:  .\output\Independent_Button.obj (INDEPENDENT_BUTTON)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=437
+Target not created
+Build target 'Target 1'
+compiling delay.c...
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=415
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=415
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=415
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=415
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=415
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=415
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=415
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=415
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=409
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=409
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=409
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=418
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=418
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=418
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=418
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling hc595.c...
+SOURCE\HC595.C(9): warning C235: parameter 1: different types
+SOURCE\HC595.C(9): warning C235: parameter 2: different types
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=424
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=424
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling hc595.c...
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=429
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=429
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=429
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=429
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=429
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=429
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=429
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=31.4 xdata=0 code=429
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=451
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=451
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).

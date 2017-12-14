@@ -1,0 +1,204 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/10/2016  16:04:17  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE .\output\Matrix_Button.obj, .\output\delay.obj, .\output\hc595.obj TO .\output\Matrix_Button PRIN
+>> T (.\Matrix_Button.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\Matrix_Button.obj (MATRIX_BUTTON)
+  .\output\delay.obj (DELAY)
+  .\output\hc595.obj (HC595)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\output\Matrix_Button (MATRIX_BUTTON)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?MATRIX_BUTTON
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0092H     0055H     UNIT         ?PR?KEY_CHECK_DIS?MATRIX_BUTTON
+            CODE    00E7H     0045H     UNIT         ?PR?_SEND_DATA?HC595
+            CODE    012CH     0027H     UNIT         ?PR?MAIN?MATRIX_BUTTON
+            CODE    0153H     0021H     UNIT         ?PR?_DELAY1MS?DELAY
+            CODE    0174H     0020H     UNIT         ?CO?MATRIX_BUTTON
+            CODE    0194H     0005H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\output\Matrix_Button (MATRIX_BUTTON)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?KEY_CHECK_DIS?MATRIX_BUTTON
+  +--> ?CO?MATRIX_BUTTON
+  +--> ?PR?_SEND_DATA?HC595
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?MATRIX_BUTTON
+  +--> ?C_INITSEG
+
+?PR?MAIN?MATRIX_BUTTON
+  +--> ?PR?_SEND_DATA?HC595
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/10/2016  16:04:17  PAGE 2
+
+
+  +--> ?PR?_DELAY1MS?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\Matrix_Button (MATRIX_BUTTON)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MATRIX_BUTTON
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  B:00A8H.7       PUBLIC        EA
+  C:0184H         PUBLIC        Shu_Wei_Chose
+  B:00A0H.4       PUBLIC        P2_4
+  C:012CH         PUBLIC        main
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  B:0088H.4       PUBLIC        TR0
+  D:0008H         PUBLIC        Display
+  C:0092H         PUBLIC        Key_Check_Dis
+  C:0174H         PUBLIC        Shu_Duan_Chose
+  -------         PROC          KEY_CHECK_DIS
+  C:0092H         LINE#         12
+  C:009FH         LINE#         16
+  C:00A7H         LINE#         17
+  C:00A7H         LINE#         18
+  C:00AAH         LINE#         19
+  C:00AAH         LINE#         20
+  C:00ACH         LINE#         21
+  C:00B4H         LINE#         22
+  C:00B4H         LINE#         23
+  C:00B7H         LINE#         24
+  C:00B7H         LINE#         25
+  C:00B9H         LINE#         26
+  C:00C1H         LINE#         27
+  C:00C1H         LINE#         28
+  C:00C4H         LINE#         29
+  C:00C4H         LINE#         30
+  C:00C6H         LINE#         31
+  C:00CEH         LINE#         32
+  C:00CEH         LINE#         33
+  C:00D5H         LINE#         34
+  C:00DCH         LINE#         35
+  C:00DCH         LINE#         37
+  -------         ENDPROC       KEY_CHECK_DIS
+  -------         PROC          MAIN
+  C:012CH         LINE#         47
+  C:012CH         LINE#         48
+  C:012CH         LINE#         49
+  C:0133H         LINE#         50
+  C:0135H         LINE#         51
+  C:0137H         LINE#         52
+  C:0139H         LINE#         53
+  C:013BH         LINE#         57
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/10/2016  16:04:17  PAGE 3
+
+
+  C:013DH         LINE#         58
+  C:0140H         LINE#         59
+  C:0143H         LINE#         60
+  C:0143H         LINE#         61
+  C:0143H         LINE#         62
+  C:014AH         LINE#         63
+  C:0151H         LINE#         64
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MATRIX_BUTTON
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0153H         PUBLIC        _Delay1ms
+  -------         PROC          _DELAY1MS
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0153H         LINE#         3
+  C:0153H         LINE#         4
+  C:0153H         LINE#         6
+  C:015EH         LINE#         7
+  C:015EH         LINE#         8
+  C:016CH         LINE#         9
+  C:0173H         LINE#         10
+  -------         ENDPROC       _DELAY1MS
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        HC595
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:0090H.4       PUBLIC        HC595_DATA
+  C:00E7H         PUBLIC        _Send_Data
+  B:0090H.0       PUBLIC        HC595_RCK
+  B:0090H.1       PUBLIC        HC595_SCK
+  -------         PROC          _SEND_DATA
+  D:0007H         SYMBOL        Data_One
+  D:0005H         SYMBOL        Data_Two
+  -------         DO            
+  D:0002H         SYMBOL        i
+  -------         ENDDO         
+  C:00E7H         LINE#         4
+  C:00E7H         LINE#         5
+  C:00E7H         LINE#         7
+  C:00E9H         LINE#         8
+  C:00ECH         LINE#         9
+  C:00ECH         LINE#         10
+  C:00EEH         LINE#         11
+  C:00F2H         LINE#         12
+  C:00F2H         LINE#         13
+  C:00F4H         LINE#         14
+  C:00F6H         LINE#         16
+  C:00F6H         LINE#         17
+  C:00F8H         LINE#         18
+  C:00F8H         LINE#         19
+  C:00FAH         LINE#         20
+  C:00FEH         LINE#         21
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/10/2016  16:04:17  PAGE 4
+
+
+  C:0109H         LINE#         22
+  C:010CH         LINE#         23
+  C:010CH         LINE#         24
+  C:010EH         LINE#         25
+  C:0112H         LINE#         26
+  C:0112H         LINE#         27
+  C:0114H         LINE#         28
+  C:0116H         LINE#         30
+  C:0116H         LINE#         31
+  C:0118H         LINE#         32
+  C:0118H         LINE#         33
+  C:011AH         LINE#         34
+  C:011EH         LINE#         35
+  C:0129H         LINE#         36
+  C:012BH         LINE#         37
+  -------         ENDPROC       _SEND_DATA
+  -------         ENDMOD        HC595
+
+Program Size: data=11.0 xdata=0 code=409
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,291 @@
+C51 COMPILER V9.01   DS_1302                                                               01/25/2017 22:20:02 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE DS_1302
+OBJECT MODULE PLACED IN .\output'\ds_1302.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE ds_1302.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output'\ds_1302.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<INTRINS.h>
+   3          sbit RS = P1^2; 
+   4          sbit RW = P1^3;
+   5          sbit E =  P1^4;
+   6          sbit if_busy = P0^7;
+   7          
+   8          sbit RST = P3^7;
+   9          sbit SCL = P3^5;
+  10          sbit SDA = P3^6;
+  11          
+  12          #define write_addr 0x80;
+  13          #define read_addr  0x81;
+  14          
+  15          unsigned char time[] = {30,19,22,25,1,4,17};//¶¨Òåds1302³õÊ¼»¯µÄÊ±¼ä
+  16          
+  17          /*ÉèÖÃ´®¿Ú²¨ÌØÂÊ*/
+  18          void uart_init(void)
+  19          {
+  20   1          TMOD = 0x21;        // ¶¨Ê±Æ÷1¹¤×÷ÔÚ·½Ê½2£¨×Ô¶¯ÖØ×°£©
+  21   1          SCON = 0x50;        // 10Î»uart£¬ÔÊÐí´®ÐÐ½ÓÊÜ
+  22   1      
+  23   1          TH1 = 0xFD;
+  24   1          TL1 = 0xFD;
+  25   1      
+  26   1          TR1 = 1;
+  27   1      }
+  28          
+  29          /*uartÍ¨ÐÅ·¢ËÍ×Ö½Ú*/
+  30          void UART_Send_Byte(unsigned char dat)
+  31          {
+  32   1              SBUF = dat;
+  33   1              while (TI == 0);
+  34   1              TI = 0;
+  35   1      }
+  36          
+  37          /*uartÍ¨ÐÅ·¢ËÍ£¨×ª»»³ÉasciiÂëÐÎÊ½£©*/
+  38          void UART_Send_Dat(unsigned char dat)
+  39          {
+  40   1              UART_Send_Byte(dat/16 + '0');
+  41   1              UART_Send_Byte(dat%16 + '0');
+  42   1      }
+  43          
+  44          /*ÔÚÃ¿´Î¶Ô1602²Ù×÷Ö®Ç°¶¼Òª½øÐÐP0^7Î»µÄÅÐÃ¦*/ 
+  45          void IF_busy()
+  46          {
+  47   1              P0 = 0xff;
+  48   1              do                              //¶Á×´Ì¬
+  49   1              {
+  50   2                      RS = 0;
+  51   2                      RW = 1;
+  52   2                      E = 0;
+  53   2                      E = 1;          
+  54   2              }while(if_busy == 1);
+  55   1              E = 0;
+C51 COMPILER V9.01   DS_1302                                                               01/25/2017 22:20:02 PAGE 2   
+
+  56   1      } 
+  57          
+  58          /*1602Ð´Ö¸Áî*/
+  59          void write_command_1602(unsigned char command)
+  60          {
+  61   1              IF_busy();
+  62   1              RS = 0;
+  63   1              RW = 0;
+  64   1              P0 = command;
+  65   1              E = 1;
+  66   1              E = 0;
+  67   1      }
+  68          
+  69          /*1602Ð´Êý¾Ý*/
+  70          void write_data_1602(unsigned char Data)
+  71          {
+  72   1              IF_busy();
+  73   1              RS = 1;
+  74   1              RW = 0;
+  75   1              P0 = Data;
+  76   1              E = 1;
+  77   1              E = 0;
+  78   1      }
+  79          
+  80          void Init_1602()
+  81          {
+  82   1              E = 0;
+  83   1              write_command_1602(0x38);
+  84   1              write_command_1602(0x06);
+  85   1              write_command_1602(0x0c);
+  86   1              write_command_1602(0x01);
+  87   1      }
+  88          
+  89          /*¸´Î»ds1302    Ã¿´Î·¢ÆðÊý¾Ý´«ÊäÇ°£¬ÐèÒª¸´Î»1302*/
+  90          void reset_1302()
+  91          {
+  92   1              RST = 0;
+  93   1              SCL = 0;
+  94   1              RST = 1;
+  95   1      }
+  96          
+  97          /*Ð´Êý¾Ý*/
+  98          void write_data_1302(unsigned char dat)
+  99          {
+ 100   1              unsigned char i;
+ 101   1              SCL = 0;
+ 102   1              for(i = 0;i < 8;i++)
+ 103   1              {
+ 104   2                      SDA = dat&0x01;
+ 105   2                      SCL = 1;
+ 106   2                      dat >>= 1;
+ 107   2                      SCL = 0;//½«ÕâÒ»¾ä·Åµ½dat×óÒÆÏÂÃæ£¬¿ÉÒÔÆðµ½ÑÓÊ±µÄ×÷ÓÃ,ÑÓ³¤ÁËÒ»¸öÖ¸ÁîµÄÊ±¼ä
+ 108   2              }
+ 109   1      }
+ 110          
+ 111          /*¶ÁÊý¾Ý*/
+ 112          unsigned char read_data_1302()
+ 113          {
+ 114   1              unsigned char dat = 0;
+ 115   1              unsigned char i;
+ 116   1              for(i = 0;i < 8;i++)
+ 117   1              {
+C51 COMPILER V9.01   DS_1302                                                               01/25/2017 22:20:02 PAGE 3   
+
+ 118   2                      SCL = 0;
+ 119   2                      dat >>= 1;
+ 120   2                      if(SDA)
+ 121   2                      {
+ 122   3                              dat |= 0x80;
+ 123   3                      }
+ 124   2                      SCL = 1;
+ 125   2              }
+ 126   1              return dat;
+ 127   1      }
+ 128          
+ 129          /*Ð´±£»¤º¯Êý*/
+ 130          void write_protect()
+ 131          {
+ 132   1              reset_1302();
+ 133   1              RST = 1;
+ 134   1              write_data_1302(0x8e);
+ 135   1              write_data_1302(0x80);
+ 136   1              SDA = 0;
+ 137   1              RST = 0;
+ 138   1      }
+ 139          
+ 140          /*Çå³ýÐ´±£»¤*/
+ 141          void clear_write_protect()
+ 142          {
+ 143   1              reset_1302();
+ 144   1              RST = 1;
+ 145   1              write_data_1302(0x8e);
+ 146   1              write_data_1302(0);
+ 147   1              SDA = 0;
+ 148   1              RST = 0;
+ 149   1      }
+ 150          
+ 151          /*½«Êý¾ÝÐ´Èëds1302*/
+ 152          void write_ds1302(unsigned char addr,unsigned char dat)
+ 153          {
+ 154   1              reset_1302();
+ 155   1              RST = 1;
+ 156   1              write_data_1302(addr);
+ 157   1              write_data_1302(dat);
+ 158   1              SDA = 0;   //¹Ø±ÕÊý¾ÝÏß£¬·ÀÖ¹Êý¾Ý²»Ð¡ÐÄ±»ÐÞ¸Ä
+ 159   1              RST = 0;  //·ÀÖ¹ds1302¸´Î»µ¼ÖÂÊý¾Ý¶ªÊ§£¿
+ 160   1      }
+ 161          
+ 162          /*´Óds1302ÖÐ¶ÁÈ¡Êý¾Ý*/
+ 163          unsigned char read_ds1302(unsigned char addr)
+ 164          {
+ 165   1              unsigned char temp = 0;
+ 166   1              reset_1302();
+ 167   1              RST = 1;
+ 168   1              write_data_1302(addr);
+ 169   1              temp = read_data_1302();
+ 170   1              SDA = 0;
+ 171   1              RST = 0;
+ 172   1              return temp;
+ 173   1      }
+ 174          
+ 175          /*Éè¶¨ds1302Ê±¼ä*/
+ 176          void set_time_ds1302(unsigned char *timedata)
+ 177          {
+ 178   1              unsigned char i;
+ 179   1              unsigned char tmp;
+C51 COMPILER V9.01   DS_1302                                                               01/25/2017 22:20:02 PAGE 4   
+
+ 180   1              for(i = 0;i < 7;i++)
+ 181   1              {
+ 182   2                      tmp = timedata[i]/10;                      //ÒÔÏÂÈý¾äÓï¾ä½«Ê®½øÖÆµÄÊý×ª»»³ÉÁËBCDÂëÐÎÊ½Ëù¶ÔÓ¦µÄÊ®½øÖÆÊý
+ 183   2                      timedata[i] = timedata[i]%10;
+ 184   2                      timedata[i] = timedata[i] + tmp*16;             
+ 185   2              }
+ 186   1              clear_write_protect();
+ 187   1              tmp = write_addr;
+ 188   1              for(i = 0;i < 7;i++)  //Ïòds1302ÖÐ´«ÈëÊý×éÖÐµÄÊý¾Ý£¬¼´ÄêÔÂÈÕÊ±·ÖÃë
+ 189   1              {
+ 190   2                      write_ds1302(tmp,timedata[i]);
+ 191   2                      tmp += 2;//Á½¸ö×Ö½Ú´æÒ»´Î  //ÒòÎª0x80¶ÔÓ¦µÄÊÇÃëÔÚ¼Ä´æÆ÷ÖÐµÄ´æ´¢µØÖ·£¬0x82ÊÇ·Ö¶ÔÓ¦µÄ´æ´¢µØÖ·¡¤¡¤¡¤¡¤ÒÀ´ÎÀ
+             -àÍÆ
+ 192   2              }
+ 193   1              write_protect();
+ 194   1      }
+ 195          
+ 196          /*¶ÁÈ¡ds1302ÖÐµÄÊ±¼ä*/
+ 197          void read_time_ds1302(unsigned char *timedata)
+ 198          {
+ 199   1              unsigned char i;
+ 200   1              unsigned char tmp;
+ 201   1              tmp = read_addr;
+ 202   1              for(i = 0;i < 7;i++)
+ 203   1              {
+ 204   2                      timedata[i] = (read_ds1302(tmp)/16*10+read_ds1302(tmp)%16);
+ 205   2                      tmp += 2;
+ 206   2              }
+ 207   1      }
+ 208          
+ 209          /*Ïò1602ÖÐÐ´Èë×Ö·û´®*/
+ 210          void write_string(unsigned char addr_start,unsigned char display)
+ 211          {
+ 212   1      
+ 213   1              write_command_1602(addr_start);
+ 214   1      
+ 215   1              write_data_1602(display);
+ 216   1      }
+ 217          
+ 218          void delay(unsigned int n)
+ 219          {
+ 220   1              while (n--);
+ 221   1      }
+ 222          
+ 223          
+ 224          
+ 225          void main()
+ 226          {
+ 227   1              Init_1602();
+ 228   1              uart_init();
+ 229   1              set_time_ds1302(&time);
+ 230   1              while(1)
+ 231   1              {
+ 232   2                      read_time_ds1302(&time);
+ 233   2                      write_string(0x80,'D');
+ 234   2                      write_string(0x81,'A');
+ 235   2                      write_string(0x82,'T');
+ 236   2                      write_string(0x83,'E');                                                                                 
+ 237   2                      write_string(0x85,time[6]/10+'0');
+ 238   2                      write_string(0x86,time[6]%10+'0');
+ 239   2                      write_string(0x87,'-');
+ 240   2                      write_string(0x88,time[4]/10+'0');
+C51 COMPILER V9.01   DS_1302                                                               01/25/2017 22:20:02 PAGE 5   
+
+ 241   2                      write_string(0x89,time[4]%10+'0');
+ 242   2                      write_string(0x8a,'-');
+ 243   2                      write_string(0x8b,time[3]/10+'0');
+ 244   2                      write_string(0x8c,time[3]%10+'0');
+ 245   2              
+ 246   2                      write_string(0xc0,'T');
+ 247   2                      write_string(0xc1,'I');
+ 248   2                      write_string(0xc2,'M');
+ 249   2                      write_string(0xc3,'E');
+ 250   2                      write_string(0xc5,time[2]/10+'0');
+ 251   2                      write_string(0xc6,time[2]%10+'0');
+ 252   2                      write_string(0xc7,':');
+ 253   2                      write_string(0xc8,time[1]/10+'0');
+ 254   2                      write_string(0xc9,time[1]%10+'0');
+ 255   2                      write_string(0xca,':');
+ 256   2                      write_string(0xcb,time[0]/10+'0');
+ 257   2                      write_string(0xcc,time[0]%10+'0');
+ 258   2              }
+ 259   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    698    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

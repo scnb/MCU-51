@@ -1,0 +1,1 @@
+"source\hc595.c" BROWSE DEBUG OBJECTEXTEND PRINT(.\hc595.lst) OBJECT(.\output\hc595.obj)

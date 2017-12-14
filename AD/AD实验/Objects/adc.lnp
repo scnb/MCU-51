@@ -1,0 +1,6 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\1602.obj",
+".\Objects\i2c_pcf8591.obj" 
+TO ".\Objects\adc" 
+PRINT(".\Listings\adc.m51") RAMSIZE(256) 

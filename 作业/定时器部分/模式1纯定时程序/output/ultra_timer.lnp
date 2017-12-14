@@ -1,0 +1,3 @@
+".\output\ultra_timer.obj" 
+TO ".\output\ultra_timer" 
+PRINT(".\ultra_timer.m51")

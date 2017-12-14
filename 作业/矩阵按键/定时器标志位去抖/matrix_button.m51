@@ -1,0 +1,270 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/20/2016  01:42:09  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE .\output\matrix_button.obj TO .\output\matrix_button PRINT (.\matrix_button.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\matrix_button.obj (MATRIX_BUTTON)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\output\matrix_button (MATRIX_BUTTON)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?MATRIX_BUTTON
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     014CH     UNIT         ?PR?MATRIX_BUTTON_SCAN?MATRIX_BUTTON
+            CODE    014FH     008CH     UNIT         ?C_C51STARTUP
+            CODE    01DBH     0035H     UNIT         ?PR?_SEND_DATA?MATRIX_BUTTON
+            CODE    0210H     0018H     UNIT         ?CO?MATRIX_BUTTON
+            CODE    0228H     0011H     UNIT         ?PR?TIMER0INIT?MATRIX_BUTTON
+            CODE    0239H     0008H     UNIT         ?PR?MAIN?MATRIX_BUTTON
+            CODE    0241H     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\output\matrix_button (MATRIX_BUTTON)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MATRIX_BUTTON
+  +--> ?C_INITSEG
+
+?PR?MAIN?MATRIX_BUTTON
+  +--> ?PR?TIMER0INIT?MATRIX_BUTTON
+  +--> ?PR?MATRIX_BUTTON_SCAN?MATRIX_BUTTON
+
+?PR?MATRIX_BUTTON_SCAN?MATRIX_BUTTON
+  +--> ?CO?MATRIX_BUTTON
+  +--> ?PR?_SEND_DATA?MATRIX_BUTTON
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\matrix_button (MATRIX_BUTTON)
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2016  01:42:09  PAGE 2
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MATRIX_BUTTON
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:01DBH         PUBLIC        _Send_data
+  C:0220H         PUBLIC        Wei_choose
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0008H         PUBLIC        value
+  C:0003H         PUBLIC        matrix_button_scan
+  C:0239H         PUBLIC        main
+  B:0090H.4       PUBLIC        HC595_DATA
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:0009H         PUBLIC        temp
+  B:0088H.5       PUBLIC        TF0
+  C:0228H         PUBLIC        Timer0Init
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  C:0210H         PUBLIC        Duan_choose
+  B:0090H.0       PUBLIC        HC595_RCK
+  B:0090H.1       PUBLIC        HC595_SCK
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _SEND_DATA
+  D:0007H         SYMBOL        duan
+  D:0005H         SYMBOL        wei
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:01DBH         LINE#         18
+  C:01DBH         LINE#         19
+  C:01DBH         LINE#         21
+  C:01DDH         LINE#         22
+  C:01DFH         LINE#         23
+  C:01DFH         LINE#         24
+  C:01E1H         LINE#         25
+  C:01E5H         LINE#         26
+  C:01E5H         LINE#         27
+  C:01E7H         LINE#         28
+  C:01E9H         LINE#         30
+  C:01E9H         LINE#         31
+  C:01EBH         LINE#         32
+  C:01EBH         LINE#         33
+  C:01EDH         LINE#         34
+  C:01F1H         LINE#         35
+  C:01F5H         LINE#         36
+  C:01F7H         LINE#         37
+  C:01F7H         LINE#         38
+  C:01F9H         LINE#         39
+  C:01FDH         LINE#         40
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2016  01:42:09  PAGE 3
+
+
+  C:01FDH         LINE#         41
+  C:01FFH         LINE#         42
+  C:0201H         LINE#         44
+  C:0201H         LINE#         45
+  C:0203H         LINE#         46
+  C:0203H         LINE#         47
+  C:0205H         LINE#         48
+  C:0209H         LINE#         49
+  C:020DH         LINE#         50
+  C:020FH         LINE#         51
+  -------         ENDPROC       _SEND_DATA
+  -------         PROC          MATRIX_BUTTON_SCAN
+  C:0003H         LINE#         67
+  C:0003H         LINE#         68
+  C:0003H         LINE#         70
+  C:0006H         LINE#         71
+  C:0009H         LINE#         72
+  C:000CH         LINE#         73
+  C:0012H         LINE#         74
+  C:0012H         LINE#         75
+  C:0015H         LINE#         76
+  C:0015H         LINE#         77
+  C:0017H         LINE#         78
+  C:001AH         LINE#         79
+  C:001DH         LINE#         80
+  C:001FH         LINE#         81
+  C:0022H         LINE#         82
+  C:0025H         LINE#         83
+  C:002BH         LINE#         84
+  C:002BH         LINE#         85
+  C:002EH         LINE#         86
+  C:0040H         LINE#         87
+  C:0040H         LINE#         88
+  C:0045H         LINE#         89
+  C:004AH         LINE#         90
+  C:004FH         LINE#         91
+  C:0052H         LINE#         92
+  C:0052H         LINE#         93
+  C:0052H         LINE#         94
+  C:0052H         LINE#         96
+  C:0055H         LINE#         97
+  C:0058H         LINE#         98
+  C:005BH         LINE#         99
+  C:0061H         LINE#         100
+  C:0061H         LINE#         101
+  C:0064H         LINE#         102
+  C:0064H         LINE#         103
+  C:0066H         LINE#         104
+  C:0069H         LINE#         105
+  C:006CH         LINE#         106
+  C:006EH         LINE#         107
+  C:0071H         LINE#         108
+  C:0074H         LINE#         109
+  C:007AH         LINE#         110
+  C:007AH         LINE#         111
+  C:007DH         LINE#         112
+  C:008FH         LINE#         113
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2016  01:42:09  PAGE 4
+
+
+  C:008FH         LINE#         114
+  C:0094H         LINE#         115
+  C:0099H         LINE#         116
+  C:009EH         LINE#         117
+  C:00A1H         LINE#         118
+  C:00A1H         LINE#         119
+  C:00A1H         LINE#         120
+  C:00A1H         LINE#         123
+  C:00A4H         LINE#         124
+  C:00A7H         LINE#         125
+  C:00AAH         LINE#         126
+  C:00B0H         LINE#         127
+  C:00B0H         LINE#         128
+  C:00B3H         LINE#         129
+  C:00B3H         LINE#         130
+  C:00B5H         LINE#         131
+  C:00B8H         LINE#         132
+  C:00BBH         LINE#         133
+  C:00BDH         LINE#         134
+  C:00C0H         LINE#         135
+  C:00C3H         LINE#         136
+  C:00C9H         LINE#         137
+  C:00C9H         LINE#         138
+  C:00CCH         LINE#         139
+  C:00DEH         LINE#         140
+  C:00DEH         LINE#         141
+  C:00E3H         LINE#         142
+  C:00E8H         LINE#         143
+  C:00EDH         LINE#         144
+  C:00F0H         LINE#         145
+  C:00F0H         LINE#         146
+  C:00F0H         LINE#         147
+  C:00F0H         LINE#         149
+  C:00F3H         LINE#         150
+  C:00F6H         LINE#         151
+  C:00F9H         LINE#         152
+  C:00FFH         LINE#         153
+  C:00FFH         LINE#         154
+  C:0102H         LINE#         155
+  C:0102H         LINE#         156
+  C:0104H         LINE#         157
+  C:0107H         LINE#         158
+  C:010AH         LINE#         159
+  C:010CH         LINE#         160
+  C:010FH         LINE#         161
+  C:0112H         LINE#         162
+  C:0118H         LINE#         163
+  C:0118H         LINE#         164
+  C:011BH         LINE#         165
+  C:012DH         LINE#         166
+  C:012DH         LINE#         167
+  C:0132H         LINE#         168
+  C:0137H         LINE#         169
+  C:013CH         LINE#         170
+  C:013FH         LINE#         171
+  C:013FH         LINE#         172
+  C:013FH         LINE#         173
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2016  01:42:09  PAGE 5
+
+
+  C:013FH         LINE#         174
+  -------         ENDPROC       MATRIX_BUTTON_SCAN
+  -------         PROC          TIMER0INIT
+  C:0228H         LINE#         178
+  C:0228H         LINE#         179
+  C:0228H         LINE#         181
+  C:022BH         LINE#         182
+  C:022EH         LINE#         183
+  C:0231H         LINE#         184
+  C:0234H         LINE#         185
+  C:0236H         LINE#         186
+  C:0238H         LINE#         187
+  -------         ENDPROC       TIMER0INIT
+  -------         PROC          MAIN
+  C:0239H         LINE#         192
+  C:0239H         LINE#         193
+  C:0239H         LINE#         194
+  C:023CH         LINE#         195
+  C:023CH         LINE#         196
+  C:023CH         LINE#         197
+  C:023FH         LINE#         198
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MATRIX_BUTTON
+
+Program Size: data=11.0 xdata=0 code=581
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

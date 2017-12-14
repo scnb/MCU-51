@@ -1,0 +1,114 @@
+C51 COMPILER V9.01   MAIN                                                                  01/25/2017 22:14:14 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\output\main.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE source\main.c BROWSE DEBUG OBJECTEXTEND PRINT(.\main.lst) OBJECT(.\output\mai
+                    -n.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<INTRINS.h>
+   3          #include "inc/lcd1602.h"
+   4          #include "inc/ds1302.h"
+   5          #include "inc/18b20.h"
+   6          
+   7          /*定义ds1302  RAM中读、写地址起始位*/
+   8          #define write_addr 0x80;
+   9          #define read_addr  0x81;
+  10          
+  11          unsigned char time[] = {30,5,22,25,1,4,17};//定义ds1302初始化的时间
+  12          
+  13          unsigned char second = 59,minute = 59,hour = 11,day = 25,mouth = 11,week = 3,year = 16;
+  14          
+  15          extern unsigned char addr = 0x01;//器件起始地址
+  16          
+  17          unsigned int num = 1;
+  18          
+  19          unsigned char first_start_flag;
+  20          
+  21          unsigned int temp;
+  22          
+  23          unsigned char shiwei;
+  24          unsigned char gewei;
+  25          unsigned char xiaoshuwei;
+  26          
+  27          
+  28          
+  29          void main()
+  30          {
+  31   1      //      unsigned char i;
+  32   1              Init_1602();
+  33   1              
+  34   1              addr = 0x01;
+  35   1              first_start_flag = read_ds1302(0xc1);//读取ds1302是否是初次初始化,0位初次启动，1为非初次启动
+  36   1      
+  37   1              if(!first_start_flag)
+  38   1              {
+  39   2                      first_start_flag = 1;
+  40   2                      read_time_ds1302(&time);
+  41   2                      set_time_ds1302(&time);
+  42   2                      
+  43   2                      
+  44   2              }
+  45   1              while(1)
+  46   1              {
+  47   2                      read_time_ds1302(&time);
+  48   2      
+  49   2                      ds18b20();
+  50   2                      temp = get_temperature();
+  51   2                      shiwei = int_to_shiwei(temp);
+  52   2                      gewei = int_to_gewei(temp);
+  53   2                      xiaoshuwei = int_to_xiaoshuwei(temp);     
+  54   2                      //第一行显示  年-月-日
+C51 COMPILER V9.01   MAIN                                                                  01/25/2017 22:14:14 PAGE 2   
+
+  55   2                      //write_string(0x80,'D');
+  56   2                      //write_string(0x81,'A');
+  57   2                      //write_string(0x82,'T');
+  58   2                      //write_string(0x83,'E');                                                                                       
+  59   2                      write_string(0x80,time[6]/10+'0');
+  60   2                      write_string(0x81,time[6]%10+'0');
+  61   2                      write_string(0x82,'-');
+  62   2                      write_string(0x83,time[4]/10+'0');
+  63   2                      write_string(0x84,time[4]%10+'0');
+  64   2                      write_string(0x85,'-');
+  65   2                      write_string(0x86,time[3]/10+'0');
+  66   2                      write_string(0x87,time[3]%10+'0');
+  67   2                      //第二行显示   时-分-秒
+  68   2                      //write_string(0xc0,'T');
+  69   2                      //write_string(0xc1,'I');
+  70   2                      //write_string(0xc2,'M');
+  71   2                      //write_string(0xc3,'E');
+  72   2                      write_string(0xc0,time[2]/10+'0');
+  73   2                      write_string(0xc1,time[2]%10+'0');
+  74   2                      write_string(0xc2,':');
+  75   2                      write_string(0xc3,time[1]/10+'0');
+  76   2                      write_string(0xc4,time[1]%10+'0');
+  77   2                      write_string(0xc5,':');
+  78   2                      write_string(0xc6,time[0]/10+'0');
+  79   2                      write_string(0xc7,time[0]%10+'0');
+  80   2                      
+  81   2                      write_string(0x8a,shiwei+'0');
+  82   2                      write_string(0x8b,gewei+'0');
+  83   2                      write_string(0x8c,'.');
+  84   2                      write_string(0x8d,xiaoshuwei+'0');
+  85   2                      write_string(0x8e,0xdf);
+  86   2                      write_string(0x8f,'C');
+  87   2              }
+  88   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    341    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     23    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

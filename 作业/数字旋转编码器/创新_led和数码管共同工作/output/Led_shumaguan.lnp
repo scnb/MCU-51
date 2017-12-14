@@ -1,0 +1,3 @@
+".\output\Led_shumaguan.obj" 
+TO ".\output\Led_shumaguan" 
+PRINT(".\Led_shumaguan.m51")

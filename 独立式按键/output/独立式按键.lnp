@@ -1,0 +1,5 @@
+".\output\delay.obj",
+".\output\hc595.obj",
+".\output\Independent_Button.obj" 
+TO ".\output\独立式按键" 
+PRINT(".\独立式按键.m51")

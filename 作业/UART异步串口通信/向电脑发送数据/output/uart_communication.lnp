@@ -1,0 +1,3 @@
+".\output\uart_communication.obj" 
+TO ".\output\uart_communication" 
+PRINT(".\uart_communication.m51")

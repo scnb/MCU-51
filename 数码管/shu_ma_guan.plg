@@ -1,0 +1,14 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\数码管\shu_ma_guan.uvproj
+Project File Date:  07/29/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+Program Size: data=10.0 xdata=0 code=136
+creating hex file from "shu_ma_guan"...
+"shu_ma_guan" - 0 Error(s), 0 Warning(s).

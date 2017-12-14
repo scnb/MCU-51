@@ -1,0 +1,129 @@
+C51 COMPILER V9.01   INTERRUPT                                                             09/06/2016 09:12:39 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE INTERRUPT
+OBJECT MODULE PLACED IN Interrupt.OBJ
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE Interrupt.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          sbit HC595_SCK = P1^1;
+   4          sbit HC595_RCK = P1^0;
+   5          sbit HC595_DATA = P1^4;
+   6          
+   7          typedef unsigned char uchar;
+   8          typedef unsigned int  uint;
+   9          
+  10          //uchar counter,k;错误的部分
+  11          uchar k = 0;
+  12          uint counter=0;//同时还给counter覆了初值
+  13          
+  14          
+  15          code unsigned char Shu_Duan_Xuan[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
+  16          code unsigned char Shu_Wei_Xuan[8]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+  17          unsigned char Led8_Eight[8]={0x00};
+  18          
+  19          void Shu_Ma_Data(unsigned char Shu_Ma_Duan,unsigned char Shu_Ma_Wei)
+  20          {
+  21   1              uchar i;
+  22   1              HC595_RCK = 0;
+  23   1              for(i=0;i<8;i++)
+  24   1              {
+  25   2                      HC595_SCK = 0;
+  26   2                      if(0 != (Shu_Ma_Duan&0x80))
+  27   2                      {
+  28   3                              HC595_DATA = 1;
+  29   3                      }
+  30   2                      else
+  31   2                      {
+  32   3                              HC595_DATA = 0;
+  33   3                      }
+  34   2                      HC595_SCK=1;
+  35   2                  Shu_Ma_Duan = Shu_Ma_Duan << 1;
+  36   2              }
+  37   1              for(i=0;i<8;i++)
+  38   1              {
+  39   2                      HC595_SCK = 0;
+  40   2                      if( 0 != (Shu_Ma_Wei&0x80))
+  41   2                      {
+  42   3                              HC595_DATA = 1;
+  43   3                      }
+  44   2                      else
+  45   2                      {
+  46   3                              HC595_DATA = 0;
+  47   3                      }
+  48   2                      HC595_SCK = 1;
+  49   2                  Shu_Ma_Wei = Shu_Ma_Wei << 1;
+  50   2              }
+  51   1               HC595_RCK = 1;
+  52   1      }
+  53          
+  54          void Time1_Init()  //定时器1初始化
+  55          {
+C51 COMPILER V9.01   INTERRUPT                                                             09/06/2016 09:12:39 PAGE 2   
+
+  56   1              TMOD = 0X10;
+  57   1              TH1 = 0XFC;   //TH1即为定时器1在方式1工作下的16位计数器的高8位 ，0xfc值是通过公式与延时1s算出来的
+  58   1              TL1 = 0X66;       //TL1即为定时器1在方式1工作下的16位计数器的低8位
+  59   1              TR1 = 1;
+  60   1      }
+  61          
+  62          void int_Init()   //中断初始化
+  63          {
+  64   1              EA = 1;           //中断总控制
+  65   1              ET1 = 1;          //定时器1中断下的IE控制
+  66   1      }
+  67          
+  68          void main()               //主函数
+  69          {
+  70   1              //Shu_Ma_Data(uchar Shu_Ma_Duan,uchar Shu_Ma_Wei);
+  71   1              Time1_Init();
+  72   1              int_Init();
+  73   1              //interrupt();  //以上为函数初始化
+  74   1              while(1);//(1)能省略
+  75   1      }
+  76          
+  77          
+  78          void interrupt_time_1() interrupt 3  //中断程序 ，后面的interrupt 3必须写上
+  79          {
+  80   1              //Shu_Ma_Data(uchar,uchar);
+  81   1              static uint sec = 0;     //是uint不是uchar，最高是65536
+  82   1              counter++;                      //该函数应该是嵌套在一个while循环里，counter不断的加加
+  83   1              TH1 = 0XFC;                                //每次循环开始之前要对16位计数器重新赋值
+  84   1              TL1 = 0X66;
+  85   1              if(1000 == counter)
+  86   1              {
+  87   2                      counter = 0;
+  88   2                      sec++;
+  89   2                      Led8_Eight[7] = sec%10;
+  90   2                      Led8_Eight[6] = sec/10%10;
+  91   2                      Led8_Eight[5] = sec/100%10;
+  92   2                      Led8_Eight[4] = sec/1000%10;
+  93   2                      Led8_Eight[3] = sec/10000%10;
+  94   2              }
+  95   1              if(k < 7)
+  96   1              {
+  97   2                      k++;
+  98   2              }               
+  99   1              else
+ 100   1              {
+ 101   2                      k = 0;
+ 102   2              }
+ 103   1              Shu_Ma_Data(Shu_Duan_Xuan[Led8_Eight[k]],Shu_Wei_Xuan[k]);
+ 104   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    287    ----
+   CONSTANT SIZE    =     18    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     13    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

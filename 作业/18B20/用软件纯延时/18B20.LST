@@ -1,0 +1,340 @@
+C51 COMPILER V9.01   18B20                                                                 03/13/2017 22:27:58 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 18B20
+NO OBJECT MODULE REQUESTED
+COMPILER INVOKED BY: F:\KEIL5\ARM\C51\BIN\C51.EXE 18B20.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2) OBJECT(.\o
+                    -utput\18B20.obj)
+
+line level    source
+
+*** WARNING C500 IN LINE 1 OF 18B20.C: MISSING LICENSE ID CODE (LIC) IN 'TOOLS.INI'
+   1          #include<reg52.h>
+   2          #include"INTRINS.h"
+   3          
+   4          sbit _18b20_IO = P2^4;
+   5          
+   6          sbit HC595_SCK = P1^1;
+   7          sbit HC595_RCK = P1^0;
+   8          sbit HC595_DATA = P1^4;
+   9          
+  10          code unsigned char Duan_choose[16] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5
+             -e,0x79,0x71};
+  11          code unsigned char Wei_choose[16] =  {0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f,0xfe,0xfd,0xfb,0xf7,0xef,0xd
+             -f,0xbf,0x7f};
+  12          unsigned int temp;
+  13          unsigned char _display[4] = {0};
+  14          
+  15          
+  16          
+  17          /*void TempDelay (unsigned char us)
+  18          {
+  19             while(us--);
+  20          }
+  21          
+  22          void delay(unsigned int count) //延时子函数
+  23          {
+  24             unsigned int i;
+  25             while(count)
+  26             {
+  27                i=200;
+  28                while(i>0)
+  29                i--;
+  30                count--;
+  31             }
+  32          } */
+  33          
+  34          void Delay540us()   //@11.0592MHz
+  35          {
+  36   1        unsigned char i, j;
+  37   1      
+  38   1        i = 6;
+  39   1        j = 204;
+  40   1        do
+  41   1        {
+  42   2          while (--j);
+  43   2        } while (--i);
+  44   1      }
+  45          
+  46          
+  47          void Delay1ms(int i)
+  48          {
+  49   1          int j;
+  50   1          for(; i > 0; i--)
+  51   1        {
+C51 COMPILER V9.01   18B20                                                                 03/13/2017 22:27:58 PAGE 2   
+
+  52   2               for(j = 0; j < 110; j++);
+  53   2          }
+  54   1      }
+  55          
+  56          void Delay60us()    //@11.0592MHz
+  57          {
+  58   1        unsigned char i, j;
+  59   1      
+  60   1        i = 1;
+  61   1        j = 162;
+  62   1        do
+  63   1        {
+  64   2          while (--j);
+  65   2        } while (--i);
+  66   1      }
+  67          
+  68          void Delay140us()   //@11.0592MHz
+  69          {
+  70   1        unsigned char i, j;
+  71   1      
+  72   1        i = 2;
+  73   1        j = 126;
+  74   1        do
+  75   1        {
+  76   2          while (--j);
+  77   2        } while (--i);
+  78   1      }
+  79          
+  80          
+  81          void Delay77us()    //@11.0592MHz
+  82          {
+  83   1        unsigned char i, j;
+  84   1      
+  85   1        i = 1;
+  86   1        j = 209;
+  87   1        do
+  88   1        {
+  89   2          while (--j);
+  90   2        } while (--i);
+  91   1      }
+  92          
+  93          void Delay2ms()   //@11.0592MHz
+  94          {
+  95   1        unsigned char i, j;
+  96   1      
+  97   1        _nop_();
+  98   1        _nop_();
+  99   1        i = 22;
+ 100   1        j = 128;
+ 101   1        do
+ 102   1        {
+ 103   2          while (--j);
+ 104   2        } while (--i);
+ 105   1      }
+ 106          
+ 107          void Delay44us()    //@11.0592MHz
+ 108          {
+ 109   1        unsigned char i;
+ 110   1      
+ 111   1        _nop_();
+ 112   1        i = 119;
+ 113   1        while (--i);
+C51 COMPILER V9.01   18B20                                                                 03/13/2017 22:27:58 PAGE 3   
+
+ 114   1      }
+ 115          
+ 116          void Delay64us()    //@11.0592MHz
+ 117          {
+ 118   1        unsigned char i, j;
+ 119   1      
+ 120   1        i = 1;
+ 121   1        j = 173;
+ 122   1        do
+ 123   1        {
+ 124   2          while (--j);
+ 125   2        } while (--i);
+ 126   1      }
+ 127          
+ 128          
+ 129          /*复位子程序*/
+ 130          void ds_reset()
+ 131          {
+ 132   1        _18b20_IO = 0;
+ 133   1        //TempDelay(80);
+ 134   1        Delay540us();
+ 135   1        _nop_();
+ 136   1        _18b20_IO = 1;
+ 137   1        //TempDelay(5);
+ 138   1        Delay44us();
+ 139   1        _nop_();
+ 140   1        _nop_();
+ 141   1        _nop_();
+ 142   1      /*  if(0 == _18b20_IO)
+ 143   1        {
+ 144   1          reset_flag = 1;//表明复位成功
+ 145   1        }
+ 146   1        else
+ 147   1        {
+ 148   1          reset_flag = 0;//表明复位失败，后续操作无法进行
+ 149   1        }
+ 150   1      */
+ 151   1        //TempDelay(20);
+ 152   1         Delay140us();
+ 153   1        _nop_();
+ 154   1        _nop_();
+ 155   1        _18b20_IO = 1;      
+ 156   1      }
+ 157          
+ 158          /*18b20写操作*/
+ 159          void ds_write_byte(unsigned char dat)
+ 160          {
+ 161   1        unsigned char i;
+ 162   1        for(i = 0;i < 8;i++)
+ 163   1        {
+ 164   2          if(1 == (dat&0x01))
+ 165   2          {
+ 166   3            _18b20_IO = 0;
+ 167   3            _nop_();
+ 168   3            _nop_();
+ 169   3            _18b20_IO = 1;
+ 170   3            //TempDelay(5);
+ 171   3            Delay60us();
+ 172   3          }
+ 173   2          else
+ 174   2          {
+ 175   3            _18b20_IO = 0;
+C51 COMPILER V9.01   18B20                                                                 03/13/2017 22:27:58 PAGE 4   
+
+ 176   3            //TempDelay(8);
+ 177   3             Delay64us();
+ 178   3            _18b20_IO = 1;
+ 179   3            _nop_();
+ 180   3            _nop_();
+ 181   3          }
+ 182   2          dat >>= 1;
+ 183   2        }
+ 184   1      }
+ 185          
+ 186          /*18b20读操作*/
+ 187          unsigned char ds_read_byte()
+ 188          {
+ 189   1        unsigned char temp;
+ 190   1        unsigned char dat=0;
+ 191   1        unsigned char i;
+ 192   1        for(i = 0;i < 8;i++)
+ 193   1        {
+ 194   2          _18b20_IO = 0;
+ 195   2          _nop_();
+ 196   2          _18b20_IO = 1;
+ 197   2          _nop_();
+ 198   2          _nop_();
+ 199   2          temp = _18b20_IO;
+ 200   2          //TempDelay(10);
+ 201   2          Delay77us();
+ 202   2          dat = (temp << 7)|(dat>>1);
+ 203   2        } 
+ 204   1        return dat;
+ 205   1      }
+ 206          
+ 207          /*启动温度转换*/
+ 208          void ds18b20()       //启动温度转换
+ 209          {
+ 210   1         ds_reset();       //复位18b20
+ 211   1         //delay(1);  //约2ms
+ 212   1         Delay2ms();
+ 213   1         ds_write_byte(0xcc);//发出skip ROM 命令
+ 214   1         ds_write_byte(0x44); //发出Convert T命令
+ 215   1      }
+ 216          
+ 217          
+ 218          /*从18b20中读取温度*/
+ 219          unsigned int get_temperature()
+ 220          {
+ 221   1         float wendu;
+ 222   1         unsigned char a,b;
+ 223   1         ds_reset();
+ 224   1         //delay(1);              //约2ms
+ 225   1         Delay2ms();
+ 226   1         ds_write_byte(0xcc);//发出skip ROM 命令
+ 227   1         ds_write_byte(0xbe);//发出读取命令
+ 228   1         a=ds_read_byte();   //读两字节，a和b各只能放8个字节
+ 229   1         b=ds_read_byte();
+ 230   1         temp=b;
+ 231   1         temp<<=8;
+ 232   1         temp=temp|a;
+ 233   1         wendu=temp*0.0625;   //23.4*10 = 234  
+ 234   1         temp = (unsigned int)(wendu*10+0.5); 
+ 235   1         return temp;
+ 236   1      }
+ 237          
+C51 COMPILER V9.01   18B20                                                                 03/13/2017 22:27:58 PAGE 5   
+
+ 238          /*数码管发送程序*/
+ 239          void Send_data(unsigned char duan,unsigned char wei)
+ 240          {
+ 241   1        unsigned char i;     //还是用hc595移位寄存器来进行操作，参照着数码管的原理与时序来写程序
+ 242   1        HC595_RCK = 0;
+ 243   1        for(i = 0;i < 8;i++)
+ 244   1        {
+ 245   2          HC595_SCK = 0;
+ 246   2          if(0 != (duan&0x80))
+ 247   2          {
+ 248   3            HC595_DATA = 1;
+ 249   3          }
+ 250   2          else
+ 251   2          {
+ 252   3            HC595_DATA = 0;
+ 253   3          }
+ 254   2          HC595_SCK = 1;
+ 255   2          duan = duan << 1;
+ 256   2        }
+ 257   1        for(i = 0;i < 8;i++)
+ 258   1        {
+ 259   2          HC595_SCK = 0;
+ 260   2          if(0 != (wei&0x80))
+ 261   2          {
+ 262   3            HC595_DATA = 1;
+ 263   3          }
+ 264   2          else 
+ 265   2          {
+ 266   3            HC595_DATA = 0;
+ 267   3          }
+ 268   2          HC595_SCK = 1;
+ 269   2          wei = wei << 1;
+ 270   2        }
+ 271   1        HC595_RCK = 1;
+ 272   1      }
+ 273          
+ 274          /*数码管显示函数*/
+ 275          void int_to_hex(unsigned int temp)
+ 276          {
+ 277   1        _display[0] = Duan_choose[(temp%1000)/100];//取到百位的值
+ 278   1        _display[1] = Duan_choose[(temp%100)/10];//取到十位的值
+ 279   1        _display[2] = Duan_choose[temp%10];//取到个位的值
+ 280   1        _display[3] = 0x39;
+ 281   1        _display[1] |= 0x80;
+ 282   1      } 
+ 283          
+ 284          /*主函数*/
+ 285          void main()
+ 286          {
+ 287   1        unsigned char i;
+ 288   1        unsigned char a;
+ 289   1        while(1)
+ 290   1        {
+ 291   2            ds18b20();          //12位转换时间最大为750ms
+ 292   2            for(a=10;a>0;a--)
+ 293   2            {
+ 294   3              get_temperature();
+ 295   3            int_to_hex(temp);
+ 296   3            for(i = 0;i < 4;i++)
+ 297   3              {
+ 298   4                     Send_data(_display[i], Wei_choose[i]);   
+ 299   4                 Delay1ms(1);
+C51 COMPILER V9.01   18B20                                                                 03/13/2017 22:27:58 PAGE 6   
+
+ 300   4                }   
+ 301   3             }
+ 302   2         }
+ 303   1      }       
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    517    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

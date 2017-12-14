@@ -1,0 +1,3 @@
+".\output\matrix_button.obj" 
+TO ".\output\matrix_button" 
+PRINT(".\matrix_button.m51")

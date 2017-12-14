@@ -1,0 +1,265 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\作业\I2c\I2C与uart\i2c_uart.uvproj
+Project File Date:  11/22/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling i2c_uart.c...
+I2C_UART.C(96): error C202: 'SDA': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+I2C_UART.C(70): warning C206: 'i2c_write_eeprom': missing function-prototype
+I2C_UART.C(70): error C267: 'i2c_write_eeprom': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+I2C_UART.C(32): warning C206: '_nop_': missing function-prototype
+I2C_UART.C(32): error C264: intrinsic '_nop_': declaration/activation error
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+I2C_UART.C(88): warning C206: 'i2c_write_eeprom': missing function-prototype
+I2C_UART.C(88): error C267: 'i2c_write_eeprom': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+I2C_UART.C(104): error C193: '=': illegal type conversion from/to 'void'
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+I2C_UART.C(132): warning C206: 'Delay_i2c': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=19.0 xdata=0 code=661
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+I2C_UART.C(132): warning C206: 'Delay_i2c': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=19.0 xdata=0 code=661
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=13.0 xdata=0 code=573
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+i2c_uart.c(3): warning C318: can't open file 'i2c_init.h'
+i2c_uart.c(4): warning C318: can't open file 'i2c_init.c'
+I2C_UART.C(91): warning C206: 'i2c_write_eeprom': missing function-prototype
+I2C_UART.C(91): error C267: 'i2c_write_eeprom': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+i2c_uart.c(1): error C318: can't open file 'i2c_uart.c'
+compiling i2c_init.c...
+SOURCE\I2C_INIT.C(4): error C202: 'SDA': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+i2c_uart.c(1): error C318: can't open file 'i2c_uart.c'
+compiling i2c_init.c...
+SOURCE\I2C_INIT.C(4): error C202: 'SDA': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+i2c_uart.c(1): error C318: can't open file 'i2c_uart.c'
+compiling i2c_init.c...
+SOURCE\I2C_INIT.C(3): error C129: missing ';' before '<string>'
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+i2c_uart.c(1): error C318: can't open file 'i2c_uart.c'
+compiling i2c_init.c...
+source\i2c_init.c(1): warning C318: can't open file 'ic2_init.h'
+SOURCE\I2C_INIT.C(3): error C202: 'P0': undefined identifier
+SOURCE\I2C_INIT.C(4): error C202: 'P0': undefined identifier
+SOURCE\I2C_INIT.C(9): error C202: 'SDA': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+i2c_uart.c(1): error C318: can't open file 'i2c_uart.c'
+compiling i2c_init.c...
+source\i2c_init.c(1): warning C318: can't open file 'ic2_init.h'
+SOURCE\I2C_INIT.C(11): warning C206: 'Delay_i2c': missing function-prototype
+SOURCE\I2C_INIT.C(66): warning C206: 'i2c_write_data': missing function-prototype
+SOURCE\I2C_INIT.C(66): error C267: 'i2c_write_data': requires ANSI-style prototype
+SOURCE\I2C_INIT.C(75): error C231: 'i2c_write_data': redefinition
+SOURCE\I2C_INIT.C(100): error C231: 'i2c_write_data': redefinition
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+i2c_uart.c(1): error C318: can't open file 'i2c_uart.c'
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+i2c_uart.c(1): error C318: can't open file 'i2c_uart.c'
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+i2c_uart.c(1): error C318: can't open file 'i2c_uart.c'
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+i2c_uart.c(1): error C318: can't open file 'i2c_uart.c'
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=13.0 xdata=0 code=573
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=13.0 xdata=0 code=587
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=13.0 xdata=0 code=587
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=13.0 xdata=0 code=588
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=13.0 xdata=0 code=588
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=13.0 xdata=0 code=588
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=13.0 xdata=0 code=588
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+SOURCE\I2C_UART.C(276): error C141: syntax error near 'dat', expected ')'
+SOURCE\I2C_UART.C(278): error C202: 'dat': undefined identifier
+SOURCE\I2C_UART.C(292): error C202: 'Duan': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+SOURCE\I2C_UART.C(276): error C141: syntax error near 'dat', expected ')'
+SOURCE\I2C_UART.C(278): error C202: 'dat': undefined identifier
+SOURCE\I2C_UART.C(292): error C202: 'wei_choose': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+SOURCE\I2C_UART.C(292): error C202: 'wei_choose': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?RECEIVE_FUN?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_DISPLAY?I2C_UART
+Program Size: data=18.0 xdata=0 code=597
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?RECEIVE_FUN?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_DISPLAY?I2C_UART
+Program Size: data=18.0 xdata=0 code=597
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?RECEIVE_FUN?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_DISPLAY?I2C_UART
+Program Size: data=17.0 xdata=0 code=595
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?RECEIVE_FUN?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_DISPLAY?I2C_UART
+Program Size: data=17.0 xdata=0 code=586
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?RECEIVE_FUN?I2C_UART
+Program Size: data=16.0 xdata=0 code=524
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling i2c_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?I2C_READ_ACK?I2C_UART
+Program Size: data=16.0 xdata=0 code=509
+creating hex file from ".\output\i2c_uart"...
+".\output\i2c_uart" - 0 Error(s), 1 Warning(s).

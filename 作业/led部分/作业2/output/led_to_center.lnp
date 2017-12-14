@@ -1,0 +1,4 @@
+".\output\STARTUP.obj",
+".\output\led_to_center.obj" 
+TO ".\output\led_to_center" 
+PRINT(".\led_to_center.m51")

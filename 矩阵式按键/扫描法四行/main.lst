@@ -1,0 +1,173 @@
+C51 COMPILER V9.01   MAIN                                                                  09/11/2016 10:43:25 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\output\main.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE source\main.c BROWSE DEBUG OBJECTEXTEND PRINT(.\main.lst) OBJECT(.\output\mai
+                    -n.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include "include/hc595.h"
+   3          #include "include/delay.h"
+   4          #include "include/main.h"
+   5          #include "intrins.h"
+   6          
+   7          //╡╧ЁДр╩╦Ж╨╞йЩё╛╠╬ю╢нрйгц╩сп╣д
+   8          void Delay(unsigned int tt)       //сцю╢ясй╠?
+   9          {
+  10   1              while(tt--);          //╣╠ttвт╪У╣╫0йг╬ммкЁЖя╜╩╥
+  11   1      }
+  12          
+  13          //ты╡╧ЁДр╩╦Ж╨╞йЩё╛пХр╙╪ср╩╦Ж╤╗й╠фВ
+  14          void Timer0_Init(unsigned int ms)
+  15          {
+  16   1              unsigned long tmp;
+  17   1              tmp = 11059200 / 12;             //ртобхЩ╡╫н╙╪фкЦ╤╗й╠й╠Ё╓╣дкЦ╥╗
+  18   1              tmp =(tmp * ms) / 1000;
+  19   1              tmp = 65536 - tmp;
+  20   1              tmp = tmp + 18;         //╡╧Ё╔жп╤ооЛс╕ясй╠тЛЁи╣днС╡Н
+  21   1              T0RH = (unsigned char)(tmp >> 8); //╤╗й╠фВжьтьж╣╡П╥жн╙╦ъ╣мвж╫з,фДй╣╬мйггС16╫ЬжфйЩ
+  22   1              T0RL = (unsigned char)tmp;
+  23   1              TMOD &= 0XF0;    //╫╚T0╣д©ьжфн╩(╣мкдн╩)гЕаЦ
+  24   1              TMOD |= 0X01;    //╫╚T0╣ддёй╫иХжцн╙╥╫й╫1
+  25   1              TH0 = T0RH;              //╪стьT0жьтьж╣ё╛фДй╣╨муЩЁёкЦ╥╗йгр╩яЫ╣д
+  26   1              TL0 = T0RL;               //кЫн╫жьтьж╣ё╛╬мйг╣╠╤╗й╠фВ╤╗й╠й╠╪Д╫АйЬё╛╪╢рГЁЖ╣дй╠╨Рё╛жьпб╦Ёж╣ё╛ты╢н╫ЬхК╤╗й╠в╢л╛
+  27   1              ET0 = 1;   //╤╗й╠фВ0╣джп╤о
+  28   1              TR0 = 1;   //й╧╤╗й╠фВ0ткпп
+  29   1                      
+  30   1      }
+  31          
+  32          
+  33          
+  34          
+  35          
+  36          unsigned char Scan_Key()
+  37          {
+  38   1              unsigned char Key_Temp,Row_Temp,Col_Temp;    //рю╢н╢Ф╥еP2╣дж╣ё╗16╫Ьжфё╘,пппео╒ё╛аппео╒
+  39   1              P2 = 0xf0;         //╦Ь╣мкдн╩км0
+  40   1              Key_Temp = P2;
+  41   1              if((Key_Temp&0xf0)^0xf0)   //еп╤о╣╫╣вспц╩сп╪Э╠╩╟╢обё╛охсКтккЦ╟я╣мкдн╩жц0ё╛
+  42   1                                         //тзрЛ╩РтккЦеп╤о╦ъкдн╩йг╡╩йг╤╪йг1ё╛ж╩р╙╦ъкдн╩спр╩╦Ж0ё╛
+  43   1                                                                 //ifеп╤о╬мдэм╗╧Щ
+  44   1              {
+  45   2                      Row_Temp = 0xfe;         //╦ЁЁУж╣ё╛дэ╡╩дэ╦ЁЁи╠П╣д©╙й╪╫Ьппппио╣д╡ывВ
+  46   2                      //хГ╧Шр╩ппр╩пп╣д╪Л╡Бё╛с╕╦цсц╣мкдн╩ю╢еп╤ойгддр╩пп
+  47   2                      while((Row_Temp&0x10) != 0x00)  //тз╣зр╩пп╣╫╣зкдпп╪Дя╜╩╥ё╛еп╤ойг╡╩йгтзуБкдппдзё╛юЩхГ╣зр╩пп0B1111 1110,╨м
+             -0B0001 0000х║сКтккЦё╛╣ц╣╫0B0001 0000ё╛х╩╨С╟яKey_TempвСрфкд╢нё╛ж╠╣╫╣зкдпп0B1111 0111ё╛х║сКтккЦ╩╧йг0x10ё╛тывСрфр╩╢н╠ДЁи0B1
+             -110 1111ё╛уБй╠х║сКтккЦтР╠ДЁи0x00
+  48   2                      {
+  49   3                              P2 = Row_Temp;           //P2╣╫╣вйгсихМ╪Ч╬Ж╤╗╣дё╛╩╧йгс╡╪Ч╬Ж╤╗╣дё©
+  50   3                              if((P2&0xf0)^0xf0)       //P2╪лЁпакожтз╣дпп╣дпео╒
+  51   3                              {
+  52   4                                      Col_Temp = (P2&0xf0)|0x0f; //сКтккЦ╠ёЁжакP2╣д╦ъкдн╩ё╛кЫртйгддапё╛дг╦Жн╩жц╬мйг0(х║╥╢╨С╠Дн╙1)╩РтккЦй╧╣мк
+C51 COMPILER V9.01   MAIN                                                                  09/11/2016 10:43:25 PAGE 2   
+
+             -дн╩жц1ё╛╥╫╠Цх║╥╢
+  53   4                                      return ((~Col_Temp) + (~Row_Temp));     
+  54   4                              }
+  55   3                              else
+  56   3                              {
+  57   4                                      Row_Temp = (Row_Temp << 1) | 0x01;         //╫╚апж╣вСрфртн╙ё╛╡╒гр╫╚ср╠ъ╡╧╣д0х║╩Р╠ДЁи1
+  58   4                              }
+  59   3                              Delay(10);
+  60   3                      }
+  61   2              }
+  62   1              else
+  63   1              {
+  64   2                      return (0);
+  65   2              }
+  66   1      }
+  67          
+  68          
+  69          
+  70          
+  71          void Interrupt() interrupt 1 //сц╣дйг╤╗й╠фВ0жп╤о
+  72          {
+  73   1              static unsigned char k = 0;
+  74   1              //static unsigned char i;
+  75   1              
+  76   1              TH0 = T0RH;
+  77   1              TL0 = T0RL;
+  78   1              
+  79   1              Send_Data(Display[0],Shu_Wei_Chose[k]);
+  80   1              if(k < 7)
+  81   1              {                                                                               //╟яуБр╩╤нЁлпРфа╠н╣Тж╝╨Сё╛╬мж╩сп╣зр╩н╩йЩбК╧эотй╬
+  82   2                      //i++;
+  83   2                      k++;
+  84   2              }       
+  85   1              
+  86   1              else                                                                     //╟ян╩я║╩╩Ёиkж╝╨Сё╛8н╩йЩбК╧эр╩м╛отй╬
+  87   1              {
+  88   2                      //i = 0;
+  89   2                      k = 0;
+  90   2              } 
+  91   1      }
+  92          
+  93          
+  94          
+  95          
+  96          
+  97          
+  98          
+  99          void main()
+ 100          {
+ 101   1              //unsigned int Key_Value;
+ 102   1              unsigned char Key_Data;
+ 103   1              P0 = 0xff;       //н╙й╡ц╢р╙╟яP0╨мP1иХжцЁи0xff
+ 104   1              P1 = 0xff;   
+ 105   1              Delay(10);
+ 106   1              Timer0_Init(1);
+ 107   1              EA = 1;
+ 108   1              P2_4 = 0;   //н╙й╡ц╢р╙╣╔╤юиХ╤╗P2^4н╙0дьё©
+ 109   1              while(1)
+ 110   1              {
+ 111   2                      Key_Data = Scan_Key();
+ 112   2                      if(Key_Data != 0)
+ 113   2                      {
+C51 COMPILER V9.01   MAIN                                                                  09/11/2016 10:43:25 PAGE 3   
+
+ 114   3                              switch(Key_Data)
+ 115   3                              {
+ 116   4                                      case 0x11:Key_Value = 0;break;
+ 117   4                                      case 0x21:Key_Value = 1;break;
+ 118   4                                      case 0x41:Key_Value = 2;break;
+ 119   4                                      case 0x81:Key_Value = 3;break;          
+ 120   4      
+ 121   4                                      case 0x12:Key_Value = 4;break;
+ 122   4                                      case 0x22:Key_Value = 5;break;
+ 123   4                                      case 0x42:Key_Value = 6;break;
+ 124   4                                      case 0x82:Key_Value = 7;break;
+ 125   4      
+ 126   4                                      case 0x14:Key_Value = 8;break;
+ 127   4                                      case 0x24:Key_Value = 9;break;
+ 128   4                                      case 0x44:Key_Value = 10;break;
+ 129   4                                      case 0x84:Key_Value = 11;break;
+ 130   4      
+ 131   4                                      case 0x18:Key_Value = 12;break;
+ 132   4                                      case 0x28:Key_Value = 13;break;
+ 133   4                                      case 0x48:Key_Value = 14;break;
+ 134   4                                      case 0x88:Key_Value = 15;break;
+ 135   4                              }
+ 136   3                      }
+ 137   2                      Key_Data = 0;    //╟яKey_DataгЕаЦё╛╥юж╧жь╦╢╫ЬхКif
+ 138   2                      //Send_Data(Shu_Duan_Chose[Key_Value],0xfe);
+ 139   2                      Display[0] = Shu_Duan_Chose[Key_Value];
+ 140   2              }
+ 141   1      }
+*** WARNING C291 IN LINE 66 OF SOURCE\MAIN.C: not every exit path returns a value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    464    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     15       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

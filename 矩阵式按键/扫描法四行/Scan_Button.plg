@@ -1,0 +1,289 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\矩阵式按键\扫描法四行\Scan_Button.uvproj
+Project File Date:  09/10/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+Target has no object modules
+Target not created
+Build target 'Target 1'
+compiling delay.c...
+compiling hc595.c...
+compiling main.c...
+SOURCE\MAIN.C(50): error C141: syntax error near 'unsigned'
+SOURCE\MAIN.C(50): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(57): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(58): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(59): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(60): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(62): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(63): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(64): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(65): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(67): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(68): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(69): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(70): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(72): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(73): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(74): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(75): error C202: 'Key_Value': undefined identifier
+SOURCE\MAIN.C(77): error C202: 'Key_Value': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(60): error C175: 0x21: duplicate case value
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(60): error C175: 0x21: duplicate case value
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(37): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+Program Size: data=14.0 xdata=0 code=585
+"Scan_Button" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling delay.c...
+compiling hc595.c...
+compiling main.c...
+SOURCE\MAIN.C(37): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+Program Size: data=14.0 xdata=0 code=585
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(37): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+Program Size: data=14.0 xdata=0 code=590
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(37): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+Program Size: data=14.0 xdata=0 code=593
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(37): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_DATA?HC595
+Program Size: data=14.0 xdata=0 code=588
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(37): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_DATA?HC595
+Program Size: data=14.0 xdata=0 code=598
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(37): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+Program Size: data=14.0 xdata=0 code=628
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(37): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+Program Size: data=14.0 xdata=0 code=630
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(37): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+Program Size: data=14.0 xdata=0 code=630
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(21): error C202: 'T0RH': undefined identifier
+SOURCE\MAIN.C(22): error C202: 'T0RL': undefined identifier
+SOURCE\MAIN.C(25): error C202: 'T0RH': undefined identifier
+SOURCE\MAIN.C(26): error C202: 'T0RL': undefined identifier
+SOURCE\MAIN.C(71): error C202: 'T0RH': undefined identifier
+SOURCE\MAIN.C(72): error C202: 'T0RL': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(21): error C202: 'T0RH': undefined identifier
+SOURCE\MAIN.C(22): error C202: 'T0RL': undefined identifier
+SOURCE\MAIN.C(25): error C202: 'T0RH': undefined identifier
+SOURCE\MAIN.C(26): error C202: 'T0RL': undefined identifier
+SOURCE\MAIN.C(72): error C202: 'T0RH': undefined identifier
+SOURCE\MAIN.C(73): error C202: 'T0RL': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling hc595.c...
+compiling main.c...
+SOURCE\MAIN.C(66): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_TIMER0_INIT?MAIN
+Program Size: data=21.0 xdata=0 code=1133
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling hc595.c...
+compiling main.c...
+SOURCE\MAIN.C(9): warning C235: parameter 1: different types
+SOURCE\MAIN.C(99): warning C206: 'Tiemr0_Init': missing function-prototype
+SOURCE\MAIN.C(99): error C267: 'Tiemr0_Init': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(99): warning C206: 'Tiemr0_Init': missing function-prototype
+SOURCE\MAIN.C(99): error C267: 'Tiemr0_Init': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(67): warning C291: not every exit path returns a value
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+Program Size: data=29.0 xdata=0 code=1100
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=29.0 xdata=0 code=1067
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(67): warning C291: not every exit path returns a value
+linking...
+Program Size: data=22.0 xdata=0 code=1046
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(66): warning C291: not every exit path returns a value
+linking...
+Program Size: data=22.0 xdata=0 code=1046
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(66): warning C291: not every exit path returns a value
+linking...
+Program Size: data=22.0 xdata=0 code=1044
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(66): warning C291: not every exit path returns a value
+linking...
+Program Size: data=22.0 xdata=0 code=1046
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(66): warning C291: not every exit path returns a value
+linking...
+Program Size: data=21.0 xdata=0 code=1040
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+INCLUDE/MAIN.H(7): error C242: 'array[]': too many initializers
+SOURCE\MAIN.C(75): error C202: 'i': undefined identifier
+SOURCE\MAIN.C(76): error C202: 'i': undefined identifier
+SOURCE\MAIN.C(78): error C202: 'i': undefined identifier
+SOURCE\MAIN.C(79): error C202: 'K': undefined identifier
+SOURCE\MAIN.C(83): error C202: 'i': undefined identifier
+SOURCE\MAIN.C(84): error C202: 'K': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+INCLUDE/MAIN.H(7): error C242: 'array[]': too many initializers
+SOURCE\MAIN.C(79): error C202: 'K': undefined identifier
+SOURCE\MAIN.C(84): error C202: 'K': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(79): error C202: 'K': undefined identifier
+SOURCE\MAIN.C(84): error C202: 'K': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(80): error C202: 'K': undefined identifier
+SOURCE\MAIN.C(85): error C202: 'K': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(80): error C202: 'K': undefined identifier
+SOURCE\MAIN.C(85): error C202: 'K': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(82): error C202: 'K': undefined identifier
+SOURCE\MAIN.C(87): error C202: 'K': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(66): warning C291: not every exit path returns a value
+linking...
+Program Size: data=30.0 xdata=0 code=1071
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(66): warning C291: not every exit path returns a value
+linking...
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_TIMER0_INIT?MAIN
+    CALLER1: ?PR?INTERRUPT?MAIN
+    CALLER2: ?C_C51STARTUP
+Program Size: data=34.0 xdata=0 code=1078
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(66): warning C291: not every exit path returns a value
+linking...
+Program Size: data=29.0 xdata=0 code=1055
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(66): warning C291: not every exit path returns a value
+linking...
+Program Size: data=29.0 xdata=0 code=1062
+creating hex file from ".\output\Scan_Button"...
+".\output\Scan_Button" - 0 Error(s), 1 Warning(s).

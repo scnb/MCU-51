@@ -1,0 +1,316 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/19/2016  12:56:34  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE .\output\Led_shumaguan.obj TO .\output\Led_shumaguan PRINT (.\Led_shumaguan.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\Led_shumaguan.obj (LED_SHUMAGUAN)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\output\Led_shumaguan (LED_SHUMAGUAN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000EH     UNIT         ?DT?LED_SHUMAGUAN
+            IDATA   0016H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0008H     UNIT         ?PR?MAIN?LED_SHUMAGUAN
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     006CH     UNIT         ?PR?DISPLAY?LED_SHUMAGUAN
+            CODE    0106H     0066H     UNIT         ?PR?ROTATE_ENCODER?LED_SHUMAGUAN
+            CODE    016CH     003EH     UNIT         ?PR?INTERRUPT_1?LED_SHUMAGUAN
+            CODE    01AAH     0035H     UNIT         ?PR?_SEND_DATA_SHUMAGUAN?LED_SHUMAGUAN
+            CODE    01DFH     0035H     UNIT         ?PR?_SEND_DATA_LED?LED_SHUMAGUAN
+            CODE    0214H     0032H     UNIT         ?CO?LED_SHUMAGUAN
+            CODE    0246H     0015H     UNIT         ?PR?TIMER0INIT?LED_SHUMAGUAN
+            CODE    025BH     0011H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\output\Led_shumaguan (LED_SHUMAGUAN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?INTERRUPT_1?LED_SHUMAGUAN
+  +--> ?PR?DISPLAY?LED_SHUMAGUAN
+
+?PR?DISPLAY?LED_SHUMAGUAN
+  +--> ?CO?LED_SHUMAGUAN
+  +--> ?PR?_SEND_DATA_SHUMAGUAN?LED_SHUMAGUAN
+  +--> ?PR?_SEND_DATA_LED?LED_SHUMAGUAN
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?LED_SHUMAGUAN
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  12:56:34  PAGE 2
+
+
+  +--> ?C_INITSEG
+
+?PR?MAIN?LED_SHUMAGUAN
+  +--> ?PR?TIMER0INIT?LED_SHUMAGUAN
+  +--> ?PR?ROTATE_ENCODER?LED_SHUMAGUAN
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\Led_shumaguan (LED_SHUMAGUAN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LED_SHUMAGUAN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:016CH         PUBLIC        interrupt_1
+  B:00A8H.7       PUBLIC        EA
+  D:0009H         PUBLIC        Current_B_value
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0226H         PUBLIC        Led_One
+  D:000AH         PUBLIC        display_arry
+  C:01DFH         PUBLIC        _Send_data_led
+  B:0080H.6       PUBLIC        HC595_RCK1
+  B:0080H.5       PUBLIC        HC595_SCK1
+  C:0003H         PUBLIC        main
+  C:0214H         PUBLIC        Shu_Ma_Duan
+  B:0090H.4       PUBLIC        HC595_DATA
+  C:0236H         PUBLIC        Led_Two
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:0012H         PUBLIC        value_led
+  C:0106H         PUBLIC        Rotate_encoder
+  C:01AAH         PUBLIC        _Send_data_shumaguan
+  D:0013H         PUBLIC        Last_B_value
+  C:021EH         PUBLIC        Shu_Ma_Wei
+  B:00A8H.1       PUBLIC        ET0
+  B:0088H.5       PUBLIC        TF0
+  C:0246H         PUBLIC        Timer0Init
+  B:00A0H.2       PUBLIC        press_down
+  D:008CH         PUBLIC        TH0
+  D:0014H         PUBLIC        value_shumaguan
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  B:0080H.7       PUBLIC        HC595_DATA1
+  D:00C8H         PUBLIC        T2CON
+  B:00A0H.0       PUBLIC        pin_A
+  B:00A0H.1       PUBLIC        pin_B
+  D:0015H         PUBLIC        Rotate_flag
+  B:0090H.0       PUBLIC        HC595_RCK
+  B:0090H.1       PUBLIC        HC595_SCK
+  C:009AH         PUBLIC        display
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  12:56:34  PAGE 3
+
+
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _SEND_DATA_SHUMAGUAN
+  D:0007H         SYMBOL        Shu_Duan
+  D:0005H         SYMBOL        Shu_Wei
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:01AAH         LINE#         41
+  C:01AAH         LINE#         42
+  C:01AAH         LINE#         44
+  C:01ACH         LINE#         45
+  C:01AEH         LINE#         46
+  C:01AEH         LINE#         47
+  C:01B0H         LINE#         48
+  C:01B4H         LINE#         49
+  C:01B4H         LINE#         50
+  C:01B6H         LINE#         51
+  C:01B8H         LINE#         53
+  C:01B8H         LINE#         54
+  C:01BAH         LINE#         55
+  C:01BAH         LINE#         56
+  C:01BCH         LINE#         57
+  C:01C0H         LINE#         58
+  C:01C4H         LINE#         59
+  C:01C6H         LINE#         60
+  C:01C6H         LINE#         61
+  C:01C8H         LINE#         62
+  C:01CCH         LINE#         63
+  C:01CCH         LINE#         64
+  C:01CEH         LINE#         65
+  C:01D0H         LINE#         67
+  C:01D0H         LINE#         68
+  C:01D2H         LINE#         69
+  C:01D2H         LINE#         70
+  C:01D4H         LINE#         71
+  C:01D8H         LINE#         72
+  C:01DCH         LINE#         73
+  C:01DEH         LINE#         74
+  -------         ENDPROC       _SEND_DATA_SHUMAGUAN
+  -------         PROC          _SEND_DATA_LED
+  D:0007H         SYMBOL        Led_one
+  D:0005H         SYMBOL        Led_two
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:01DFH         LINE#         77
+  C:01DFH         LINE#         78
+  C:01DFH         LINE#         80
+  C:01E1H         LINE#         81
+  C:01E3H         LINE#         82
+  C:01E3H         LINE#         83
+  C:01E5H         LINE#         84
+  C:01E9H         LINE#         85
+  C:01E9H         LINE#         86
+  C:01EBH         LINE#         87
+  C:01EDH         LINE#         89
+  C:01EDH         LINE#         90
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  12:56:34  PAGE 4
+
+
+  C:01EFH         LINE#         91
+  C:01EFH         LINE#         92
+  C:01F1H         LINE#         93
+  C:01F5H         LINE#         94
+  C:01F9H         LINE#         95
+  C:01FBH         LINE#         96
+  C:01FBH         LINE#         97
+  C:01FDH         LINE#         98
+  C:0201H         LINE#         99
+  C:0201H         LINE#         100
+  C:0203H         LINE#         101
+  C:0205H         LINE#         103
+  C:0205H         LINE#         104
+  C:0207H         LINE#         105
+  C:0207H         LINE#         106
+  C:0209H         LINE#         107
+  C:020DH         LINE#         108
+  C:0211H         LINE#         109
+  C:0213H         LINE#         110
+  -------         ENDPROC       _SEND_DATA_LED
+  -------         PROC          DISPLAY
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:009AH         LINE#         113
+  C:009AH         LINE#         114
+  C:009AH         LINE#         116
+  C:00A8H         LINE#         117
+  C:00B7H         LINE#         118
+  C:00C0H         LINE#         119
+  C:00C7H         LINE#         120
+  C:00C7H         LINE#         121
+  C:00C9H         LINE#         122
+  C:00CBH         LINE#         124
+  C:00CBH         LINE#         125
+  C:00CEH         LINE#         126
+  C:00CEH         LINE#         127
+  C:00DFH         LINE#         128
+  -------         ENDPROC       DISPLAY
+  -------         PROC          TIMER0INIT
+  C:0246H         LINE#         132
+  C:0246H         LINE#         133
+  C:0246H         LINE#         135
+  C:0249H         LINE#         136
+  C:024CH         LINE#         137
+  C:024FH         LINE#         138
+  C:0252H         LINE#         139
+  C:0254H         LINE#         140
+  C:0256H         LINE#         141
+  C:0258H         LINE#         142
+  C:025AH         LINE#         143
+  -------         ENDPROC       TIMER0INIT
+  -------         PROC          ROTATE_ENCODER
+  C:0106H         LINE#         148
+  C:0106H         LINE#         149
+  C:0106H         LINE#         150
+  C:010CH         LINE#         151
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  12:56:34  PAGE 5
+
+
+  C:010FH         LINE#         152
+  C:010FH         LINE#         153
+  C:0112H         LINE#         154
+  C:0118H         LINE#         155
+  C:011AH         LINE#         156
+  C:0120H         LINE#         157
+  C:0120H         LINE#         158
+  C:0122H         LINE#         159
+  C:012BH         LINE#         160
+  C:012BH         LINE#         161
+  C:0132H         LINE#         162
+  C:0132H         LINE#         163
+  C:0134H         LINE#         164
+  C:0136H         LINE#         166
+  C:0136H         LINE#         167
+  C:0139H         LINE#         168
+  C:0139H         LINE#         169
+  C:0140H         LINE#         170
+  C:0140H         LINE#         171
+  C:0142H         LINE#         172
+  C:0144H         LINE#         174
+  C:0144H         LINE#         175
+  C:0147H         LINE#         176
+  C:0147H         LINE#         177
+  C:0147H         LINE#         178
+  C:0150H         LINE#         179
+  C:0150H         LINE#         180
+  C:0157H         LINE#         181
+  C:0157H         LINE#         182
+  C:0159H         LINE#         183
+  C:015BH         LINE#         185
+  C:015BH         LINE#         186
+  C:015EH         LINE#         187
+  C:015EH         LINE#         188
+  C:0165H         LINE#         189
+  C:0165H         LINE#         190
+  C:0167H         LINE#         191
+  C:0168H         LINE#         193
+  C:0168H         LINE#         194
+  C:016BH         LINE#         195
+  C:016BH         LINE#         196
+  C:016BH         LINE#         197
+  C:016BH         LINE#         198
+  -------         ENDPROC       ROTATE_ENCODER
+  -------         PROC          MAIN
+  C:0003H         LINE#         201
+  C:0003H         LINE#         202
+  C:0003H         LINE#         203
+  C:0006H         LINE#         204
+  C:0006H         LINE#         205
+  C:0006H         LINE#         206
+  C:0009H         LINE#         207
+  -------         ENDPROC       MAIN
+  -------         PROC          INTERRUPT_1
+  C:016CH         LINE#         211
+  C:0183H         LINE#         213
+  C:0186H         LINE#         214
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/19/2016  12:56:34  PAGE 6
+
+
+  C:0189H         LINE#         215
+  C:018CH         LINE#         216
+  C:018FH         LINE#         217
+  C:018FH         LINE#         218
+  C:0192H         LINE#         219
+  C:0195H         LINE#         220
+  C:0195H         LINE#         221
+  -------         ENDPROC       INTERRUPT_1
+  -------         ENDMOD        LED_SHUMAGUAN
+
+Program Size: data=23.0 xdata=0 code=620
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

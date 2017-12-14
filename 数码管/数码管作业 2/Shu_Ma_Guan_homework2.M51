@@ -1,0 +1,153 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/03/2016  21:42:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE Shu_Ma_Guan_homework2.obj TO Shu_Ma_Guan_homework2 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Shu_Ma_Guan_homework2.obj (SHU_MA_GUAN_HOMEWORK2)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  Shu_Ma_Guan_homework2 (SHU_MA_GUAN_HOMEWORK2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0037H     UNIT         ?PR?_SHU_MA_GUAN_DATA?SHU_MA_GUAN_HOMEWORK2
+            CODE    003AH     0024H     UNIT         ?PR?MAIN?SHU_MA_GUAN_HOMEWORK2
+            CODE    005EH     0020H     UNIT         ?CO?SHU_MA_GUAN_HOMEWORK2
+            CODE    007EH     0017H     UNIT         ?PR?_DELAY_MS?SHU_MA_GUAN_HOMEWORK2
+            CODE    0095H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   Shu_Ma_Guan_homework2 (SHU_MA_GUAN_HOMEWORK2)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?SHU_MA_GUAN_HOMEWORK2
+
+?PR?MAIN?SHU_MA_GUAN_HOMEWORK2                   0008H    0001H
+  +--> ?CO?SHU_MA_GUAN_HOMEWORK2
+  +--> ?PR?_SHU_MA_GUAN_DATA?SHU_MA_GUAN_HOM...
+  +--> ?PR?_DELAY_MS?SHU_MA_GUAN_HOMEWORK2
+
+
+
+SYMBOL TABLE OF MODULE:  Shu_Ma_Guan_homework2 (SHU_MA_GUAN_HOMEWORK2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SHU_MA_GUAN_HOMEWORK2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:005EH         PUBLIC        Duan_chose
+  D:0090H         PUBLIC        P1
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/03/2016  21:42:32  PAGE 2
+
+
+  D:00B0H         PUBLIC        P3
+  C:0003H         PUBLIC        _Shu_Ma_Guan_Data
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:006EH         PUBLIC        Wei_chose
+  C:003AH         PUBLIC        main
+  B:0090H.4       PUBLIC        HC595_DATA
+  C:007EH         PUBLIC        _Delay_ms
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  B:0090H.0       PUBLIC        HC595_RCK
+  B:0090H.1       PUBLIC        HC595_SCK
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY_MS
+  D:0007H         SYMBOL        i
+  -------         DO            
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:007EH         LINE#         14
+  C:007EH         LINE#         15
+  C:007EH         LINE#         17
+  C:0084H         LINE#         18
+  C:0084H         LINE#         19
+  C:0087H         LINE#         20
+  C:0087H         LINE#         21
+  C:0091H         LINE#         22
+  C:0094H         LINE#         23
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          _SHU_MA_GUAN_DATA
+  D:0007H         SYMBOL        Shu_Ma_Duan
+  D:0005H         SYMBOL        Shu_Ma_Wei
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         25
+  C:0003H         LINE#         26
+  C:0003H         LINE#         28
+  C:0005H         LINE#         29
+  C:0007H         LINE#         30
+  C:0007H         LINE#         31
+  C:0009H         LINE#         32
+  C:000DH         LINE#         33
+  C:000DH         LINE#         34
+  C:000FH         LINE#         35
+  C:0011H         LINE#         37
+  C:0011H         LINE#         38
+  C:0013H         LINE#         39
+  C:0013H         LINE#         40
+  C:0017H         LINE#         41
+  C:0019H         LINE#         42
+  C:001DH         LINE#         43
+  C:001FH         LINE#         44
+  C:001FH         LINE#         45
+  C:0021H         LINE#         46
+  C:0025H         LINE#         47
+  C:0025H         LINE#         48
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/03/2016  21:42:32  PAGE 3
+
+
+  C:0027H         LINE#         49
+  C:0029H         LINE#         51
+  C:0029H         LINE#         52
+  C:002BH         LINE#         53
+  C:002BH         LINE#         54
+  C:002FH         LINE#         55
+  C:0031H         LINE#         56
+  C:0035H         LINE#         57
+  C:0037H         LINE#         58
+  C:0039H         LINE#         62
+  -------         ENDPROC       _SHU_MA_GUAN_DATA
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        k
+  -------         ENDDO         
+  C:003AH         LINE#         64
+  C:003AH         LINE#         65
+  C:003AH         LINE#         68
+  C:003AH         LINE#         69
+  C:003AH         LINE#         71
+  C:003DH         LINE#         72
+  C:003DH         LINE#         73
+  C:004EH         LINE#         74
+  C:0053H         LINE#         75
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SHU_MA_GUAN_HOMEWORK2
+
+Program Size: data=10.0 xdata=0 code=161
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

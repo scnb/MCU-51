@@ -1,0 +1,96 @@
+C51 COMPILER V9.01   SHU_MA_GUAN                                                           07/29/2016 19:23:00 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE SHU_MA_GUAN
+OBJECT MODULE PLACED IN shu_ma_guan.OBJ
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE shu_ma_guan.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          //定义引脚
+   3          sbit HC595_RCK=P1^0;
+   4          sbit HC595_SCK=P1^1;
+   5          sbit HC595_DATA=P1^4;  
+   6          code unsigned char Duan_chose[8]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07};
+   7          code unsigned char Wei_chose[8]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+   8          //code unsigned char Duan_chose=0x5e;//
+   9          //code unsigned char Wei_chose=0xfe;
+  10          //定义延时函数
+  11          void Delay_ms(unsigned char i)
+  12          {
+  13   1              unsigned char j;
+  14   1              for(;i>0;i--)
+  15   1              {
+  16   2                      for(j=0;j<110;j++)
+  17   2                      {
+  18   3                      }       
+  19   2              }
+  20   1      }
+  21          //定义数码管数据传送函数
+  22          void Shu_Ma_Guan_Data(unsigned char Shu_Ma_Duan,unsigned char Shu_Ma_Wei)
+  23          {
+  24   1              unsigned char i;
+  25   1              HC595_RCK=0;
+  26   1              for(i=0;i<8;i++)
+  27   1              {
+  28   2                      HC595_SCK=0;
+  29   2                      if(0!=(Shu_Ma_Duan&0x80))
+  30   2                      {
+  31   3                              HC595_DATA=1;
+  32   3                      }
+  33   2                      else
+  34   2                      {
+  35   3                              HC595_DATA=0;
+  36   3                      }
+  37   2                      Shu_Ma_Duan=Shu_Ma_Duan<<1;
+  38   2                      HC595_SCK=1;
+  39   2              }
+  40   1              for(i=0;i<8;i++)
+  41   1              {
+  42   2                      HC595_SCK=0;
+  43   2                      if(0!=(Shu_Ma_Wei&0x80))
+  44   2                      {
+  45   3                              HC595_DATA=1;
+  46   3                      }
+  47   2                      else
+  48   2                      {
+  49   3                              HC595_DATA=0;
+  50   3                      }
+  51   2                      Shu_Ma_Wei=Shu_Ma_Wei<<1;
+  52   2                      HC595_SCK=1;
+  53   2              }
+  54   1              HC595_RCK=1;
+  55   1      }
+C51 COMPILER V9.01   SHU_MA_GUAN                                                           07/29/2016 19:23:00 PAGE 2   
+
+  56          //主函数
+  57          void main()
+  58          {
+  59   1              //Shu_Ma_Guan_Data(Duan_chose,Wei_chose);
+  60   1              //Delay_ms(1);
+  61   1              while(1)
+  62   1              {
+  63   2                      unsigned char k;
+  64   2                      for(k=0;k<8;k++)
+  65   2                      {
+  66   3                              Shu_Ma_Guan_Data(Duan_chose[k],Wei_chose[k]);
+  67   3                              Delay_ms(1000);
+  68   3                      }
+  69   2              
+  70   2              } 
+  71   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    105    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

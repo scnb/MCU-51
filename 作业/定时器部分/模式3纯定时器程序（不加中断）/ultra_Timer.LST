@@ -1,0 +1,155 @@
+C51 COMPILER V9.01   ULTRA_TIMER                                                           11/17/2016 23:51:41 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE ULTRA_TIMER
+OBJECT MODULE PLACED IN .\output\ultra_Timer.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE ultra_Timer.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output\ultra_Timer.obj)
+
+line level    source
+
+   1          //定时器1工作方式3
+   2          
+   3          #include<reg52.h>
+   4          
+   5          unsigned char k = 0;
+   6          unsigned int num = 0;//一定要注意，num的计数范围，原来是unsigned char num，num最大只能计数到255
+   7          
+   8          sbit HC595_SCK = P0^5;
+   9          sbit HC595_RCK = P0^6;
+  10          sbit HC595_DATA = P0^7;
+  11          
+  12          code unsigned char Led_One[16] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x80,0x40,0x20,0x10,0x08,0x04,0x
+             -02,0x01};
+  13          code unsigned char Led_Two[16] = {0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x
+             -00,0x00};
+  14          
+  15          /*void Init_Timer0()
+  16          {
+  17                  TMOD = 0X03;
+  18                  TL0 = 0xa4;                //方式3有两个8位计数器，注意两个计数器是分开工作的，TL0用T0的中断，TH0用T1的中
+             -断
+  19                  EA = 1;                                    //2^8 = 256   从0到255所以一次最大的计时时间是：（1/11059200 ）*12*256 = 277.78us ≈ 0.28m
+             -s
+  20                  ET0 = 1;
+  21                  TR0 = 1; 
+  22                  TF0 = 0;
+  23          }  */
+  24          
+  25          void Timer0Init(void)           //100微秒@11.0592MHz
+  26          {
+  27   1              TMOD &= 0xF0;           //设置定时器模式
+  28   1              TMOD |= 0x03;           //设置定时器模式
+  29   1              TL0 = 71;               //设置定时初值
+  30   1              TF0 = 0;                //清除TF0标志
+  31   1              TR0 = 1;                //定时器0开始计时
+  32   1              EA = 1;
+  33   1              ET0 = 1;
+  34   1      }
+  35          
+  36          
+  37          void Send_data(unsigned char Led8_one,unsigned char Led8_two)
+  38          {
+  39   1              unsigned char i;
+  40   1              HC595_RCK = 0;
+  41   1              for(i = 0;i < 8;i++)
+  42   1              {
+  43   2                      HC595_SCK = 0;
+  44   2                      if(0 != (Led8_one&0x80))
+  45   2                      {
+  46   3                              HC595_DATA = 1;
+  47   3                      }
+  48   2                      else
+  49   2                      {
+  50   3                              HC595_DATA = 0;
+  51   3                      }
+C51 COMPILER V9.01   ULTRA_TIMER                                                           11/17/2016 23:51:41 PAGE 2   
+
+  52   2                      Led8_one = Led8_one << 1;
+  53   2                      HC595_SCK = 1;
+  54   2              }
+  55   1              for(i = 0;i < 8;i++)
+  56   1              {
+  57   2                      HC595_SCK = 0;
+  58   2                      if(0 != (Led8_two&0x80))
+  59   2                      {
+  60   3                              HC595_DATA = 1;
+  61   3                      }
+  62   2                      else
+  63   2                      {
+  64   3                              HC595_DATA = 0;
+  65   3                      }
+  66   2                      Led8_two = Led8_two << 1;
+  67   2                      HC595_SCK = 1;
+  68   2              }
+  69   1              HC595_RCK = 1;
+  70   1      }
+  71          
+  72          
+  73          
+  74          void main()
+  75          {
+  76   1              //Init_Timer0();
+  77   1              Timer0Init();
+  78   1              Send_data(Led_One[0],Led_Two[8]);
+  79   1              while(1)
+  80   1              {
+  81   2                 if(1== TF0)
+  82   2                 {
+  83   3                              TF0 = 0;
+  84   3                              TL0 = 71;
+  85   3                              num++;
+  86   3                 }
+  87   2                 if(5000 == num)
+  88   2                 {
+  89   3                              Send_data(Led_One[k], Led_Two[k]);
+  90   3                              if(k == 15)
+  91   3                              {
+  92   4                                      k = 0;
+  93   4                              }
+  94   3                              else
+  95   3                              {                                 
+  96   4                                      k++;     
+  97   4                              }
+  98   3                              num = 0;         
+  99   3                      }
+ 100   2              }
+ 101   1      }
+ 102          
+ 103          /*void interrupt_1() interrupt 1
+ 104          {
+ 105                  TL0 = 71;
+ 106                  TF0 = 0;
+ 107                  if(num == 5000)
+ 108                  {
+ 109                          Send_data(Led_One[k], Led_Two[k]);
+ 110                          if(k == 15)
+ 111                          {
+ 112                                  k = 0;
+ 113                          }
+C51 COMPILER V9.01   ULTRA_TIMER                                                           11/17/2016 23:51:41 PAGE 3   
+
+ 114                          else
+ 115                          {                                 
+ 116                                  k++;     
+ 117                          }
+ 118                          num = 0;         
+ 119                  }
+ 120                  else
+ 121                  {
+ 122                          num++;
+ 123                  }
+ 124          }*/
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    151    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

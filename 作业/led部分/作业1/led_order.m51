@@ -1,0 +1,177 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/31/2016  23:07:12  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE .\output\led_order.obj TO .\output\led_order PRINT (.\led_order.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\led_order.obj (LED_ORDER)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\led_order (LED_ORDER)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008DH     UNIT         ?PR?MAIN?LED_ORDER
+            CODE    0090H     003BH     UNIT         ?PR?_DELAY_1MS?LED_ORDER
+            CODE    00CBH     0035H     UNIT         ?PR?_SEND_DATA?LED_ORDER
+            CODE    0100H     0020H     UNIT         ?CO?LED_ORDER
+            CODE    0120H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\output\led_order (LED_ORDER)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?LED_ORDER
+
+?PR?MAIN?LED_ORDER
+  +--> ?PR?_DELAY_1MS?LED_ORDER
+  +--> ?CO?LED_ORDER
+
+?PR?_DELAY_1MS?LED_ORDER
+  +--> ?CO?LED_ORDER
+  +--> ?PR?_SEND_DATA?LED_ORDER
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\led_order (LED_ORDER)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LED_ORDER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/31/2016  23:07:12  PAGE 2
+
+
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:00CBH         PUBLIC        _Send_data
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0100H         PUBLIC        Led_One
+  C:0003H         PUBLIC        main
+  B:0080H.7       PUBLIC        HC595_DATA
+  C:0110H         PUBLIC        Led_Two
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:00AAH         PUBLIC        _Delay_1ms
+  D:00C8H         PUBLIC        T2CON
+  B:0080H.6       PUBLIC        HC595_RCK
+  B:0080H.5       PUBLIC        HC595_SCK
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _SEND_DATA
+  D:0007H         SYMBOL        Led8_one
+  D:0005H         SYMBOL        Led8_two
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:00CBH         LINE#         9
+  C:00CBH         LINE#         10
+  C:00CBH         LINE#         12
+  C:00CDH         LINE#         13
+  C:00CFH         LINE#         14
+  C:00CFH         LINE#         15
+  C:00D1H         LINE#         16
+  C:00D5H         LINE#         17
+  C:00D5H         LINE#         18
+  C:00D7H         LINE#         19
+  C:00D9H         LINE#         21
+  C:00D9H         LINE#         22
+  C:00DBH         LINE#         23
+  C:00DBH         LINE#         24
+  C:00DFH         LINE#         25
+  C:00E1H         LINE#         26
+  C:00E5H         LINE#         27
+  C:00E7H         LINE#         28
+  C:00E7H         LINE#         29
+  C:00E9H         LINE#         30
+  C:00EDH         LINE#         31
+  C:00EDH         LINE#         32
+  C:00EFH         LINE#         33
+  C:00F1H         LINE#         35
+  C:00F1H         LINE#         36
+  C:00F3H         LINE#         37
+  C:00F3H         LINE#         38
+  C:00F7H         LINE#         39
+  C:00F9H         LINE#         40
+  C:00FDH         LINE#         41
+  C:00FFH         LINE#         42
+  -------         ENDPROC       _SEND_DATA
+  C:00A0H         SYMBOL        L?0033
+  -------         PROC          L?0032
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/31/2016  23:07:12  PAGE 3
+
+
+  -------         ENDPROC       L?0032
+  C:00A0H         SYMBOL        L?0033
+  -------         PROC          _DELAY_1MS
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:00AAH         LINE#         44
+  C:00AAH         LINE#         45
+  C:00AAH         LINE#         47
+  C:00B5H         LINE#         48
+  C:00B5H         LINE#         49
+  C:00B8H         LINE#         50
+  C:00C3H         LINE#         51
+  C:00CAH         LINE#         52
+  -------         ENDPROC       _DELAY_1MS
+  -------         PROC          MAIN
+  -------         DO            
+  D:0002H         SYMBOL        k
+  -------         ENDDO         
+  C:0003H         LINE#         54
+  C:0003H         LINE#         55
+  C:0003H         LINE#         57
+  C:0003H         LINE#         58
+  C:0003H         LINE#         60
+  C:0012H         LINE#         61
+  C:0012H         LINE#         62
+  C:0012H         LINE#         63
+  C:0015H         LINE#         64
+  C:001DH         LINE#         65
+  C:001FH         LINE#         66
+  C:002EH         LINE#         67
+  C:002EH         LINE#         68
+  C:003EH         LINE#         69
+  C:0041H         LINE#         70
+  C:0049H         LINE#         71
+  C:004BH         LINE#         72
+  C:005AH         LINE#         73
+  C:005AH         LINE#         74
+  C:005AH         LINE#         75
+  C:005DH         LINE#         76
+  C:0065H         LINE#         77
+  C:0067H         LINE#         78
+  C:0073H         LINE#         79
+  C:0073H         LINE#         80
+  C:0083H         LINE#         81
+  C:0086H         LINE#         82
+  C:008EH         LINE#         83
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        LED_ORDER
+
+Program Size: data=9.0 xdata=0 code=300
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

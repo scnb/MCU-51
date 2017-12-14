@@ -1,0 +1,3 @@
+".\output\digital_bianmaqi.obj" 
+TO ".\output\digital_bianmaqi" 
+PRINT(".\digital_bianmaqi.m51")

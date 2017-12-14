@@ -1,0 +1,61 @@
+C51 COMPILER V9.01   STEP_MOTOR                                                            12/21/2016 00:51:40 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE STEP_MOTOR
+OBJECT MODULE PLACED IN .\output\Step_motor.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE Step_motor.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output\Step_motor.obj)
+
+line level    source
+
+   1          #include <reg52.h>      \
+   2          #include "intrins.h"
+   3          
+   4          
+   5          
+   6          void delay()
+   7          {       
+   8   1              unsigned int i = 200;
+   9   1              while(i--);
+  10   1      }
+  11          
+  12          //²½½øµç»úÇý¶¯º¯Êý
+  13          void Step_motor(unsigned long angle)
+  14          {
+  15   1              unsigned char index = 0;//Êý×éÏÂ±êË÷ÒýÖµ
+  16   1              unsigned char tmp = 0;
+  17   1              unsigned long beats = 0;//×ªangle½Ç¶ÈÐèÒªµÄ½ÚÅÄÊý
+  18   1              unsigned char Beats_Code[8] = {0x0e,0x0c,0x0d,0x09,0x0b,0x03,0x07,0x06};//°ËÅÄÄ£Ê½ÈÆ×é¿ØÖÆË³Ðò±í£¬¾ÍÊÇÈÃ×
+             -ª×ÓÒÔÃ¿ÅÄ11.25¡ãµÄ½Ç¶È×ª¶¯
+  19   1              beats = (angle*4096)/360;  //angle¾ÍÊÇ È¦Êý*360¡ã£¬4096ÊÇ64*64£¬µÚÒ»¸ö64ÊÇ×ªÒ»È¦ÒªÓÐ64¸öÅÄ
+  20   1              while(beats--)             //£¨360¡ã·Ö³ÉÁË8·Ö£¬Ò»·ÖÀïÃæÓÖÓÐ8ÅÄ£¬ËùÒÔÒ»È¦Ò»¹²ÓÐ 64ÅÄ£©
+  21   1              {                                                  //µÚ¶þ¸ö64ÊÇ¼õËÙ±ÈµÄÔ¼µÈÓÚÖµ£¬¸ü¾«È·µÄÖµÓ¦¸ÃÊÇ63.684£¬ÓÃ64À´¼ÆËãµÄ»°»á²úÉúÀÛ¼ÆÎó²î
+  22   2                      tmp = P2;
+  23   2                      tmp = tmp & 0xf0;//½«µÍËÄÎ»ÖÃ0
+  24   2                      tmp = tmp | Beats_Code[index];//½«Êý×éÔªËØµÄµÍËÄÎ»¸³¸øtmp
+  25   2                      P2 = tmp;
+  26   2                      index++;
+  27   2                      index = index & 0x07;
+  28   2                      delay();                                                   //ÎªÊ²Ã´Òª³ËÒÔµÚ¶þ¸ö64ÄØ£¬ÒòÎª³ÌÐòÀï¿ØÖÆµÄÊÇµç»úÀï±ß×îÐ¡µÄÄÇ¸ö³ÝÂÖ£¬Õâ¸ö³ÝÂÖ×ª63.684È¦£
+             -¬Íâ±ßµÄ´ó³ÝÂÖ²Å×ª1È¦
+  29   2              }
+  30   1      }                                                          
+  31                  
+  32          void main()
+  33          {
+  34   1              Step_motor(360*1);
+  35   1              while(1);
+  36   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    142    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      18
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

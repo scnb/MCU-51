@@ -1,0 +1,222 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/20/2016  23:47:37  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE .\output\uart_communication_pc_to_mcu.obj TO .\output\uart_communication PRINT (.\uart_communicat
+>> ion.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\uart_communication_pc_to_mcu.obj (UART_COMMUNICATION_PC_TO_MCU)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\output\uart_communication (UART_COMMUNICATION_PC_TO_MCU)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?UART_COMMUNICATION_PC_TO_MCU
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0018H     UNIT         ?PR?UARTINIT?UART_COMMUNICATION_PC_TO_MCU
+            CODE    001BH     0008H     UNIT         ?PR?MAIN?UART_COMMUNICATION_PC_TO_MCU
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     008CH     UNIT         ?C_C51STARTUP
+            CODE    00B2H     003DH     UNIT         ?PR?_SEND_DATA?UART_COMMUNICATION_PC_TO_MCU
+            CODE    00EFH     002FH     UNIT         ?PR?INTERRUPT_4?UART_COMMUNICATION_PC_TO_MCU
+            CODE    011EH     0018H     UNIT         ?CO?UART_COMMUNICATION_PC_TO_MCU
+            CODE    0136H     0016H     UNIT         ?PR?_DELAY?UART_COMMUNICATION_PC_TO_MCU
+            CODE    014CH     0011H     UNIT         ?PR?RECEIVE_FUN?UART_COMMUNICATION_PC_TO_MCU
+            CODE    015DH     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\output\uart_communication (UART_COMMUNICATION_PC_TO_MCU)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?INTERRUPT_4?UART_COMMUNICATION_PC...
+  +--> ?CO?UART_COMMUNICATION_PC_TO_MCU
+  +--> ?PR?_SEND_DATA?UART_COMMUNICATION_PC_...
+
+?PR?_SEND_DATA?UART_COMMUNICATION_PC_...
+  +--> ?CO?UART_COMMUNICATION_PC_TO_MCU
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?UART_COMMUNICATION_PC_TO_MCU
+  +--> ?C_INITSEG
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2016  23:47:37  PAGE 2
+
+
+
+?PR?MAIN?UART_COMMUNICATION_PC_TO_MCU
+  +--> ?PR?UARTINIT?UART_COMMUNICATION_PC_TO...
+  +--> ?PR?RECEIVE_FUN?UART_COMMUNICATION_PC...
+
+?PR?RECEIVE_FUN?UART_COMMUNICATION_PC...
+  +--> ?CO?UART_COMMUNICATION_PC_TO_MCU
+  +--> ?PR?_SEND_DATA?UART_COMMUNICATION_PC_...
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\uart_communication (UART_COMMUNICATION_PC_TO_MCU)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        UART_COMMUNICATION_PC_TO_MCU
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:00EFH         PUBLIC        interrupt_4
+  C:00BAH         PUBLIC        _Send_data
+  C:012EH         PUBLIC        Wei_choose
+  D:00A8H         PUBLIC        IE
+  B:00A8H.4       PUBLIC        ES
+  D:00B8H         PUBLIC        IP
+  B:0098H.0       PUBLIC        RI
+  C:001BH         PUBLIC        main
+  B:0090H.4       PUBLIC        HC595_DATA
+  D:0099H         PUBLIC        SBUF
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  C:0003H         PUBLIC        UartInit
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.3       PUBLIC        ET1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:0008H         PUBLIC        receive_flag
+  D:0009H         PUBLIC        receive_data
+  D:00C8H         PUBLIC        T2CON
+  C:011EH         PUBLIC        Duan_choose
+  B:0090H.0       PUBLIC        HC595_RCK
+  B:0090H.1       PUBLIC        HC595_SCK
+  C:0136H         PUBLIC        _Delay
+  C:014CH         PUBLIC        Receive_fun
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0005H         SYMBOL        j
+  -------         ENDDO         
+  C:0136H         LINE#         7
+  C:0136H         LINE#         8
+  C:0136H         LINE#         10
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2016  23:47:37  PAGE 3
+
+
+  C:013EH         LINE#         11
+  C:013EH         LINE#         12
+  C:0140H         LINE#         13
+  C:0140H         LINE#         14
+  C:0144H         LINE#         15
+  C:014BH         LINE#         16
+  -------         ENDPROC       _DELAY
+  -------         PROC          L?0027
+  -------         ENDPROC       L?0027
+  -------         PROC          _SEND_DATA
+  D:0007H         SYMBOL        duan
+  D:0005H         SYMBOL        wei
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:00BAH         LINE#         26
+  C:00BAH         LINE#         27
+  C:00BAH         LINE#         29
+  C:00BCH         LINE#         30
+  C:00BEH         LINE#         31
+  C:00BEH         LINE#         32
+  C:00C0H         LINE#         33
+  C:00C4H         LINE#         34
+  C:00C4H         LINE#         35
+  C:00C6H         LINE#         36
+  C:00C8H         LINE#         38
+  C:00C8H         LINE#         39
+  C:00CAH         LINE#         40
+  C:00CAH         LINE#         41
+  C:00CCH         LINE#         42
+  C:00D0H         LINE#         43
+  C:00D4H         LINE#         44
+  C:00D6H         LINE#         45
+  C:00D6H         LINE#         46
+  C:00D8H         LINE#         47
+  C:00DCH         LINE#         48
+  C:00DCH         LINE#         49
+  C:00DEH         LINE#         50
+  C:00E0H         LINE#         52
+  C:00E0H         LINE#         53
+  C:00E2H         LINE#         54
+  C:00E2H         LINE#         55
+  C:00E4H         LINE#         56
+  C:00E8H         LINE#         57
+  C:00ECH         LINE#         58
+  C:00EEH         LINE#         59
+  -------         ENDPROC       _SEND_DATA
+  -------         PROC          RECEIVE_FUN
+  C:014CH         LINE#         64
+  C:014CH         LINE#         65
+  C:014CH         LINE#         66
+  C:0151H         LINE#         67
+  C:0151H         LINE#         68
+  C:0154H         LINE#         69
+  C:015CH         LINE#         70
+  C:015CH         LINE#         71
+  -------         ENDPROC       RECEIVE_FUN
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2016  23:47:37  PAGE 4
+
+
+  -------         PROC          UARTINIT
+  C:0003H         LINE#         77
+  C:0003H         LINE#         78
+  C:0003H         LINE#         79
+  C:0006H         LINE#         80
+  C:0009H         LINE#         83
+  C:000CH         LINE#         84
+  C:000FH         LINE#         85
+  C:0012H         LINE#         86
+  C:0014H         LINE#         87
+  C:0016H         LINE#         88
+  C:0018H         LINE#         89
+  C:001AH         LINE#         90
+  -------         ENDPROC       UARTINIT
+  -------         PROC          MAIN
+  C:001BH         LINE#         95
+  C:001BH         LINE#         96
+  C:001BH         LINE#         97
+  C:001EH         LINE#         98
+  C:001EH         LINE#         99
+  C:001EH         LINE#         100
+  C:0021H         LINE#         101
+  -------         ENDPROC       MAIN
+  -------         PROC          INTERRUPT_4
+  C:00EFH         LINE#         105
+  C:0100H         LINE#         107
+  C:0107H         LINE#         108
+  C:0109H         LINE#         109
+  C:010CH         LINE#         111
+  C:010FH         LINE#         112
+  -------         ENDPROC       INTERRUPT_4
+  -------         ENDMOD        UART_COMMUNICATION_PC_TO_MCU
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?UART_COMMUNICATION_PC_TO_MCU
+
+Program Size: data=11.0 xdata=0 code=353
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

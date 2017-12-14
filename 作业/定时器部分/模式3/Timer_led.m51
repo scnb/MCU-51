@@ -1,0 +1,194 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/17/2016  21:14:33  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE .\output\Timer_led.obj TO .\output\Timer_led PRINT (.\Timer_led.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\Timer_led.obj (TIMER_LED)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\output\Timer_led (TIMER_LED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?TIMER_LED
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0008H     UNIT         ?PR?MAIN?TIMER_LED
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     0061H     UNIT         ?PR?INTERRUPT_1?TIMER_LED
+            CODE    00FBH     0041H     UNIT         ?PR?_SEND_DATA?TIMER_LED
+            CODE    013CH     0020H     UNIT         ?CO?TIMER_LED
+            CODE    015CH     0012H     UNIT         ?PR?TIMER0INIT?TIMER_LED
+            CODE    016EH     0008H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\output\Timer_led (TIMER_LED)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?INTERRUPT_1?TIMER_LED
+  +--> ?CO?TIMER_LED
+  +--> ?PR?_SEND_DATA?TIMER_LED
+
+?PR?_SEND_DATA?TIMER_LED
+  +--> ?CO?TIMER_LED
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?TIMER_LED
+  +--> ?C_INITSEG
+
+?PR?MAIN?TIMER_LED
+  +--> ?PR?TIMER0INIT?TIMER_LED
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/17/2016  21:14:33  PAGE 2
+
+
+  +--> ?PR?_SEND_DATA?TIMER_LED
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\Timer_led (TIMER_LED)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TIMER_LED
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:009AH         PUBLIC        interrupt_1
+  B:00A8H.7       PUBLIC        EA
+  C:0107H         PUBLIC        _Send_data
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:013CH         PUBLIC        Led_One
+  C:0003H         PUBLIC        main
+  B:0080H.7       PUBLIC        HC595_DATA
+  C:014CH         PUBLIC        Led_Two
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.1       PUBLIC        ET0
+  B:0088H.5       PUBLIC        TF0
+  C:015CH         PUBLIC        Timer0Init
+  D:008AH         PUBLIC        TL0
+  D:0008H         PUBLIC        num
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:000AH         PUBLIC        k
+  B:0080H.6       PUBLIC        HC595_RCK
+  B:0080H.5       PUBLIC        HC595_SCK
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TIMER0INIT
+  C:015CH         LINE#         25
+  C:015CH         LINE#         26
+  C:015CH         LINE#         27
+  C:015FH         LINE#         28
+  C:0162H         LINE#         29
+  C:0165H         LINE#         30
+  C:0167H         LINE#         31
+  C:0169H         LINE#         32
+  C:016BH         LINE#         33
+  C:016DH         LINE#         34
+  -------         ENDPROC       TIMER0INIT
+  -------         PROC          L?0023
+  -------         ENDPROC       L?0023
+  -------         PROC          _SEND_DATA
+  D:0007H         SYMBOL        Led8_one
+  D:0005H         SYMBOL        Led8_two
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/17/2016  21:14:33  PAGE 3
+
+
+  C:0107H         LINE#         37
+  C:0107H         LINE#         38
+  C:0107H         LINE#         40
+  C:0109H         LINE#         41
+  C:010BH         LINE#         42
+  C:010BH         LINE#         43
+  C:010DH         LINE#         44
+  C:0111H         LINE#         45
+  C:0111H         LINE#         46
+  C:0113H         LINE#         47
+  C:0115H         LINE#         49
+  C:0115H         LINE#         50
+  C:0117H         LINE#         51
+  C:0117H         LINE#         52
+  C:011BH         LINE#         53
+  C:011DH         LINE#         54
+  C:0121H         LINE#         55
+  C:0123H         LINE#         56
+  C:0123H         LINE#         57
+  C:0125H         LINE#         58
+  C:0129H         LINE#         59
+  C:0129H         LINE#         60
+  C:012BH         LINE#         61
+  C:012DH         LINE#         63
+  C:012DH         LINE#         64
+  C:012FH         LINE#         65
+  C:012FH         LINE#         66
+  C:0133H         LINE#         67
+  C:0135H         LINE#         68
+  C:0139H         LINE#         69
+  C:013BH         LINE#         70
+  -------         ENDPROC       _SEND_DATA
+  -------         PROC          MAIN
+  C:0003H         LINE#         74
+  C:0003H         LINE#         75
+  C:0003H         LINE#         77
+  C:0006H         LINE#         78
+  C:0009H         LINE#         79
+  C:0009H         LINE#         80
+  C:0009H         LINE#         82
+  -------         ENDPROC       MAIN
+  -------         PROC          INTERRUPT_1
+  C:009AH         LINE#         85
+  C:00ABH         LINE#         87
+  C:00AEH         LINE#         88
+  C:00B0H         LINE#         89
+  C:00BCH         LINE#         90
+  C:00BCH         LINE#         91
+  C:00CDH         LINE#         92
+  C:00D2H         LINE#         93
+  C:00D2H         LINE#         94
+  C:00D5H         LINE#         95
+  C:00D8H         LINE#         96
+  C:00DAH         LINE#         98
+  C:00DAH         LINE#         99
+  C:00DCH         LINE#         100
+  C:00DCH         LINE#         101
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/17/2016  21:14:33  PAGE 4
+
+
+  C:00E2H         LINE#         102
+  C:00E4H         LINE#         104
+  C:00E4H         LINE#         105
+  C:00ECH         LINE#         106
+  C:00ECH         LINE#         107
+  -------         ENDPROC       INTERRUPT_1
+  -------         ENDMOD        TIMER_LED
+
+Program Size: data=12.0 xdata=0 code=374
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

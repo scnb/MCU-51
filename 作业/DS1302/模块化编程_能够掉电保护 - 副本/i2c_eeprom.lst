@@ -1,0 +1,178 @@
+C51 COMPILER V9.01   I2C_EEPROM                                                            11/25/2016 15:36:26 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE I2C_EEPROM
+OBJECT MODULE PLACED IN .\output\i2c_eeprom.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE source\i2c_eeprom.c BROWSE DEBUG OBJECTEXTEND PRINT(.\i2c_eeprom.lst) OBJECT(
+                    -.\output\i2c_eeprom.obj)
+
+line level    source
+
+   1          
+   2          #include<reg52.h>
+   3          #include "inc/i2ceeprom.h"
+   4          #include<INTRINS.h>
+   5          
+   6          /*对at24c02的芯片引脚进行设置*/
+   7          sbit SCL = P0^6;
+   8          sbit SDA = P0^7;
+   9          
+  10          //unsigned char addr = 0x01;//器件起始地址
+  11          
+  12          void Delay_i2c(void)
+  13          {
+  14   1              _nop_();
+  15   1              _nop_();
+  16   1              _nop_();
+  17   1              _nop_();        
+  18   1      }
+  19          
+  20          
+  21          /*i2c初始化设置*/
+  22          void InitI2C(void)
+  23          {
+  24   1               SDA = 1;
+  25   1               SCL = 1;
+  26   1      }
+  27          
+  28          /*I2C起始信号*/
+  29          void i2c_start_fun()
+  30          {
+  31   1              SDA = 1;
+  32   1              Delay_i2c();
+  33   1              SCL = 1;
+  34   1              Delay_i2c();
+  35   1              SDA = 0;
+  36   1              Delay_i2c();
+  37   1              SCL = 0;
+  38   1      }
+  39          
+  40          /*i2c停止信号*/
+  41          void i2c_stop_fun()
+  42          {
+  43   1              SCL = 0;
+  44   1              Delay_i2c();
+  45   1              SDA = 0;
+  46   1              Delay_i2c();
+  47   1              SCL = 1;
+  48   1              Delay_i2c();
+  49   1              SDA = 1;
+  50   1              Delay_i2c();
+  51   1      }
+  52          
+  53          
+  54          
+C51 COMPILER V9.01   I2C_EEPROM                                                            11/25/2016 15:36:26 PAGE 2   
+
+  55          
+  56          /*i2c向器件即eeprom中写入一个字节*/
+  57          void i2c_write_data(unsigned char byte)//i2c先发送高位再发送低位
+  58          {
+  59   1              unsigned char i;
+  60   1              unsigned char j;
+  61   1              unsigned char mask = 0x80;
+  62   1              for(i = 0;i < 8;i++)
+  63   1              {
+  64   2                      SCL = 0; //只有在scl为低电平的时候，sda的状态才能发生变化
+  65   2                      Delay_i2c();
+  66   2                      if(0 == (mask&byte)) //必须得是判断0 == (mask&byte),如果是判断1 == (mask&byte)的话，那么会出错
+  67   2                      {
+  68   3                              SDA = 0;
+  69   3                      }
+  70   2                      else
+  71   2                      {
+  72   3                              SDA = 1;
+  73   3                      }
+  74   2                      mask >>= 1;
+  75   2                      Delay_i2c(); 
+  76   2                      SCL = 1;        //在sda发送数据时，scl必须保持高电平
+  77   2                      Delay_i2c();
+  78   2              }
+  79   1              SCL = 0;  //最后SCL经历了一个从低电平到高电平再到低电平的变化,而SDA的状态一直不变
+  80   1              SDA = 1;
+  81   1              Delay_i2c();    //还缺少接受从机应答位的语句
+  82   1              SCL = 1;
+  83   1              j = SDA;
+  84   1              Delay_i2c();
+  85   1              SCL = 0;                
+  86   1      }
+  87          
+  88          /*从eeprom中读取一个字节*/
+  89          unsigned char i2c_read_data()
+  90          {
+  91   1              unsigned char i;
+  92   1              unsigned char byte = 0;
+  93   1              for(i = 0;i < 8;i++)
+  94   1              {
+  95   2                      SCL = 0;
+  96   2                      SDA = 1;//每一次必须先将SDA置高电平
+  97   2                      Delay_i2c();
+  98   2                      SCL = 1;
+  99   2                      Delay_i2c();
+ 100   2                      byte <<= 1;     //先左移一位,如果左移放在if语句后面的话，当i=7的时候，最后还会执行一句左移，那么最高位将会被
+             -移出去
+ 101   2                      if(1 == SDA)
+ 102   2                      {
+ 103   3                              byte = byte | 0x01;                     
+ 104   3                      }                                          
+ 105   2                      Delay_i2c();
+ 106   2              }
+ 107   1              SCL = 0;
+ 108   1              SDA = 1;
+ 109   1              Delay_i2c();
+ 110   1              SCL = 1;
+ 111   1              Delay_i2c();
+ 112   1              SCL = 0;
+ 113   1              return byte;
+ 114   1      }
+ 115          
+C51 COMPILER V9.01   I2C_EEPROM                                                            11/25/2016 15:36:26 PAGE 3   
+
+ 116          
+ 117          
+ 118          
+ 119          /*i2c向eeprom中写入数据*/
+ 120          void i2c_write_eeprom(unsigned char addr,unsigned char databyte)
+ 121          {
+ 122   1              i2c_start_fun();//在写函数的开始需要一个起始信号
+ 123   1              i2c_write_data(0xa0);//先写入器件即eeprom的地址
+ 124   1      
+ 125   1              i2c_write_data(addr);//再写入数据存储地址
+ 126   1      
+ 127   1              i2c_write_data(databyte);//最后写入要发送的数据
+ 128   1      
+ 129   1              i2c_stop_fun();//在写函数的最后需要一个停止信号
+ 130   1      
+ 131   1      }
+ 132          
+ 133          
+ 134          /*i2c从eeprom中读取数据*/
+ 135          unsigned char i2c_read_eeprom(unsigned char addr)
+ 136          {
+ 137   1              unsigned char databyte;
+ 138   1              i2c_start_fun();
+ 139   1              i2c_write_data(0xa0);
+ 140   1      
+ 141   1              i2c_write_data(addr);
+ 142   1      
+ 143   1              i2c_start_fun();
+ 144   1              i2c_write_data(0xa1);
+ 145   1      
+ 146   1              databyte = i2c_read_data();
+ 147   1              i2c_stop_fun();
+ 148   1              return databyte;
+ 149   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    180    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

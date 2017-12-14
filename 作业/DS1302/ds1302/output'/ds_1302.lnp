@@ -1,0 +1,3 @@
+".\output'\ds_1302.obj" 
+TO ".\output'\ds_1302" 
+PRINT(".\ds_1302.m51")

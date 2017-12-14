@@ -1,0 +1,157 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/15/2016  11:52:37  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE UART_RX_Char.obj TO UART_RX_Char
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  UART_RX_Char.obj (UART_RX_CHAR)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\51\C51\LIB\C51S.LIB (?C?CLDPTR)
+  F:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  UART_RX_Char (UART_RX_CHAR)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000BH     UNIT         ?DT?UART_RX_CHAR
+            DATA    0013H     0003H     UNIT         _DATA_GROUP_
+            IDATA   0016H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0025H     UNIT         ?PR?_STRING_SEND?UART_RX_CHAR
+            CODE    00B4H     0021H     UNIT         ?PR?_DELAY1MS?UART_RX_CHAR
+            CODE    00D5H     0019H     UNIT         ?C?LIB_CODE
+            CODE    00EEH     0015H     UNIT         ?PR?MAIN?UART_RX_CHAR
+            CODE    0103H     000FH     UNIT         ?PR?SCON_TIMER1_INIT?UART_RX_CHAR
+            CODE    0112H     000EH     UNIT         ?C_INITSEG
+            CODE    0120H     000AH     UNIT         ?PR?_BYTE_SEND?UART_RX_CHAR
+
+
+
+OVERLAY MAP OF MODULE:   UART_RX_Char (UART_RX_CHAR)
+
+
+SEGMENT                                     DATA_GROUP 
+  +--> CALLED SEGMENT                     START    LENGTH
+---------------------------------------------------------
+?C_C51STARTUP                             -----    -----
+  +--> ?PR?MAIN?UART_RX_CHAR
+  +--> ?C_INITSEG
+
+?PR?MAIN?UART_RX_CHAR                     -----    -----
+  +--> ?PR?SCON_TIMER1_INIT?UART_RX_CHAR
+  +--> ?PR?_STRING_SEND?UART_RX_CHAR
+  +--> ?PR?_DELAY1MS?UART_RX_CHAR
+
+?PR?_STRING_SEND?UART_RX_CHAR             0013H    0003H
+  +--> ?PR?_BYTE_SEND?UART_RX_CHAR
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/15/2016  11:52:37  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  UART_RX_Char (UART_RX_CHAR)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        UART_RX_CHAR
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  C:0120H         PUBLIC        _Byte_Send
+  D:00B0H         PUBLIC        P3
+  C:00B4H         PUBLIC        _Delay1ms
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  B:0098H.1       PUBLIC        TI
+  C:0103H         PUBLIC        Scon_Timer1_Init
+  C:00EEH         PUBLIC        main
+  D:0008H         PUBLIC        Tx_Char
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  C:008FH         PUBLIC        _String_Send
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          SCON_TIMER1_INIT
+  C:0103H         LINE#         5
+  C:0103H         LINE#         6
+  C:0103H         LINE#         7
+  C:0106H         LINE#         8
+  C:0109H         LINE#         9
+  C:010CH         LINE#         10
+  C:010FH         LINE#         11
+  C:0111H         LINE#         12
+  -------         ENDPROC       SCON_TIMER1_INIT
+  -------         PROC          _DELAY1MS
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:00B4H         LINE#         14
+  C:00B4H         LINE#         15
+  C:00B4H         LINE#         17
+  C:00BFH         LINE#         18
+  C:00BFH         LINE#         19
+  C:00CDH         LINE#         20
+  C:00D4H         LINE#         21
+  -------         ENDPROC       _DELAY1MS
+  -------         PROC          _BYTE_SEND
+  D:0007H         SYMBOL        byte
+  C:0120H         LINE#         23
+  C:0120H         LINE#         24
+  C:0120H         LINE#         26
+  C:0122H         LINE#         27
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/15/2016  11:52:37  PAGE 3
+
+
+  C:0125H         LINE#         28
+  C:0125H         LINE#         29
+  C:0127H         LINE#         30
+  C:0129H         LINE#         32
+  -------         ENDPROC       _BYTE_SEND
+  -------         PROC          _STRING_SEND
+  D:0013H         SYMBOL        Tx_Data
+  C:008FH         LINE#         34
+  C:0095H         LINE#         35
+  C:0095H         LINE#         36
+  C:00A0H         LINE#         37
+  C:00A0H         LINE#         38
+  C:00B1H         LINE#         39
+  C:00B3H         LINE#         40
+  -------         ENDPROC       _STRING_SEND
+  -------         PROC          MAIN
+  C:00EEH         LINE#         43
+  C:00EEH         LINE#         44
+  C:00EEH         LINE#         45
+  C:00F1H         LINE#         46
+  C:00F1H         LINE#         47
+  C:00F1H         LINE#         48
+  C:00FAH         LINE#         49
+  C:0101H         LINE#         50
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        UART_RX_CHAR
+
+  -------         MODULE        ?C?CLDPTR
+  C:00D5H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+Program Size: data=23.0 xdata=0 code=298
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

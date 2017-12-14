@@ -1,0 +1,166 @@
+C51 COMPILER V9.01   I2C_INIT                                                              11/23/2016 00:14:57 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE I2C_INIT
+OBJECT MODULE PLACED IN .\output\i2c_init.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE source\i2c_init.c BROWSE DEBUG OBJECTEXTEND PRINT(.\i2c_init.lst) OBJECT(.\ou
+                    -tput\i2c_init.obj)
+
+line level    source
+
+   1          #include "ic2_init.h"
+*** WARNING C318 IN LINE 1 OF source\i2c_init.c: can't open file 'ic2_init.h'
+   2          #include <reg52.h>
+   3          /*定义i2c两线*/
+   4          sbit SCL = P0^6;
+   5          sbit SDA = P0^7;
+   6          
+   7          /*I2C起始信号*/
+   8          void i2c_start_fun()
+   9          {
+  10   1              SDA = 1;
+  11   1              Delay_i2c();
+*** WARNING C206 IN LINE 11 OF SOURCE\I2C_INIT.C: 'Delay_i2c': missing function-prototype
+  12   1              SCL = 1;
+  13   1              Delay_i2c();
+  14   1              SDA = 0;
+  15   1              Delay_i2c();
+  16   1              SCL = 0;
+  17   1              Delay_i2c();
+  18   1      }
+  19          
+  20          /*i2c停止信号*/
+  21          void i2c_stop_fun()
+  22          {
+  23   1              SCL = 0;
+  24   1              Delay_i2c();
+  25   1              SDA = 0;
+  26   1              Delay_i2c();
+  27   1              SCL = 1;
+  28   1              Delay_i2c();
+  29   1              SDA = 1;
+  30   1              Delay_i2c();
+  31   1      }
+  32          
+  33          /*读取应答位返回值*/
+  34          unsigned char i2c_read_ack()
+  35          {
+  36   1              unsigned char i;
+  37   1              unsigned char byte = 0;
+  38   1              for(i = 0;i < 8;i++)
+  39   1              {
+  40   2                      SCL = 0;
+  41   2                      SDA = 1;//每一次必须先将SDA置高电平
+  42   2                      Delay_i2c();
+  43   2                      SCL = 1;
+  44   2                      Delay_i2c();
+  45   2                      byte <<= 1;     //先左移一位,如果左移放在if语句后面的话，当i=7的时候，最后还会执行一句左移，那么最高位将会被
+             -移出去
+  46   2                      if(1 == SDA)
+  47   2                      {
+  48   3                              byte = byte | 0x01;                     
+  49   3                      }                                          
+  50   2                      Delay_i2c();
+  51   2              }
+C51 COMPILER V9.01   I2C_INIT                                                              11/23/2016 00:14:57 PAGE 2   
+
+  52   1              SCL = 0;
+  53   1              SDA = 0;
+  54   1              Delay_i2c();
+  55   1              SCL = 1;
+  56   1              Delay_i2c();
+  57   1              SCL = 0;
+  58   1              return byte;
+  59   1      }               
+  60          
+  61          
+  62          /*i2c向eeprom中写入数据*/
+  63          void i2c_write_eeprom(unsigned char addr,unsigned char databyte)
+  64          {
+  65   1              i2c_start_fun();//在写函数的开始需要一个起始信号
+  66   1              i2c_write_data(0xa0);//先写入器件即eeprom的地址
+*** WARNING C206 IN LINE 66 OF SOURCE\I2C_INIT.C: 'i2c_write_data': missing function-prototype
+*** ERROR C267 IN LINE 66 OF SOURCE\I2C_INIT.C: 'i2c_write_data': requires ANSI-style prototype
+  67   1              i2c_write_data(addr);//再写入数据存储地址
+  68   1              i2c_write_data(databyte);//最后写入要发送的数据
+  69   1              i2c_stop_fun();//在写函数的最后需要一个停止信号
+  70   1      
+  71   1      }
+  72          
+  73          /*i2c向器件即eeprom中写入数据*/
+  74          void i2c_write_data(unsigned char databyte)//i2c向发送高位再发送低位
+  75          {
+*** ERROR C231 IN LINE 75 OF SOURCE\I2C_INIT.C: 'i2c_write_data': redefinition
+  76   1              unsigned char i;
+  77   1              unsigned char mask = 0x80;
+  78   1              for(i = 0;i < 8;i++)
+  79   1              {
+  80   2                      SCL = 0; //只有在scl为低电平的时候，sda的状态才能发生变化
+  81   2                      if(1 == (mask&databyte))
+  82   2                      {
+  83   3                              SDA = 1;
+  84   3                      }
+  85   2                      else
+  86   2                      {
+  87   3                              SDA = 0;
+  88   3                      }
+  89   2                      mask >>= 1;
+  90   2                      Delay_i2c(); 
+  91   2                      SCL = 1;        //在sda发送数据时，scl必须保持高电平
+  92   2                      Delay_i2c();
+  93   2              }
+  94   1              SCL = 0;  //最后SCL经历了一个从低电平到高电平再到低电平的变化,而SDA的状态一直不变
+  95   1              SDA = 1;
+  96   1              Delay_i2c();    //还缺少接受从机应答位的语句
+  97   1              SCL = 1;
+  98   1              Delay_i2c();
+  99   1              SCL = 0;                
+ 100   1      }
+*** ERROR C231 IN LINE 100 OF SOURCE\I2C_INIT.C: 'i2c_write_data': redefinition
+ 101          
+ 102          /*i2c从eeprom中读取数据*/
+ 103          unsigned char i2c_read_eeprom(unsigned char addr)
+ 104          {
+ 105   1              unsigned char databyte;
+ 106   1              i2c_start_fun();
+ 107   1              i2c_write_data(0xa0);
+ 108   1              i2c_write_data(addr);
+ 109   1              i2c_start_fun();
+C51 COMPILER V9.01   I2C_INIT                                                              11/23/2016 00:14:57 PAGE 3   
+
+ 110   1              i2c_write_data(0xa1);
+ 111   1              databyte = i2c_read_data();
+ 112   1              i2c_stop_fun();
+ 113   1              return databyte;
+ 114   1      }
+ 115          
+ 116          /*从器件即eeprom中的某个地址开始读取数据*/
+ 117          unsigned char i2c_read_data()
+ 118          {
+ 119   1              unsigned char i;
+ 120   1              unsigned char byte = 0;
+ 121   1              for(i = 0;i < 8;i++)
+ 122   1              {
+ 123   2                      SCL = 0;
+ 124   2                      SDA = 1;//每一次必须先将SDA置高电平
+ 125   2                      Delay_i2c();
+ 126   2                      SCL = 1;
+ 127   2                      Delay_i2c();
+ 128   2                      byte <<= 1;     //先左移一位,如果左移放在if语句后面的话，当i=7的时候，最后还会执行一句左移，那么最高位将会被
+             -移出去
+ 129   2                      if(1 == SDA)
+ 130   2                      {
+ 131   3                              byte = byte | 0x01;                     
+ 132   3                      }                                          
+ 133   2                      Delay_i2c();
+ 134   2              }
+ 135   1              SCL = 0;
+ 136   1              SDA = 1;
+ 137   1              Delay_i2c();
+ 138   1              SCL = 1;
+ 139   1              Delay_i2c();
+ 140   1              SCL = 0;
+ 141   1              return byte;
+ 142   1      }
+
+C51 COMPILATION COMPLETE.  3 WARNING(S),  3 ERROR(S)

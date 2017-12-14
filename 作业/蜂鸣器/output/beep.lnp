@@ -1,0 +1,3 @@
+".\output\beep.obj" 
+TO ".\output\beep" 
+PRINT(".\beep.m51")

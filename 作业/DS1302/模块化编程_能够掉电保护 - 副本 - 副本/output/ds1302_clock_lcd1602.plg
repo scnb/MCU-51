@@ -1,0 +1,43 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\作业\DS1302\模块化编程_能够掉电保护 - 副本\ds1302_clock_lcd1602.uvproj
+Project File Date:  11/26/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(40): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_I2C_WRITE_EEPROM?I2C_EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_I2C_READ_EEPROM?I2C_EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_DATA?HC595
+Program Size: data=33.0 xdata=0 code=1308
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 6 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+SOURCE\MAIN.C(40): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_I2C_WRITE_EEPROM?I2C_EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_I2C_READ_EEPROM?I2C_EEPROM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_DATA?HC595
+Program Size: data=33.0 xdata=0 code=1320
+creating hex file from ".\output\ds1302_clock_lcd1602"...
+".\output\ds1302_clock_lcd1602" - 0 Error(s), 6 Warning(s).

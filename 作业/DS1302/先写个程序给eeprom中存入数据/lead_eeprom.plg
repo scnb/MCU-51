@@ -1,0 +1,28 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\作业\DS1302\先写个程序给eeprom中存入数据\lead_eeprom.uvproj
+Project File Date:  11/25/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling lead_eeprom.c...
+LEAD_EEPROM.C(178): error C202: 'i': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling lead_eeprom.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_I2C_READ_EEPROM?LEAD_EEPROM
+Program Size: data=19.0 xdata=0 code=379
+creating hex file from ".\output\lead_eeprom"...
+".\output\lead_eeprom" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_I2C_READ_EEPROM?LEAD_EEPROM
+Program Size: data=19.0 xdata=0 code=379
+creating hex file from ".\output\lead_eeprom"...
+".\output\lead_eeprom" - 0 Error(s), 1 Warning(s).

@@ -1,0 +1,3 @@
+".\output\Independent_button.obj" 
+TO ".\output\Independent_button" 
+PRINT(".\Independent_button.m51")

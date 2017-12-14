@@ -1,0 +1,91 @@
+C51 COMPILER V9.01   MATRIX_BUTTON                                                         09/10/2016 16:04:17 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MATRIX_BUTTON
+OBJECT MODULE PLACED IN .\output\Matrix_Button.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE source\Matrix_Button.c BROWSE DEBUG OBJECTEXTEND PRINT(.\Matrix_Button.lst) O
+                    -BJECT(.\output\Matrix_Button.obj)
+
+line level    source
+
+   1          //这个程序可以在第一行与第一列之间转换，需改动是P2_0 = 0还是P2_4 = 0 ,然后再改变中断函数里的十六进制数值
+   2          //这个程序也可以改成四行里的任意一行，四列里的任意一列
+   3          
+   4          
+   5          #include <reg51.h>
+   6          #include "include/delay.h"
+   7          #include "include/main.h"
+   8          #include "intrins.h"
+   9          #include "include/hc595.h"
+  10          
+  11          
+  12          void Key_Check_Dis() interrupt 0 using 0       //中断程序
+  13          {
+  14   1              
+  15   1              //P2 = 0xf0;                                                       //如果写上这句话，那么所有的按键都可以被按下去
+  16   1              if(0x0e == (P2&0x0f))                           //行0xe0           //如果是0x0f,则是列；如果是0xf0，则是行
+  17   1              {
+  18   2                      Display[0] = Shu_Duan_Chose[1];  
+  19   2                      Send_Data(Display[0],0xfe);
+  20   2              }
+  21   1              else if(0x0d == (P2&0x0f))                              //行0xd0
+  22   1              {
+  23   2                      Display[0] = Shu_Duan_Chose[5];
+  24   2                      Send_Data(Display[0],0xfe);
+  25   2              }
+  26   1              else if(0x0b == (P2&0x0f))                              //行0xb0
+  27   1              {
+  28   2                      Display[0] = Shu_Duan_Chose[9];
+  29   2                      Send_Data(Display[0],0xfe);
+  30   2              }
+  31   1              else if(0x07 == (P2&0x0f))                         //行0x70
+  32   1              {
+  33   2                  Display[0] = Shu_Duan_Chose[13];
+  34   2                      Send_Data(Display[0],0xfe);
+  35   2              }
+  36   1              //Send_Data(Display[0],0xfe);
+  37   1      }
+  38          
+  39          /*void Init_Show()
+  40          {
+  41                  Send_Data(0x3f,0xfe);
+  42          } */
+  43          
+  44          
+  45          
+  46          
+  47          void main()
+  48          {
+  49   1              Send_Data(0x3f,0xfe);
+  50   1              EA = 1;
+  51   1              EX0 = 1;
+  52   1              IT0 = 0;
+  53   1              TR0 = 0;
+  54   1              //Init_Show();
+C51 COMPILER V9.01   MATRIX_BUTTON                                                         09/10/2016 16:04:17 PAGE 2   
+
+  55   1              
+  56   1              //P2_0 = 0;                     //此定义说明是低四位的P2^0口置成了低电位 ,所以是第一行
+  57   1              P2_4 = 0;                       //此定义说明是高四位的P2^4口置成了低电位，所以是第一列
+  58   1              P0 = 0xff;
+  59   1              P1 = 0xff;
+  60   1              while(1)
+  61   1              {
+  62   2                      Delay1ms(2000);
+  63   2                      Delay1ms(2000);
+  64   2              }
+  65   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    124    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

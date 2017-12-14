@@ -1,0 +1,30 @@
+C51 COMPILER V9.01   MAIN                                                                  05/10/2017 10:58:51 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: F:\C51\BIN\C51.EXE main.c BROWSE INCDIR(.\HARDWARE) DEBUG OBJECTEXTEND PRINT(.\Listings\main.lst) O
+                    -BJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          
+   3          void main(void)
+   4          {
+   5   1              
+   6   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      1    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,167 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/20/2016  17:42:11  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE .\output\uart_communication.obj TO .\output\uart_communication PRINT (.\uart_communication.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\uart_communication.obj (UART_COMMUNICATION)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\51\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  F:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\output\uart_communication (UART_COMMUNICATION)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?UART_COMMUNICATION
+            DATA    000BH     0003H     UNIT         _DATA_GROUP_
+            IDATA   000EH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     002DH     UNIT         ?C?LIB_CODE
+            CODE    00BCH     002AH     UNIT         ?PR?_SEND_UART?UART_COMMUNICATION
+            CODE    00E6H     0018H     UNIT         ?PR?UARTINIT?UART_COMMUNICATION
+            CODE    00FEH     0017H     UNIT         ?PR?MAIN?UART_COMMUNICATION
+            CODE    0115H     0016H     UNIT         ?PR?_DELAY?UART_COMMUNICATION
+            CODE    012BH     000AH     UNIT         ?CO?UART_COMMUNICATION
+            CODE    0135H     0006H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\output\uart_communication (UART_COMMUNICATION)
+
+
+SEGMENT                                     DATA_GROUP 
+  +--> CALLED SEGMENT                     START    LENGTH
+---------------------------------------------------------
+?C_C51STARTUP                             -----    -----
+  +--> ?PR?MAIN?UART_COMMUNICATION
+  +--> ?C_INITSEG
+
+?PR?MAIN?UART_COMMUNICATION               -----    -----
+  +--> ?PR?UARTINIT?UART_COMMUNICATION
+  +--> ?PR?_SEND_UART?UART_COMMUNICATION
+  +--> ?PR?_DELAY?UART_COMMUNICATION
+
+?PR?_SEND_UART?UART_COMMUNICATION         000BH    0003H
+  +--> ?PR?_DELAY?UART_COMMUNICATION
+
+?C_INITSEG                                -----    -----
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2016  17:42:11  PAGE 2
+
+
+  +--> ?CO?UART_COMMUNICATION
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\uart_communication (UART_COMMUNICATION)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        UART_COMMUNICATION
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  B:00A8H.4       PUBLIC        ES
+  D:00B8H         PUBLIC        IP
+  B:0098H.1       PUBLIC        TI
+  C:00FEH         PUBLIC        main
+  C:00BCH         PUBLIC        _Send_uart
+  D:0099H         PUBLIC        SBUF
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  C:00E6H         PUBLIC        UartInit
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00A8H.3       PUBLIC        ET1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:00C8H         PUBLIC        T2CON
+  C:0115H         PUBLIC        _Delay
+  D:0008H         PUBLIC        s
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0005H         SYMBOL        j
+  -------         ENDDO         
+  C:0115H         LINE#         7
+  C:0115H         LINE#         8
+  C:0115H         LINE#         10
+  C:011DH         LINE#         11
+  C:011DH         LINE#         12
+  C:011FH         LINE#         13
+  C:011FH         LINE#         14
+  C:0123H         LINE#         15
+  C:012AH         LINE#         16
+  -------         ENDPROC       _DELAY
+  -------         PROC          _SEND_UART
+  D:000BH         SYMBOL        string
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:00BCH         LINE#         32
+  C:00C2H         LINE#         33
+  C:00C2H         LINE#         34
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2016  17:42:11  PAGE 3
+
+
+  C:00C4H         LINE#         35
+  C:00D4H         LINE#         36
+  C:00D4H         LINE#         37
+  C:00D6H         LINE#         38
+  C:00D9H         LINE#         39
+  C:00E0H         LINE#         40
+  C:00E1H         LINE#         41
+  C:00E3H         LINE#         42
+  C:00E5H         LINE#         43
+  -------         ENDPROC       _SEND_UART
+  -------         PROC          UARTINIT
+  C:00E6H         LINE#         47
+  C:00E6H         LINE#         48
+  C:00E6H         LINE#         49
+  C:00E9H         LINE#         50
+  C:00ECH         LINE#         53
+  C:00EFH         LINE#         54
+  C:00F2H         LINE#         55
+  C:00F5H         LINE#         56
+  C:00F7H         LINE#         57
+  C:00F9H         LINE#         58
+  C:00FBH         LINE#         59
+  C:00FDH         LINE#         60
+  -------         ENDPROC       UARTINIT
+  -------         PROC          MAIN
+  C:00FEH         LINE#         65
+  C:00FEH         LINE#         66
+  C:00FEH         LINE#         67
+  C:0101H         LINE#         68
+  C:0101H         LINE#         69
+  C:0101H         LINE#         70
+  C:0103H         LINE#         71
+  C:010CH         LINE#         72
+  C:0113H         LINE#         73
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        UART_COMMUNICATION
+
+  -------         MODULE        ?C?CLDOPTR
+  C:008FH         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+Program Size: data=15.0 xdata=0 code=315
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

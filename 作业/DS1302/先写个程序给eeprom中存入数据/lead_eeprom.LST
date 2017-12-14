@@ -1,0 +1,382 @@
+C51 COMPILER V9.01   LEAD_EEPROM                                                           11/26/2016 01:25:47 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LEAD_EEPROM
+OBJECT MODULE PLACED IN .\output\lead_eeprom.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE lead_eeprom.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output\lead_eeprom.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<INTRINS.H>
+   3          
+   4          sbit SCL = P0^6;
+   5          sbit SDA = P0^7;
+   6          
+   7          
+   8          sbit HC595_SCK = P1^1;
+   9          sbit HC595_RCK = P1^0;
+  10          sbit HC595_DATA = P1^4;
+  11          
+  12          
+  13          unsigned char addr = 0x01,read_data; 
+  14          
+  15          unsigned char second = 59,minute = 59,hour = 11,day = 25,month = 11,week = 3,year = 16;
+  16          
+  17          unsigned char time[] = {50,59,23,31,12,3,16};//定义ds1302初始化的时间
+  18          
+  19          code unsigned char Duan_choose[16]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,
+             -0x79,0x71};
+  20          code unsigned char Wei_choose[8]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+  21          
+  22          
+  23          
+  24          /*****************************************************************************
+  25          ** 函数名称：Delay_I2C
+  26          ** 功能描述：延时子程序
+  27          ******************************************************************************/
+  28          void Delay_i2c(void)
+  29          {
+  30   1              _nop_();
+  31   1              _nop_();
+  32   1              _nop_();
+  33   1              _nop_();        
+  34   1      }
+  35          
+  36          void Delay(unsigned int i)
+  37          {
+  38   1              unsigned char j;
+  39   1              for(;i>0;i--)
+  40   1              {
+  41   2                      for(j = 0;j < 110;j++)
+  42   2                      {}
+  43   2              }
+  44   1      }
+  45          
+  46          void InitI2C(void)
+  47          {
+  48   1               SDA = 1;
+  49   1               SCL = 1;
+  50   1      }
+  51          
+  52          /*I2C起始信号*/
+  53          void i2c_start_fun()
+  54          {
+C51 COMPILER V9.01   LEAD_EEPROM                                                           11/26/2016 01:25:47 PAGE 2   
+
+  55   1              SDA = 1;
+  56   1              Delay_i2c();
+  57   1              SCL = 1;
+  58   1              Delay_i2c();
+  59   1              SDA = 0;
+  60   1              Delay_i2c();
+  61   1              SCL = 0;
+  62   1      }
+  63          
+  64          /*i2c停止信号*/
+  65          void i2c_stop_fun()
+  66          {
+  67   1              SCL = 0;
+  68   1              Delay_i2c();
+  69   1              SDA = 0;
+  70   1              Delay_i2c();
+  71   1              SCL = 1;
+  72   1              Delay_i2c();
+  73   1              SDA = 1;
+  74   1              Delay_i2c();
+  75   1      }
+  76          
+  77          
+  78          
+  79          
+  80          /*i2c向器件即eeprom中写入数据*/
+  81          void i2c_write_data(unsigned char byte)//i2c先发送高位再发送低位
+  82          {
+  83   1              unsigned char i;
+  84   1              unsigned char j;
+  85   1              unsigned char mask = 0x80;
+  86   1              for(i = 0;i < 8;i++)
+  87   1              {
+  88   2                      SCL = 0; //只有在scl为低电平的时候，sda的状态才能发生变化
+  89   2                      Delay_i2c();
+  90   2                      if(0 == (mask&byte)) //必须得是判断0 == (mask&byte),如果是判断1 == (mask&byte)的话，那么会出错
+  91   2                      {
+  92   3                              SDA = 0;
+  93   3                      }
+  94   2                      else
+  95   2                      {
+  96   3                              SDA = 1;
+  97   3                      }
+  98   2                      mask >>= 1;
+  99   2                      Delay_i2c(); 
+ 100   2                      SCL = 1;        //在sda发送数据时，scl必须保持高电平
+ 101   2                      Delay_i2c();
+ 102   2              }
+ 103   1              SCL = 0;  //最后SCL经历了一个从低电平到高电平再到低电平的变化,而SDA的状态一直不变
+ 104   1              SDA = 1;
+ 105   1              Delay_i2c();    //还缺少接受从机应答位的语句
+ 106   1              SCL = 1;
+ 107   1              j = SDA;
+ 108   1              Delay_i2c();
+ 109   1              SCL = 0;                
+ 110   1      }
+ 111          
+ 112          
+ 113          unsigned char i2c_read_data()
+ 114          {
+ 115   1              unsigned char i;
+ 116   1              unsigned char byte = 0;
+C51 COMPILER V9.01   LEAD_EEPROM                                                           11/26/2016 01:25:47 PAGE 3   
+
+ 117   1              for(i = 0;i < 8;i++)
+ 118   1              {
+ 119   2                      SCL = 0;
+ 120   2                      SDA = 1;//每一次必须先将SDA置高电平
+ 121   2                      Delay_i2c();
+ 122   2                      SCL = 1;
+ 123   2                      Delay_i2c();
+ 124   2                      byte <<= 1;     //先左移一位,如果左移放在if语句后面的话，当i=7的时候，最后还会执行一句左移，那么最高位将会被
+             -移出去
+ 125   2                      if(1 == SDA)
+ 126   2                      {
+ 127   3                              byte = byte | 0x01;                     
+ 128   3                      }                                          
+ 129   2                      Delay_i2c();
+ 130   2              }
+ 131   1              SCL = 0;
+ 132   1              SDA = 1;
+ 133   1              Delay_i2c();
+ 134   1              SCL = 1;
+ 135   1              Delay_i2c();
+ 136   1              SCL = 0;
+ 137   1              return byte;
+ 138   1      }
+ 139          
+ 140          
+ 141          
+ 142          
+ 143          /*i2c向eeprom中写入数据*/
+ 144          void i2c_write_eeprom(unsigned char addr,unsigned char databyte)
+ 145          {
+ 146   1              i2c_start_fun();//在写函数的开始需要一个起始信号
+ 147   1              i2c_write_data(0xa0);//先写入器件即eeprom的地址
+ 148   1      
+ 149   1              i2c_write_data(addr);//再写入数据存储地址
+ 150   1      
+ 151   1              i2c_write_data(databyte);//最后写入要发送的数据
+ 152   1      
+ 153   1              i2c_stop_fun();//在写函数的最后需要一个停止信号
+ 154   1      
+ 155   1      }
+ 156          
+ 157          
+ 158          /*i2c从eeprom中读取数据*/
+ 159          unsigned char i2c_read_eeprom(unsigned char addr)
+ 160          {
+ 161   1              unsigned char databyte;
+ 162   1              i2c_start_fun();
+ 163   1              i2c_write_data(0xa0);
+ 164   1      
+ 165   1              i2c_write_data(addr);
+ 166   1      
+ 167   1              i2c_start_fun();
+ 168   1              i2c_write_data(0xa1);
+ 169   1      
+ 170   1              databyte = i2c_read_data();
+ 171   1              i2c_stop_fun();
+ 172   1              return databyte;
+ 173   1      }
+ 174          
+ 175          
+ 176          
+ 177          
+C51 COMPILER V9.01   LEAD_EEPROM                                                           11/26/2016 01:25:47 PAGE 4   
+
+ 178          
+ 179          /*定时器初始化  中断初始化    串口控制寄存器SCON初始化*/
+ 180          void UART_init(void)
+ 181          {
+ 182   1              SCON = 0x50;
+ 183   1              TMOD = 0x20;
+ 184   1              TH1  = 0xFD;
+ 185   1              TL1  = 0xFD;
+ 186   1              TR1  = 1;
+ 187   1              ET1 = 0;                //禁止定时器1中断
+ 188   1              EA = 1;
+ 189   1              ES = 1;
+ 190   1      }
+ 191          
+ 192          /*void UART_Send_Byte(unsigned char dat)
+ 193          {
+ 194                  SBUF = dat;
+ 195                  while(!TI);
+ 196                  TI = 0;
+ 197          } */
+ 198          
+ 199          
+ 200          void Send_data(unsigned char duan,unsigned char wei)
+ 201          {
+ 202   1              unsigned char i;           //还是用hc595移位寄存器来进行操作，参照着数码管的原理与时序来写程序
+ 203   1              HC595_RCK = 0;
+ 204   1              for(i = 0;i < 8;i++)
+ 205   1              {
+ 206   2                      HC595_SCK = 0;
+ 207   2                      if(0 != (duan&0x80))
+ 208   2                      {
+ 209   3                              HC595_DATA = 1;
+ 210   3                      }
+ 211   2                      else
+ 212   2                      {
+ 213   3                              HC595_DATA = 0;
+ 214   3                      }
+ 215   2                      HC595_SCK = 1;
+ 216   2                      duan = duan << 1;
+ 217   2              }
+ 218   1              for(i = 0;i < 8;i++)
+ 219   1              {
+ 220   2                      HC595_SCK = 0;
+ 221   2                      if(0 != (wei&0x80))
+ 222   2                      {
+ 223   3                              HC595_DATA = 1;
+ 224   3                      }
+ 225   2                      else 
+ 226   2                      {
+ 227   3                              HC595_DATA = 0;
+ 228   3                      }
+ 229   2                      HC595_SCK = 1;
+ 230   2                      wei = wei << 1;
+ 231   2              }
+ 232   1              HC595_RCK = 1;
+ 233   1      }
+ 234          
+ 235          
+ 236          
+ 237          
+ 238          void main()
+ 239          {
+C51 COMPILER V9.01   LEAD_EEPROM                                                           11/26/2016 01:25:47 PAGE 5   
+
+ 240   1              unsigned char i,j;
+ 241   1              UART_init();
+ 242   1              InitI2C();      
+ 243   1              i2c_write_eeprom(0x01,time[0]);
+ 244   1              i2c_write_eeprom(0x02,time[1]);
+ 245   1              i2c_write_eeprom(0x03,time[2]);
+ 246   1              i2c_write_eeprom(0x04,time[3]);
+ 247   1              i2c_write_eeprom(0x05,time[4]);
+ 248   1              i2c_write_eeprom(0x06,time[5]);
+ 249   1              i2c_write_eeprom(0x06,time[6]);
+ 250   1      
+ 251   1      
+ 252   1      
+ 253   1              /*while(1)
+ 254   1              {
+ 255   1                      for(i = 10000;i>0;i--)
+ 256   1                      {
+ 257   1                              for(j = 0;j < 110;j++)
+ 258   1                              {                       
+ 259   1                                      Send_data(Duan_choose[second1],Wei_choose[0]);
+ 260   1                                      Send_data(Duan_choose[second2],Wei_choose[1]);
+ 261   1                              }
+ 262   1                      }
+ 263   1                      Delay(1000);    
+ 264   1      
+ 265   1                      for(i = 10000;i>0;i--)
+ 266   1                      {
+ 267   1                              for(j = 0;j < 110;j++)
+ 268   1                              {                       
+ 269   1                                      Send_data(Duan_choose[minute1],Wei_choose[0]);
+ 270   1                                      Send_data(Duan_choose[minute2],Wei_choose[1]);
+ 271   1                              }
+ 272   1                      }
+ 273   1                      Delay(1000);
+ 274   1              
+ 275   1                      for(i = 10000;i>0;i--)
+ 276   1                      {
+ 277   1                              for(j = 0;j < 110;j++)
+ 278   1                              {                       
+ 279   1                                      Send_data(Duan_choose[hour1],Wei_choose[0]);
+ 280   1                                      Send_data(Duan_choose[hour2],Wei_choose[1]);
+ 281   1                              }
+ 282   1                      }
+ 283   1                      Delay(1000);
+ 284   1              
+ 285   1                      for(i = 10000;i>0;i--)
+ 286   1                      {
+ 287   1                              for(j = 0;j < 110;j++)
+ 288   1                              {                       
+ 289   1                                      Send_data(Duan_choose[day1],Wei_choose[0]);
+ 290   1                                      Send_data(Duan_choose[day2],Wei_choose[1]);
+ 291   1                              }
+ 292   1                      }
+ 293   1                      Delay(1000);
+ 294   1                      
+ 295   1                      for(i = 10000;i>0;i--)
+ 296   1                      {
+ 297   1                              for(j = 0;j < 110;j++)
+ 298   1                              {                       
+ 299   1                                      Send_data(Duan_choose[month1],Wei_choose[0]);
+ 300   1                                      Send_data(Duan_choose[month2],Wei_choose[1]);
+ 301   1                              }
+C51 COMPILER V9.01   LEAD_EEPROM                                                           11/26/2016 01:25:47 PAGE 6   
+
+ 302   1                      }
+ 303   1                      Delay(1000);
+ 304   1                      
+ 305   1                      for(i = 10000;i>0;i--)
+ 306   1                      {
+ 307   1                              for(j = 0;j < 110;j++)
+ 308   1                              {                       
+ 309   1                                      Send_data(Duan_choose[week1],Wei_choose[0]);
+ 310   1                                      Send_data(Duan_choose[week2],Wei_choose[1]);
+ 311   1                              }
+ 312   1                      }
+ 313   1                      Delay(1000);
+ 314   1                      
+ 315   1                      for(i = 10000;i>0;i--)
+ 316   1                      {
+ 317   1                              for(j = 0;j < 110;j++)
+ 318   1                              {                       
+ 319   1                                      Send_data(Duan_choose[year1],Wei_choose[0]);
+ 320   1                                      Send_data(Duan_choose[year2],Wei_choose[1]);
+ 321   1                              }
+ 322   1                      }
+ 323   1                      Delay(1000);
+ 324   1              }
+ 325   1                */
+ 326   1      
+ 327   1              
+ 328   1      
+ 329   1      
+ 330   1      
+ 331   1      /*      UART_Send_Byte(i2c_read_eeprom(0x01)+'0');
+ 332   1              UART_Send_Byte(i2c_read_eeprom(0x02)+'0');
+ 333   1              UART_Send_Byte(i2c_read_eeprom(0x03)+'0');
+ 334   1              UART_Send_Byte(i2c_read_eeprom(0x04)+'0');
+ 335   1              UART_Send_Byte(i2c_read_eeprom(0x05)+'0');
+ 336   1              UART_Send_Byte(i2c_read_eeprom(0x06)+'0');
+ 337   1              UART_Send_Byte(i2c_read_eeprom(0x08)+'0');
+ 338   1              UART_Send_Byte(i2c_read_eeprom(0x09)+'0');
+ 339   1              UART_Send_Byte(i2c_read_eeprom(0x0a)+'0');
+ 340   1              UART_Send_Byte(i2c_read_eeprom(0x0b)+'0');
+ 341   1              UART_Send_Byte(i2c_read_eeprom(0x0c)+'0');
+ 342   1              UART_Send_Byte(i2c_read_eeprom(0x0d)+'0');
+ 343   1      */
+ 344   1      }
+*** WARNING C280 IN LINE 240 OF LEAD_EEPROM.C: 'i': unreferenced local variable
+*** WARNING C280 IN LINE 240 OF LEAD_EEPROM.C: 'j': unreferenced local variable
+ 345          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    332    ----
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     16       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

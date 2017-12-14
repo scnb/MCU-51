@@ -1,0 +1,163 @@
+C51 COMPILER V9.01   UART_RX                                                               09/13/2016 23:38:53 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE UART_RX
+OBJECT MODULE PLACED IN UART_RX.OBJ
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE UART_RX.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          sbit HC595_SCK = P1^1;
+   4          sbit HC595_RCK = P1^0;
+   5          sbit HC595_DATA =P1^4;
+   6          
+   7          code unsigned char Shu_Duan[16] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x77,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0
+             -x79,0x71};
+   8          code unsigned char Shu_Wei[8] =  {0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+   9          
+  10          unsigned char Disbuf[8] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07};
+  11          
+  12          unsigned char Rx_Data = 0;
+  13          
+  14          unsigned char TORH = 0;            //定义重载值的高四位
+  15          unsigned char TORL = 0;            //定义重载值的低四位
+  16          
+  17          void Timer0_Init(unsigned int ms)                               //定时器0初始化
+  18          {
+  19   1              unsigned long tmp;
+  20   1              tmp = 11059200 / 12;    //定时器计数频率
+  21   1              tmp =(tmp * ms) / 1000;
+  22   1              tmp = 65536 - tmp;
+  23   1              tmp = tmp + 18;         //加18是为了补偿误差
+  24   1              TORH = (unsigned char)(tmp >> 8);               //将tmp转换成16进制再取出其高四位，作为重载值
+  25   1              TORL = (unsigned char)tmp;              //将tmp转换成16进制再与上0x0f使其高四位变0，剩下低四位，作为重载值
+  26   1              TMOD &= 0XF0;          //不给TMOD 赋初值，先与上0xf0，保持高四位不变，让低四位变成0
+  27   1              TMOD |= 0X01;          //或上0x01，使低四位变成0001，则把T0设置成了工作方式1；
+  28   1              TH0 = TORH;                             //因为在这个函数中同时用到了定时器0和定时器1
+  29   1              TL0 = TORL;
+  30   1              TR0 = 1;
+  31   1              ET0 = 1;                          //定时器0需在中断子程序，所以要使ET0 = 1
+  32   1      }
+  33          
+  34          void Scon_Timer1_Init()                 //SCON和定时器1初始化
+  35          {
+  36   1              TMOD &= 0X0F;
+  37   1              TMOD |= 0X20;   //设置定时器1工作方式为2
+  38   1              SCON = 0X50;    //设置串行控制寄存器工作方式为1
+  39   1              TH1 = 0XFD;        //当定时器1选择工作方式1时，有两个8位的计数器，一个叫TH1,一个叫TL1
+  40   1              TL1 = 0XFD;        //赋给这两个计数器数，然后他们开始进行数数从而达到定时的目的
+  41   1              //ET1 = 1;
+  42   1              TR1 = 1;                         //控制定时器1工作与否
+  43   1              //ES = 1;                               //串行中断控制
+  44   1      }
+  45          
+  46          
+  47          void Send_Data(unsigned char Data_One,unsigned char Data_Two)  //数码管发送数据
+  48          {
+  49   1              unsigned char i;
+  50   1              HC595_RCK = 0;
+  51   1              for(i = 0;i < 8;i++)
+  52   1              {
+  53   2                      HC595_SCK = 0;
+  54   2                      if(0 != (Data_One&0x80))
+C51 COMPILER V9.01   UART_RX                                                               09/13/2016 23:38:53 PAGE 2   
+
+  55   2                      {
+  56   3                              HC595_DATA = 1;
+  57   3                      }
+  58   2                      else
+  59   2                      {
+  60   3                              HC595_DATA = 0;
+  61   3                      }
+  62   2                      HC595_SCK = 1;
+  63   2                      Data_One = Data_One << 1;
+  64   2              }
+  65   1              for(i = 0;i < 8;i++)
+  66   1              {
+  67   2                      HC595_SCK = 0;
+  68   2                      if(0 != (Data_Two&0x80))
+  69   2                      {
+  70   3                              HC595_DATA = 1;
+  71   3                      }
+  72   2                      else
+  73   2                      {
+  74   3                              HC595_DATA = 0;
+  75   3                      }
+  76   2                      HC595_SCK = 1;
+  77   2                      Data_Two = Data_Two << 1;
+  78   2              }
+  79   1              HC595_RCK = 1;
+  80   1      }
+  81          
+  82          
+  83          void Delay1ms(int i)                                     //延时函数
+  84          {
+  85   1          int j;
+  86   1          for(; i > 0; i--)
+  87   1          {
+  88   2               for(j = 0; j < 110; j++);
+  89   2          }
+  90   1      }
+  91          
+  92          void main()                                                      //主函数
+  93          {                                                
+  94   1              unsigned char k = 0;
+  95   1              EA = 1;                                                   //开总中断
+  96   1              ES = 1;                                                   //开串行中断
+  97   1              Timer0_Init(1);
+  98   1              Scon_Timer1_Init();
+  99   1              
+ 100   1              while(1)
+ 101   1              {
+ 102   2                      Disbuf[0] = Shu_Duan[Rx_Data>>4];                //有疑问        
+ 103   2                      Disbuf[1] = Shu_Duan[Rx_Data&0x0f];
+ 104   2              
+ 105   2                      for(k = 0;k < 8;k++)
+ 106   2                      {
+ 107   3                              Send_Data(Disbuf[k],Shu_Wei[k]);
+ 108   3                              Delay1ms(1);
+ 109   3                      }
+ 110   2              }
+ 111   1      }
+ 112          
+ 113          void interrupt_Timer0() interrupt 1       //自动重载计数器的高位和地位
+ 114          {
+ 115   1              TH0 = TORH;
+ 116   1              TL0 = TORL;
+C51 COMPILER V9.01   UART_RX                                                               09/13/2016 23:38:53 PAGE 3   
+
+ 117   1      }
+ 118          
+ 119          void interrupt_Serial() interrupt 4       //串行口中断函数,判断接收发送与否
+ 120          {
+ 121   1              if(1 == TI)                             //TI是串口发送标志，当其等于1时标志发送数据完毕(校验停止位)
+ 122   1              {
+ 123   2                      TI = 0;                    //将TI置0才能继续进行发送数据
+ 124   2                      REN = 1;                   //REN是使能串口接收，当REN等于1时，允许接收数据
+ 125   2              }       
+ 126   1              if(1 == RI)                       //RI是串口接收标志，当其等于1时即接收数据完毕(接收停止位)
+ 127   1              {
+ 128   2                      RI = 0;                   //当RI置0时才能继续接收数据
+ 129   2                      Rx_Data = SBUF;
+ 130   2               
+ 131   2                      SBUF = Rx_Data; 
+ 132   2      
+ 133   2                      REN = 0;
+ 134   2              }
+ 135   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    325    ----
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

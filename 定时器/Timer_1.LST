@@ -1,0 +1,98 @@
+C51 COMPILER V9.01   TIMER_1                                                               09/02/2016 21:49:14 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE TIMER_1
+OBJECT MODULE PLACED IN Timer_1.OBJ
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE Timer_1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          sbit HC595_SCK = P0^5;
+   4          sbit HC595_RCK = P0^6;
+   5          sbit HC595_DATA = P0^7;
+   6          
+   7          code unsigned char  Led8_One_Array[2] = {0x01,0x00};
+   8          code unsigned char  Led8_Two_Array[2] = {0x00,0x00};
+   9          
+  10          void Send_595_Data(unsigned char Led8_One,unsigned char Led8_Two)
+  11          {
+  12   1              unsigned char i;
+  13   1              HC595_RCK = 0;
+  14   1              for(i=0;i<8;i++)
+  15   1              {
+  16   2                      HC595_SCK = 0;
+  17   2                      if(0 != (Led8_One&0x80))
+  18   2                      {
+  19   3                              HC595_DATA = 1;
+  20   3                      }
+  21   2                      else
+  22   2                      {
+  23   3                              HC595_DATA = 0;
+  24   3                      }
+  25   2                      HC595_SCK=1;
+  26   2                      Led8_One = Led8_One << 1;
+  27   2              }
+  28   1              for(i=0;i<8;i++)
+  29   1              {
+  30   2                      HC595_SCK = 0;
+  31   2                      if(0 != (Led8_Two&0x80))
+  32   2                      {
+  33   3                              HC595_DATA = 1;
+  34   3                      }
+  35   2                      else
+  36   2                      {
+  37   3                              HC595_DATA = 0;
+  38   3                      }
+  39   2                      HC595_SCK=1;
+  40   2                      Led8_Two = Led8_Two << 1;
+  41   2              }
+  42   1              HC595_RCK = 1;
+  43   1      }
+  44          
+  45          void Time0_Init()
+  46          {
+  47   1              TMOD = 0x01;
+  48   1              TH0 = 0xB8;
+  49   1              TL0 = 0x00;
+  50   1              TR0 = 1;
+  51   1      }
+  52          
+  53          void main()
+  54          {
+  55   1              unsigned char k,counter=0;
+C51 COMPILER V9.01   TIMER_1                                                               09/02/2016 21:49:14 PAGE 2   
+
+  56   1              Time0_Init();
+  57   1              while(1)
+  58   1              {
+  59   2                      if(1 == TF0)
+  60   2                      {
+  61   3                              TF0 = 0;
+  62   3                              TH0 = 0XB8;
+  63   3                              TL0 = 0X00;
+  64   3                              counter++;
+  65   3                      }
+  66   2                      if(100 == counter)
+  67   2                      {
+  68   3                              counter = 0;
+  69   3                              k = !k;
+  70   3                      }
+  71   2                      Send_595_Data(Led8_One_Array[k],Led8_Two_Array[k]);
+  72   2              }
+  73   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    115    ----
+   CONSTANT SIZE    =      4    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

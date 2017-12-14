@@ -1,0 +1,3 @@
+".\output\Step_motor.obj" 
+TO ".\output\Step_motor" 
+PRINT(".\Step_motor.m51")

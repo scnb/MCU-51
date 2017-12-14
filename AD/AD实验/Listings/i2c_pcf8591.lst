@@ -1,0 +1,202 @@
+C51 COMPILER V9.01   I2C_PCF8591                                                           05/10/2017 10:58:51 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE I2C_PCF8591
+OBJECT MODULE PLACED IN .\Objects\i2c_pcf8591.obj
+COMPILER INVOKED BY: F:\C51\BIN\C51.EXE HARDWARE\i2c_pcf8591.c BROWSE INCDIR(.\HARDWARE) DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\i2c_pcf8591.lst) OBJECT(.\Objects\i2c_pcf8591.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<INTRINS.H>
+   3          
+   4          sbit SCL = P0^6;
+   5          sbit SDA = P0^7;
+   6          
+   7          
+   8          /*****************************************************************************
+   9          ** 函数名称：Delay_I2C
+  10          ** 功能描述：延时子程序
+  11          ******************************************************************************/
+  12          void Delay_i2c(void)
+  13          {
+  14   1              _nop_();
+  15   1              _nop_();
+  16   1              _nop_();
+  17   1              _nop_();        
+  18   1      }
+  19          
+  20          void Delay5us()         //@11.0592MHz
+  21          {
+  22   1              unsigned char i;
+  23   1      
+  24   1              _nop_();
+  25   1              i = 11;
+  26   1              while (--i);
+  27   1      }
+  28          
+  29          
+  30          void InitI2C(void)
+  31          {
+  32   1               SDA = 1;
+  33   1               SCL = 1;
+  34   1      }
+  35          
+  36          /*I2C起始信号*/
+  37          void i2c_start_fun()
+  38          {
+  39   1              SDA = 1;
+  40   1              Delay_i2c();
+  41   1              SCL = 1;
+  42   1              Delay_i2c();
+  43   1              SDA = 0;
+  44   1              Delay_i2c();
+  45   1              SCL = 0;
+  46   1      }
+  47          
+  48          /*i2c停止信号*/
+  49          void i2c_stop_fun()
+  50          {
+  51   1              SCL = 0;
+  52   1              Delay_i2c();
+  53   1              SDA = 0;
+  54   1              Delay_i2c();
+C51 COMPILER V9.01   I2C_PCF8591                                                           05/10/2017 10:58:51 PAGE 2   
+
+  55   1              SCL = 1;
+  56   1              Delay_i2c();
+  57   1              SDA = 1;
+  58   1              Delay_i2c();
+  59   1      }
+  60          
+  61          /*读取应答位返回值*/
+  62          void i2c_read_ack()
+  63          {
+  64   1              SCL = 1;
+  65   1              Delay5us();
+  66   1              while(1==SDA);
+  67   1              SCL = 0;
+  68   1              Delay5us();
+  69   1      }       
+  70          
+  71          /*i2c向器件中写入数据*/
+  72          void i2c_write_data(unsigned char byte)//i2c先发送高位再发送低位
+  73          {
+  74   1              unsigned char i;
+  75   1              unsigned char j;
+  76   1              unsigned char mask = 0x80;
+  77   1              for(i = 0;i < 8;i++)
+  78   1              {
+  79   2                      SCL = 0; //只有在scl为低电平的时候，sda的状态才能发生变化
+  80   2                      Delay_i2c();
+  81   2                      if(0 == (mask&byte)) //必须得是判断0 == (mask&byte),如果是判断1 == (mask&byte)的话，那么会出错
+  82   2                      {
+  83   3                              SDA = 0;
+  84   3                      }
+  85   2                      else
+  86   2                      {
+  87   3                              SDA = 1;
+  88   3                      }
+  89   2                      mask >>= 1;
+  90   2                      Delay_i2c(); 
+  91   2                      SCL = 1;        //在sda发送数据时，scl必须保持高电平
+  92   2                      Delay_i2c();
+  93   2              }
+  94   1              SCL = 0;  //最后SCL经历了一个从低电平到高电平再到低电平的变化,而SDA的状态一直不变
+  95   1              SDA = 1;
+  96   1              Delay_i2c();    //还缺少接受从机应答位的语句
+  97   1              SCL = 1;
+  98   1              j = SDA;
+  99   1              Delay_i2c();
+ 100   1              SCL = 0;                
+ 101   1      }
+ 102          
+ 103          
+ 104          unsigned char i2c_read_data()
+ 105          {
+ 106   1              unsigned char i;
+ 107   1              unsigned char byte = 0;
+ 108   1              for(i = 0;i < 8;i++)
+ 109   1              {
+ 110   2                      SCL = 0;
+ 111   2                      SDA = 1;//每一次必须先将SDA置高电平
+ 112   2                      Delay_i2c();
+ 113   2                      SCL = 1;
+ 114   2                      Delay_i2c();
+ 115   2                      byte <<= 1;     //先左移一位,如果左移放在if语句后面的话，当i=7的时候，最后还会执行一句左移，那么最高位将会被
+             -移出去
+C51 COMPILER V9.01   I2C_PCF8591                                                           05/10/2017 10:58:51 PAGE 3   
+
+ 116   2                      if(1 == SDA)
+ 117   2                      {
+ 118   3                              byte = byte | 0x01;                     
+ 119   3                      }                                          
+ 120   2                      Delay_i2c();
+ 121   2              }
+ 122   1              SCL = 0;
+ 123   1              SDA = 1;
+ 124   1              Delay_i2c();
+ 125   1              SCL = 1;
+ 126   1              Delay_i2c();
+ 127   1              SCL = 0;
+ 128   1              return byte;
+ 129   1      }
+ 130          
+ 131          
+ 132          
+ 133          
+ 134          /*i2c向pcf8591中写入数据*/
+ 135          void i2c_write_pcf8591(unsigned char ctr_byte,unsigned char databyte)
+ 136          {
+ 137   1              i2c_start_fun();//在写函数的开始需要一个起始信号
+ 138   1              i2c_write_data(0x90);//先写入器件即pcf8591的地址
+ 139   1      //      i2c_read_ack();
+ 140   1              i2c_write_data(ctr_byte);//再写入控制字 
+ 141   1      //      i2c_read_ack();
+ 142   1              i2c_write_data(databyte);//最后写入要发送的数据
+ 143   1      //  i2c_read_ack();
+ 144   1              i2c_stop_fun();//在写函数的最后需要一个停止信号
+ 145   1      
+ 146   1      }
+ 147          
+ 148          
+ 149          /*i2c从pcf8591中读取数据*/
+ 150          unsigned char i2c_read_pcf8591(unsigned char ctr_byte)
+ 151          {
+ 152   1              unsigned char databyte;
+ 153   1              i2c_start_fun();
+ 154   1              i2c_write_data(0x90);
+ 155   1              //i2c_read_ack();
+ 156   1              i2c_write_data(ctr_byte);
+ 157   1              //i2c_read_ack();
+ 158   1              i2c_start_fun();
+ 159   1              i2c_write_data(0x91);
+ 160   1              //i2c_read_ack();
+ 161   1              databyte = i2c_read_data();
+ 162   1              i2c_stop_fun();
+ 163   1              return databyte;
+ 164   1      }
+ 165          
+ 166          
+ 167          
+ 168          
+ 169          
+ 170          
+ 171          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    199    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.01   I2C_PCF8591                                                           05/10/2017 10:58:51 PAGE 4   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

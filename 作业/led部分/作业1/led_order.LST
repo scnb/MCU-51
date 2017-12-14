@@ -1,0 +1,146 @@
+C51 COMPILER V9.01   LED_ORDER                                                             10/31/2016 23:07:10 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LED_ORDER
+OBJECT MODULE PLACED IN .\output\led_order.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE led_order.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output\led_order.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          sbit HC595_SCK = P0^5;
+   3          sbit HC595_RCK = P0^6;
+   4          sbit HC595_DATA = P0^7;
+   5          
+   6          code unsigned char Led_One[16] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x80,0x40,0x20,0x10,0x08,0x04,0x
+             -02,0x01};
+   7          code unsigned char Led_Two[16] = {0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x
+             -00,0x00};
+   8          
+   9          void Send_data(unsigned char Led8_one,unsigned char Led8_two)
+  10          {
+  11   1              unsigned char i;
+  12   1              HC595_RCK = 0;
+  13   1              for(i = 0;i < 8;i++)
+  14   1              {
+  15   2                      HC595_SCK = 0;
+  16   2                      if(0 != (Led8_one&0x80))
+  17   2                      {
+  18   3                              HC595_DATA = 1;
+  19   3                      }
+  20   2                      else
+  21   2                      {
+  22   3                              HC595_DATA = 0;
+  23   3                      }
+  24   2                      Led8_one = Led8_one << 1;
+  25   2                      HC595_SCK = 1;
+  26   2              }
+  27   1              for(i = 0;i < 8;i++)
+  28   1              {
+  29   2                      HC595_SCK = 0;
+  30   2                      if(0 != (Led8_two&0x80))
+  31   2                      {
+  32   3                              HC595_DATA = 1;
+  33   3                      }
+  34   2                      else
+  35   2                      {
+  36   3                              HC595_DATA = 0;
+  37   3                      }
+  38   2                      Led8_two = Led8_two << 1;
+  39   2                      HC595_SCK = 1;
+  40   2              }
+  41   1              HC595_RCK = 1;
+  42   1      }               
+  43          
+  44          void Delay_1ms(int i)
+  45          {
+  46   1              int j;
+  47   1              for(;i > 0;i--)
+  48   1              {
+  49   2                      for(j = 0;j < 110;j++)
+  50   2                      {}
+  51   2              }
+  52   1      }                       
+  53          
+C51 COMPILER V9.01   LED_ORDER                                                             10/31/2016 23:07:10 PAGE 2   
+
+  54          void main()
+  55          {
+  56   1              int k;
+  57   1              while(1)
+  58   1              {
+  59   2                      //用for循环来简化程序
+  60   2                      for(k = 15;k >= 9;)      //1,3,5,7
+  61   2                      {
+  62   3                              Send_data(Led_One[k],Led_Two[8]);
+  63   3                              Delay_1ms(1000);
+  64   3                              k = k-2;
+  65   3                      }                                 
+  66   2                      for(k = 7;k >= 1;)               //9,11,13,15
+  67   2                      {
+  68   3                              Send_data(Led_One[0],Led_Two[k]);
+  69   3                              Delay_1ms(1000);  
+  70   3                              k = k-2;
+  71   3                      } 
+  72   2                      for(k = 14;k >= 8;)     //2,4,6,8
+  73   2                      {
+  74   3                              Send_data(Led_One[k],Led_Two[8]);
+  75   3                              Delay_1ms(1000);
+  76   3                              k = k-2;
+  77   3                      }
+  78   2                      for(k = 6;k >= 0;)              //10,12,14,16
+  79   2                      {
+  80   3                              Send_data(Led_One[0],Led_Two[k]);
+  81   3                              Delay_1ms(1000);
+  82   3                              k = k-2;
+  83   3                      }                                       
+  84   2                      /*Send_data(Led_One[15],Led_Two[8]); //1
+  85   2                      Delay_1ms(1000);
+  86   2                      Send_data(Led_One[13],Led_Two[8]);        //3
+  87   2                      Delay_1ms(1000);
+  88   2                      Send_data(Led_One[11],Led_Two[8]);               //5
+  89   2                      Delay_1ms(1000);
+  90   2                      Send_data(Led_One[9],Led_Two[8]);                       //7
+  91   2                      Delay_1ms(1000);
+  92   2                      Send_data(Led_One[0],Led_Two[7]);                          //9
+  93   2                      Delay_1ms(1000);
+  94   2                      Send_data(Led_One[0],Led_Two[5]);                                 //11
+  95   2                      Delay_1ms(1000);
+  96   2                      Send_data(Led_One[0],Led_Two[3]);                                        //13
+  97   2                      Delay_1ms(1000);
+  98   2                      Send_data(Led_One[0],Led_Two[1]);                                                //15
+  99   2                      Delay_1ms(1000);
+ 100   2                      Send_data(Led_One[14],Led_Two[8]);       //2
+ 101   2                      Delay_1ms(1000);
+ 102   2                      Send_data(Led_One[12],Led_Two[8]);      //4
+ 103   2                      Delay_1ms(1000);
+ 104   2                      Send_data(Led_One[10],Led_Two[8]);      //6
+ 105   2                      Delay_1ms(1000);
+ 106   2                      Send_data(Led_One[8],Led_Two[8]);       //8
+ 107   2                      Delay_1ms(1000);
+ 108   2                      Send_data(Led_One[0],Led_Two[6]);       //10
+ 109   2                      Delay_1ms(1000);
+ 110   2                      Send_data(Led_One[0],Led_Two[4]);  //12
+ 111   2                      Delay_1ms(1000);
+ 112   2                      Send_data(Led_One[0],Led_Two[2]);       //14
+ 113   2                      Delay_1ms(1000);
+ 114   2                      Send_data(Led_One[0],Led_Two[0]);  //16
+ 115   2                      Delay_1ms(1000);  */
+C51 COMPILER V9.01   LED_ORDER                                                             10/31/2016 23:07:10 PAGE 3   
+
+ 116   2              }
+ 117   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    253    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

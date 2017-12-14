@@ -1,0 +1,1 @@
+"HARDWARE\i2c_pcf8591.c" BROWSE INCDIR(.\HARDWARE) DEBUG OBJECTEXTEND PRINT(.\Listings\i2c_pcf8591.lst) OBJECT(.\Objects\i2c_pcf8591.obj)

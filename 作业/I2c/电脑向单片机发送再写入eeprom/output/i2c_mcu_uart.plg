@@ -1,0 +1,50 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\作业\I2c\电脑向单片机发送再写入eeprom\i2c_mcu_uart.uvproj
+Project File Date:  11/23/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling i2c_mcu_uart.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY5US?I2C_MCU_UART
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_I2C_WRITE_DATA?I2C_MCU_UART
+    CALLER1: ?PR?INTERRUPT_4?I2C_MCU_UART
+    CALLER2: ?C_C51STARTUP
+Program Size: data=18.0 xdata=0 code=625
+creating hex file from ".\output\i2c_mcu_uart"...
+".\output\i2c_mcu_uart" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling i2c_mcu_uart.c...
+linking...
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_I2C_WRITE_DATA?I2C_MCU_UART
+    CALLER1: ?PR?INTERRUPT_4?I2C_MCU_UART
+    CALLER2: ?C_C51STARTUP
+Program Size: data=18.0 xdata=0 code=619
+creating hex file from ".\output\i2c_mcu_uart"...
+".\output\i2c_mcu_uart" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling i2c_mcu_uart.c...
+linking...
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_I2C_WRITE_DATA?I2C_MCU_UART
+    CALLER1: ?PR?INTERRUPT_4?I2C_MCU_UART
+    CALLER2: ?C_C51STARTUP
+Program Size: data=18.0 xdata=0 code=576
+creating hex file from ".\output\i2c_mcu_uart"...
+".\output\i2c_mcu_uart" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_I2C_WRITE_DATA?I2C_MCU_UART
+    CALLER1: ?PR?INTERRUPT_4?I2C_MCU_UART
+    CALLER2: ?C_C51STARTUP
+Program Size: data=18.0 xdata=0 code=576
+creating hex file from ".\output\i2c_mcu_uart"...
+".\output\i2c_mcu_uart" - 0 Error(s), 1 Warning(s).

@@ -1,0 +1,3 @@
+".\output\lead_eeprom.obj" 
+TO ".\output\lead_eeprom" 
+PRINT(".\lead_eeprom.m51")

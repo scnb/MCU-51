@@ -1,0 +1,82 @@
+C51 COMPILER V9.01   BEEP                                                                  11/28/2016 18:08:23 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE BEEP
+OBJECT MODULE PLACED IN .\output\beep.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE beep.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output\beep.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          sbit BUZZ = P3^4;
+   4          
+   5          unsigned char T0RH = 0;
+   6          unsigned char T0RL = 0;
+   7          
+   8          
+   9          void start_buzz(unsigned int frequency)//ÆµÂÊºÜ¸ßµÄ£¬Ò»°ãÒÔKHzÎªµ¥Î»                            
+  10          {
+  11   1              unsigned int reload;
+  12   1              reload = 65536 - 11059200/12/(frequency*2);
+  13   1              T0RH = (unsigned char)(reload>>8);//±£ÁôreloadµÄ¸ß8Î»£¬Êµ¼ÊÉÏÊÇÏÈ°ÑreloadÓÒÒÆ8Î»£¬Ê¹¸ß8Î»±ä³ÉµÍ8Î»£¬×îºóÍ
+             -¨¹ýunsigned charÀ´Ç¿ÖÆ±£ÁôµÍ8Î»
+  14   1              T0RL = (unsigned char)reload;  //Ö»±£ÁôreloadµÄµÍ8Î»£¬ÒòÎªunsigned charÐÍÖ»Õ¼Ò»¸ö×Ö½Ú
+  15   1              TH0 = 0xFF;
+  16   1              TL0 = 0xFE;
+  17   1              //TH0 = T0RH;      //ÎªÊ²Ã´²»ÄÜÕâÃ´¸³³õÖµÄØ£¿
+  18   1              //TL0 = T0RL;
+  19   1      
+  20   1              TR0 = 1;
+  21   1              ET0 = 1;
+  22   1      }
+  23          
+  24          void stop_buzz()
+  25          {
+  26   1              TR0 = 0;
+  27   1              ET0 = 0;
+  28   1      }
+  29          
+  30          
+  31          
+  32          void main()
+  33          {
+  34   1              unsigned int i;//iµÄ¼ÆÊý´ïµ½ÁË40000¶à£¬ËùÒÔ±ØÐëÒªÓÃint   unsigned int ´Ó0µ½65536
+  35   1              TMOD = 0x01;                                                                               //unsigned char ´Ó0µ½255
+  36   1              EA = 1;
+  37   1              while(1)
+  38   1              {
+  39   2                      start_buzz(7000);
+  40   2                      for(i=0; i<40000; i++);
+  41   2                      stop_buzz();
+  42   2                      for(i=0; i<40000; i++);
+  43   2                      start_buzz(1000);                               
+  44   2                      for(i=0; i<40000; i++);
+  45   2                      stop_buzz();
+  46   2                      for(i=0; i<40000; i++);                                 
+  47   2              }
+  48   1      }
+  49          
+  50          
+  51          void interrupt_timer0() interrupt 1
+  52          {
+  53   1              TH0 = T0RH;
+  54   1              TL0 = T0RL;
+C51 COMPILER V9.01   BEEP                                                                  11/28/2016 18:08:23 PAGE 2   
+
+  55   1              BUZZ = ~BUZZ;
+  56   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    189    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,106 @@
+C51 COMPILER V9.01   UART_COMMUNICATION                                                    11/20/2016 17:42:11 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE UART_COMMUNICATION
+OBJECT MODULE PLACED IN .\output\uart_communication.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE uart_communication.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output\uart_communica
+                    -tion.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          /*定义向电脑发送的数据*/
+   4          char *s = "shangchao";
+   5          
+   6          
+   7          void Delay(int i)
+   8          {
+   9   1              unsigned char j;
+  10   1              for(;i>=0;i--)
+  11   1              {
+  12   2                      for(j = 0;j < 110;j++)
+  13   2                      {
+  14   3                      }
+  15   2              }
+  16   1      }
+  17          
+  18          /*发送数据的函数*/
+  19          /*void Send_uart(char string[])
+  20          {
+  21                  unsigned char i = 0;
+  22                  for(i = 0;i < 9;i++)
+  23                  {
+  24                          SBUF = string[i];
+  25                          while(!TI);
+  26                          Delay(500);
+  27                          TI = 0;
+  28                  }
+  29          } */
+  30          
+  31          /*指针形式*/
+  32          void Send_uart(char *string)
+  33          {
+  34   1              unsigned char i = 0;
+  35   1              while(*(string+i) != '\0')
+  36   1              {
+  37   2                      SBUF = string[i];
+  38   2                      while(!TI);
+  39   2                      Delay(1000);
+  40   2                      i++;
+  41   2                      TI = 0;
+  42   2              }
+  43   1      }
+  44          
+  45          
+  46          /*定时器初始化  中断初始化    串口控制寄存器SCON初始化*/
+  47          void UartInit(void)             //9600bps@11.0592MHz
+  48          {
+  49   1              PCON &= 0x7F;           //波特率不倍速
+  50   1              SCON = 0x50;            //8位数据,可变波特率
+  51   1      //      AUXR &= 0xBF;           //定时器1时钟为Fosc/12,即12T
+  52   1      //      TMOD &= 0x0F;           //清除定时器1模式位
+  53   1              TMOD |= 0x20;           //设定定时器1为8位自动重装方式
+  54   1              TL1 = 0xFD;             //设定定时初值
+C51 COMPILER V9.01   UART_COMMUNICATION                                                    11/20/2016 17:42:11 PAGE 2   
+
+  55   1              TH1 = 0xFD;             //设定定时器重装值
+  56   1              ET1 = 0;                //禁止定时器1中断
+  57   1              TR1 = 1;                //启动定时器1
+  58   1              EA = 1;
+  59   1              ES = 1;
+  60   1      }
+  61          
+  62          
+  63          
+  64          
+  65          void main()
+  66          {
+  67   1              UartInit();
+  68   1              while(1)
+  69   1              {
+  70   2                      TI = 0;
+  71   2                      Send_uart(s);
+  72   2                      Delay(1000);
+  73   2              }
+  74   1      }
+  75          
+  76          
+  77          /*void interrupt_4() interrupt 4
+  78          {
+  79                  TI = 0;
+  80          }*/
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    111    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

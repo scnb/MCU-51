@@ -1,0 +1,3 @@
+".\output\uart_communication_pc_to_mcu.obj" 
+TO ".\output\uart_communication" 
+PRINT(".\uart_communication.m51")

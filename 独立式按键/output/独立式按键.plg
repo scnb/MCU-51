@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\独立式按键\独立式按键.uvproj
+Project File Date:  09/09/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?DELAY
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=437
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling Independent_Button.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?INDEPENDENT_BUTTON
+Program Size: data=51.4 xdata=0 code=451
+creating hex file from ".\output\独立式按键"...
+".\output\独立式按键" - 0 Error(s), 1 Warning(s).

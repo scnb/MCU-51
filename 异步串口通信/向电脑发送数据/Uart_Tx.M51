@@ -1,0 +1,169 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/13/2016  22:53:47  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE Uart_Tx.obj TO Uart_Tx
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Uart_Tx.obj (UART_TX)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  Uart_Tx (UART_TX)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?UART_TX
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0013H     UNIT         ?PR?SERIAL_TIMER1_INIT?UART_TX
+            CODE    0016H     000BH     UNIT         ?PR?INTERRUPT_UART_TX?UART_TX
+                    0021H     0002H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     008CH     UNIT         ?C_C51STARTUP
+            CODE    00B2H     0021H     UNIT         ?PR?_DELAY1MS?UART_TX
+            CODE    00D3H     0013H     UNIT         ?PR?MAIN?UART_TX
+            CODE    00E6H     0009H     UNIT         ?PR?DELAY?UART_TX
+            CODE    00EFH     0004H     UNIT         ?C_INITSEG
+            CODE    00F3H     0003H     UNIT         ?PR?_SEND_DATA?UART_TX
+
+
+
+OVERLAY MAP OF MODULE:   Uart_Tx (UART_TX)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?UART_TX
+  +--> ?C_INITSEG
+
+?PR?MAIN?UART_TX
+  +--> ?PR?SERIAL_TIMER1_INIT?UART_TX
+  +--> ?PR?_SEND_DATA?UART_TX
+  +--> ?PR?_DELAY1MS?UART_TX
+
+
+
+SYMBOL TABLE OF MODULE:  Uart_Tx (UART_TX)
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/13/2016  22:53:47  PAGE 2
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        UART_TX
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:00B2H         PUBLIC        _Delay1ms
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  B:00A8H.4       PUBLIC        ES
+  D:00B8H         PUBLIC        IP
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  C:0016H         PUBLIC        interrupt_Uart_Tx
+  C:00D3H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:0008H         PUBLIC        Given_Data
+  D:00C8H         PUBLIC        T2CON
+  C:00F3H         PUBLIC        _Send_Data
+  C:0003H         PUBLIC        Serial_Timer1_Init
+  C:00E6H         PUBLIC        Delay
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          SERIAL_TIMER1_INIT
+  C:0003H         LINE#         14
+  C:0003H         LINE#         15
+  C:0003H         LINE#         16
+  C:0006H         LINE#         17
+  C:0009H         LINE#         18
+  C:000CH         LINE#         19
+  C:000FH         LINE#         20
+  C:0011H         LINE#         21
+  C:0013H         LINE#         23
+  C:0015H         LINE#         24
+  -------         ENDPROC       SERIAL_TIMER1_INIT
+  -------         PROC          _DELAY1MS
+  D:0006H         SYMBOL        i
+  -------         DO            
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:00B2H         LINE#         34
+  C:00B2H         LINE#         35
+  C:00B2H         LINE#         37
+  C:00BDH         LINE#         38
+  C:00BDH         LINE#         39
+  C:00CBH         LINE#         40
+  C:00D2H         LINE#         41
+  -------         ENDPROC       _DELAY1MS
+  -------         PROC          DELAY
+  -------         DO            
+  D:0007H         SYMBOL        Num
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/13/2016  22:53:47  PAGE 3
+
+
+  -------         ENDDO         
+  C:00E6H         LINE#         43
+  C:00E6H         LINE#         44
+  C:00E6H         LINE#         45
+  C:00E8H         LINE#         46
+  C:00EEH         LINE#         47
+  C:00EEH         LINE#         48
+  C:00EEH         LINE#         49
+  -------         ENDPROC       DELAY
+  -------         PROC          _SEND_DATA
+  D:0007H         SYMBOL        Data
+  C:00F3H         LINE#         53
+  C:00F3H         LINE#         54
+  C:00F3H         LINE#         55
+  C:00F5H         LINE#         56
+  -------         ENDPROC       _SEND_DATA
+  -------         PROC          MAIN
+  C:00D3H         LINE#         60
+  C:00D3H         LINE#         61
+  C:00D3H         LINE#         75
+  C:00D6H         LINE#         77
+  C:00D6H         LINE#         78
+  C:00D6H         LINE#         80
+  C:00DDH         LINE#         81
+  C:00E4H         LINE#         83
+  -------         ENDPROC       MAIN
+  -------         PROC          INTERRUPT_UART_TX
+  C:0016H         LINE#         87
+  C:0016H         LINE#         91
+  C:0019H         LINE#         93
+  C:0019H         LINE#         94
+  C:001BH         LINE#         96
+  C:001BH         LINE#         97
+  C:001EH         LINE#         98
+  C:001EH         LINE#         99
+  C:0020H         LINE#         100
+  C:0020H         LINE#         101
+  -------         ENDPROC       INTERRUPT_UART_TX
+  -------         ENDMOD        UART_TX
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY?UART_TX
+
+Program Size: data=10.0 xdata=0 code=244
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

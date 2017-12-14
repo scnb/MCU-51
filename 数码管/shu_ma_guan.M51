@@ -1,0 +1,152 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/08/2016  11:37:45  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\51\C51\BIN\BL51.EXE shu_ma_guan.obj TO shu_ma_guan RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  shu_ma_guan.obj (SHU_MA_GUAN)
+  F:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  shu_ma_guan (SHU_MA_GUAN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0035H     UNIT         ?PR?_SHU_MA_GUAN_DATA?SHU_MA_GUAN
+            CODE    0038H     0024H     UNIT         ?PR?MAIN?SHU_MA_GUAN
+            CODE    005CH     0010H     UNIT         ?PR?_DELAY_MS?SHU_MA_GUAN
+            CODE    006CH     0010H     UNIT         ?CO?SHU_MA_GUAN
+            CODE    007CH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   shu_ma_guan (SHU_MA_GUAN)
+
+
+SEGMENT                                     DATA_GROUP 
+  +--> CALLED SEGMENT                     START    LENGTH
+---------------------------------------------------------
+?C_C51STARTUP                             -----    -----
+  +--> ?PR?MAIN?SHU_MA_GUAN
+
+?PR?MAIN?SHU_MA_GUAN                      0008H    0001H
+  +--> ?CO?SHU_MA_GUAN
+  +--> ?PR?_SHU_MA_GUAN_DATA?SHU_MA_GUAN
+  +--> ?PR?_DELAY_MS?SHU_MA_GUAN
+
+
+
+SYMBOL TABLE OF MODULE:  shu_ma_guan (SHU_MA_GUAN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SHU_MA_GUAN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:006CH         PUBLIC        Duan_chose
+  D:0090H         PUBLIC        P1
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/08/2016  11:37:45  PAGE 2
+
+
+  D:00B0H         PUBLIC        P3
+  C:0003H         PUBLIC        _Shu_Ma_Guan_Data
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0074H         PUBLIC        Wei_chose
+  C:0038H         PUBLIC        main
+  B:0090H.4       PUBLIC        HC595_DATA
+  C:005CH         PUBLIC        _Delay_ms
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  B:0090H.0       PUBLIC        HC595_RCK
+  B:0090H.1       PUBLIC        HC595_SCK
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY_MS
+  D:0007H         SYMBOL        i
+  -------         DO            
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:005CH         LINE#         11
+  C:005CH         LINE#         12
+  C:005CH         LINE#         14
+  C:0062H         LINE#         15
+  C:0062H         LINE#         16
+  C:0064H         LINE#         17
+  C:0064H         LINE#         18
+  C:0068H         LINE#         19
+  C:006BH         LINE#         20
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          _SHU_MA_GUAN_DATA
+  D:0007H         SYMBOL        Shu_Ma_Duan
+  D:0005H         SYMBOL        Shu_Ma_Wei
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         22
+  C:0003H         LINE#         23
+  C:0003H         LINE#         25
+  C:0005H         LINE#         26
+  C:0007H         LINE#         27
+  C:0007H         LINE#         28
+  C:0009H         LINE#         29
+  C:000DH         LINE#         30
+  C:000DH         LINE#         31
+  C:000FH         LINE#         32
+  C:0011H         LINE#         34
+  C:0011H         LINE#         35
+  C:0013H         LINE#         36
+  C:0013H         LINE#         37
+  C:0017H         LINE#         38
+  C:0019H         LINE#         39
+  C:001DH         LINE#         40
+  C:001FH         LINE#         41
+  C:001FH         LINE#         42
+  C:0021H         LINE#         43
+  C:0025H         LINE#         44
+  C:0025H         LINE#         45
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/08/2016  11:37:45  PAGE 3
+
+
+  C:0027H         LINE#         46
+  C:0029H         LINE#         48
+  C:0029H         LINE#         49
+  C:002BH         LINE#         50
+  C:002BH         LINE#         51
+  C:002FH         LINE#         52
+  C:0031H         LINE#         53
+  C:0035H         LINE#         54
+  C:0037H         LINE#         55
+  -------         ENDPROC       _SHU_MA_GUAN_DATA
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        k
+  -------         ENDDO         
+  C:0038H         LINE#         57
+  C:0038H         LINE#         58
+  C:0038H         LINE#         61
+  C:0038H         LINE#         62
+  C:0038H         LINE#         64
+  C:003BH         LINE#         65
+  C:003BH         LINE#         66
+  C:004CH         LINE#         67
+  C:0051H         LINE#         68
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SHU_MA_GUAN
+
+Program Size: data=10.0 xdata=0 code=136
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

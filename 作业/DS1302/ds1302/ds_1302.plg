@@ -1,0 +1,67 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\作业\DS1302\ds_1302.uvproj
+Project File Date:  11/24/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling ds_1302.c...
+DS_1302.C(57): error C202: 'RST': undefined identifier
+DS_1302.C(58): error C202: 'RST': undefined identifier
+DS_1302.C(65): error C202: 'SCK': undefined identifier
+DS_1302.C(68): error C202: 'SDA': undefined identifier
+DS_1302.C(69): error C202: 'SCL': undefined identifier
+DS_1302.C(71): error C202: 'SCL': undefined identifier
+DS_1302.C(73): error C237: '_write_data': function already has a body
+DS_1302.C(82): error C202: 'SCL': undefined identifier
+DS_1302.C(84): error C202: 'SDA': undefined identifier
+DS_1302.C(88): error C202: 'SCL': undefined identifier
+DS_1302.C(96): error C202: 'RST': undefined identifier
+DS_1302.C(99): error C202: 'SDA': undefined identifier
+DS_1302.C(100): error C202: 'RST': undefined identifier
+DS_1302.C(107): error C202: 'RST': undefined identifier
+DS_1302.C(110): error C202: 'SDA': undefined identifier
+DS_1302.C(111): error C202: 'RST': undefined identifier
+DS_1302.C(119): error C202: 'RST': undefined identifier
+DS_1302.C(122): error C202: 'SDA': undefined identifier
+DS_1302.C(123): error C202: 'RST': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling ds_1302.c...
+DS_1302.C(60): error C202: 'RST': undefined identifier
+DS_1302.C(61): error C202: 'RST': undefined identifier
+DS_1302.C(68): error C202: 'SCK': undefined identifier
+DS_1302.C(76): error C237: '_write_data': function already has a body
+DS_1302.C(99): error C202: 'RST': undefined identifier
+DS_1302.C(103): error C202: 'RST': undefined identifier
+DS_1302.C(110): error C202: 'RST': undefined identifier
+DS_1302.C(114): error C202: 'RST': undefined identifier
+DS_1302.C(122): error C202: 'RST': undefined identifier
+DS_1302.C(126): error C202: 'RST': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling ds_1302.c...
+DS_1302.C(51): warning C206: 'write_command': missing function-prototype
+DS_1302.C(51): error C267: 'write_command': requires ANSI-style prototype
+DS_1302.C(60): error C202: 'RST': undefined identifier
+DS_1302.C(61): error C202: 'RST': undefined identifier
+DS_1302.C(68): error C202: 'SCK': undefined identifier
+DS_1302.C(99): error C202: 'RST': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling ds_1302.c...
+DS_1302.C(51): warning C206: 'write_command': missing function-prototype
+DS_1302.C(51): error C267: 'write_command': requires ANSI-style prototype
+DS_1302.C(60): error C202: 'RST': undefined identifier
+DS_1302.C(61): error C202: 'RST': undefined identifier
+DS_1302.C(99): error C202: 'RST': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling ds_1302.c...
+DS_1302.C(60): error C202: 'RST': undefined identifier
+DS_1302.C(61): error C202: 'RST': undefined identifier
+DS_1302.C(99): error C202: 'RST': undefined identifier
+Target not created

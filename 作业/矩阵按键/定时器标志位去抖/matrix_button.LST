@@ -1,0 +1,229 @@
+C51 COMPILER V9.01   MATRIX_BUTTON                                                         11/20/2016 01:42:09 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MATRIX_BUTTON
+OBJECT MODULE PLACED IN .\output\matrix_button.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE matrix_button.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output\matrix_button.obj)
+
+line level    source
+
+   1                                                                                  #include<reg52.h>
+   2          
+   3          /*数码管对应寄存器设置*/
+   4          sbit HC595_SCK = P1^1;
+   5          sbit HC595_RCK = P1^0;
+   6          sbit HC595_DATA = P1^4;
+   7          
+   8          /*键盘对应IO口设置*/
+   9          
+  10          unsigned char temp;//用来存储P2口的状态
+  11          unsigned char value = 5;//用来记录是哪一个键盘被按下
+  12          
+  13          /*数码管的段选表和位选表*/
+  14          code unsigned char Duan_choose[16] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5
+             -e,0x79,0x71};
+  15          code unsigned char Wei_choose[8] = {0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+  16          
+  17          /*数码管数据发送函数*/
+  18          void Send_data(unsigned char duan,unsigned char wei)
+  19          {
+  20   1              unsigned char i;           //还是用hc595移位寄存器来进行操作，参照着数码管的原理与时序来写程序
+  21   1              HC595_RCK = 0;
+  22   1              for(i = 0;i < 8;i++)
+  23   1              {
+  24   2                      HC595_SCK = 0;
+  25   2                      if(0 != (duan&0x80))
+  26   2                      {
+  27   3                              HC595_DATA = 1;
+  28   3                      }
+  29   2                      else
+  30   2                      {
+  31   3                              HC595_DATA = 0;
+  32   3                      }
+  33   2                      HC595_SCK = 1;
+  34   2                      duan = duan << 1;
+  35   2              }
+  36   1              for(i = 0;i < 8;i++)
+  37   1              {
+  38   2                      HC595_SCK = 0;
+  39   2                      if(0 != (wei&0x80))
+  40   2                      {
+  41   3                              HC595_DATA = 1;
+  42   3                      }
+  43   2                      else 
+  44   2                      {
+  45   3                              HC595_DATA = 0;
+  46   3                      }
+  47   2                      HC595_SCK = 1;
+  48   2                      wei = wei << 1;
+  49   2              }
+  50   1              HC595_RCK = 1;
+  51   1      }
+  52          
+  53          /*
+  54          纯延时程序
+C51 COMPILER V9.01   MATRIX_BUTTON                                                         11/20/2016 01:42:09 PAGE 2   
+
+  55          void Delay(unsigned int i)
+  56          {
+  57                  unsigned char j;
+  58                  for(;i > 0;i--)
+  59                  {
+  60                          for(j = 0;j < 110;j++)
+  61                          {}
+  62                  }
+  63          }
+  64          */
+  65          
+  66          /*矩阵键盘扫描函数*/
+  67          void matrix_button_scan()
+  68          {
+  69   1              /*第一行*/
+  70   1              P2 = 0xfe;
+  71   1              temp = P2;
+  72   1              temp = temp & 0x0f;
+  73   1              if(0x0f != temp)
+  74   1              {
+  75   2                      while(1 == TF0)
+  76   2                      {
+  77   3                              TF0 = 0;
+  78   3                              TL0 = 0x66;             //设置定时初值
+  79   3                              TH0 = 0xFC;             //设置定时初值
+  80   3                      }
+  81   2                              temp = P2;
+  82   2                              temp = temp & 0x0f;
+  83   2                              if(0x0f != temp)
+  84   2                              {
+  85   3                                      temp = P2;
+  86   3                                      switch(temp)
+  87   3                                      {
+  88   4                                              case 0xee:value = 0;break;
+  89   4                                              case 0xde:value = 1;break;
+  90   4                                              case 0xbe:value = 2;break;
+  91   4                                              case 0x7e:value = 3;break;
+  92   4                                      }
+  93   3                              }
+  94   2              }
+  95   1              /*第  二  行*/
+  96   1              P2 = 0xfd;
+  97   1              temp = P2;
+  98   1              temp = temp & 0x0f;
+  99   1              if(0x0f != temp)
+ 100   1              {
+ 101   2                      while(1 == TF0)
+ 102   2                      {
+ 103   3                              TF0 = 0;
+ 104   3                              TL0 = 0x66;             //设置定时初值
+ 105   3                              TH0 = 0xFC;             //设置定时初值
+ 106   3                      }
+ 107   2                              temp = P2;
+ 108   2                              temp = temp & 0x0f;
+ 109   2                              if(0x0f != temp)
+ 110   2                              {
+ 111   3                                      temp = P2;
+ 112   3                                      switch(temp)
+ 113   3                                      {
+ 114   4                                              case 0xed:value = 4;break;
+ 115   4                                              case 0xdd:value = 5;break;
+ 116   4                                              case 0xbd:value = 6;break;
+C51 COMPILER V9.01   MATRIX_BUTTON                                                         11/20/2016 01:42:09 PAGE 3   
+
+ 117   4                                              case 0x7d:value = 7;break;
+ 118   4                                      }
+ 119   3                              }
+ 120   2              }
+ 121   1      
+ 122   1              /*第  三  行*/
+ 123   1              P2 = 0xfb;
+ 124   1              temp = P2;
+ 125   1              temp = temp & 0x0f;
+ 126   1              if(0x0f != temp)
+ 127   1              {
+ 128   2                      while(1 == TF0)
+ 129   2                      {
+ 130   3                              TF0 = 0;
+ 131   3                              TL0 = 0x66;             //设置定时初值
+ 132   3                              TH0 = 0xFC;             //设置定时初值
+ 133   3                      }
+ 134   2                              temp = P2;
+ 135   2                              temp = temp & 0x0f;
+ 136   2                              if(0x0f != temp)
+ 137   2                              {
+ 138   3                                      temp = P2;
+ 139   3                                      switch(temp)
+ 140   3                                      {
+ 141   4                                              case 0xeb:value = 8;break;
+ 142   4                                              case 0xdb:value = 9;break;
+ 143   4                                              case 0xbb:value = 10;break;
+ 144   4                                              case 0x7b:value = 11;break;
+ 145   4                                      }
+ 146   3                              }
+ 147   2              }
+ 148   1              /*第  四  行*/
+ 149   1              P2 = 0xf7;
+ 150   1              temp = P2;
+ 151   1              temp = temp & 0x0f;
+ 152   1              if(0x0f != temp)
+ 153   1              {
+ 154   2                      while(1 == TF0)
+ 155   2                      {
+ 156   3                              TF0 = 0;
+ 157   3                              TL0 = 0x66;             //设置定时初值
+ 158   3                              TH0 = 0xFC;             //设置定时初值
+ 159   3                      }
+ 160   2                              temp = P2;
+ 161   2                              temp = temp & 0x0f;
+ 162   2                              if(0x0f != temp)
+ 163   2                              {
+ 164   3                                      temp = P2;
+ 165   3                                      switch(temp)
+ 166   3                                      {
+ 167   4                                              case 0xe7:value = 12;break;
+ 168   4                                              case 0xd7:value = 13;break;
+ 169   4                                              case 0xb7:value = 14;break;
+ 170   4                                              case 0x77:value = 15;break;
+ 171   4                                      }
+ 172   3                              }
+ 173   2              }
+ 174   1              Send_data(Duan_choose[value],Wei_choose[0]); 
+ 175   1      }
+ 176          
+ 177          /*定时器0初始化       因为只需要用标志位，所以不用加中断*/
+ 178          void Timer0Init(void)           //1毫秒@11.0592MHz
+C51 COMPILER V9.01   MATRIX_BUTTON                                                         11/20/2016 01:42:09 PAGE 4   
+
+ 179          {
+ 180   1              //AUXR &= 0x7F;         //定时器时钟12T模式
+ 181   1              TMOD &= 0xF0;           //设置定时器模式
+ 182   1              TMOD |= 0x01;           //设置定时器模式
+ 183   1              TL0 = 0x66;             //设置定时初值
+ 184   1              TH0 = 0xFC;             //设置定时初值
+ 185   1              TF0 = 0;                //清除TF0标志
+ 186   1              TR0 = 1;                //定时器0开始计时
+ 187   1      }
+ 188          
+ 189          
+ 190          
+ 191          /*主函数*/
+ 192          void main()
+ 193          {
+ 194   1              Timer0Init();
+ 195   1              while(1)
+ 196   1              {
+ 197   2                      matrix_button_scan();
+ 198   2              }
+ 199   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    410    ----
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

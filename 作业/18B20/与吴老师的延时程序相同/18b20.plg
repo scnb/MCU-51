@@ -1,0 +1,642 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\作业\18B20\18b20.uvproj
+Project File Date:  11/29/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(134): error C215: illegal type conversion
+18B20.C(136): error C215: illegal type conversion
+18B20.C(179): error C231: '_display': redefinition
+18B20.C(185): error C231: '_display': redefinition
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(135): error C215: illegal type conversion
+18B20.C(137): error C215: illegal type conversion
+18B20.C(180): error C231: '_display': redefinition
+18B20.C(186): error C231: '_display': redefinition
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(135): error C215: illegal type conversion
+18B20.C(137): error C215: illegal type conversion
+18B20.C(181): error C202: '_display': undefined identifier
+18B20.C(182): error C202: '_display': undefined identifier
+18B20.C(183): error C202: '_display': undefined identifier
+18B20.C(184): error C202: '_display': undefined identifier
+18B20.C(185): error C202: '_display': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(135): error C215: illegal type conversion
+18B20.C(137): error C215: illegal type conversion
+18B20.C(180): error C231: '_display': redefinition
+18B20.C(186): error C231: '_display': redefinition
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(122): error C174: return-expression on void-function
+18B20.C(138): error C215: illegal type conversion
+18B20.C(181): error C231: '_display': redefinition
+18B20.C(187): error C231: '_display': redefinition
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(181): error C231: '_display': redefinition
+18B20.C(187): error C231: '_display': redefinition
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(181): error C231: '_display': redefinition
+18B20.C(187): error C231: '_display': redefinition
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(194): warning C206: 'get_tempreture_18b20': missing function-prototype
+18B20.C(195): error C202: undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(194): warning C206: 'get_tempreture_18b20': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPREATURE_18B20?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 00E5H
+Program Size: data=13.0 xdata=0 code=552
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(139): error C141: syntax error near ')'
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(194): warning C206: 'get_tempreture_18b20': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPREATURE_18B20?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 00F7H
+Program Size: data=13.0 xdata=0 code=580
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(194): warning C206: 'get_tempreture_18b20': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPREATURE_18B20?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 00F7H
+Program Size: data=13.0 xdata=0 code=598
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPREATURE_18B20?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 00F7H
+Program Size: data=13.0 xdata=0 code=598
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(194): warning C206: 'get_tempreture_18b20': missing function-prototype
+18B20.C(192): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPREATURE_18B20?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 00F7H
+Program Size: data=14.0 xdata=0 code=589
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(194): warning C206: 'get_tempreture_18b20': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPREATURE_18B20?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 00F7H
+Program Size: data=13.0 xdata=0 code=595
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=13.0 xdata=0 code=595
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=13.0 xdata=0 code=592
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=13.0 xdata=0 code=595
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=13.0 xdata=0 code=598
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=13.0 xdata=0 code=598
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=13.0 xdata=0 code=599
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(119): error C202: 'tmp': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=13.0 xdata=0 code=605
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(127): warning C206: 'ds_reset': missing function-prototype
+18B20.C(128): warning C206: 'delay': missing function-prototype
+18B20.C(128): error C267: 'delay': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(142): warning C206: 'ds_reset': missing function-prototype
+18B20.C(144): warning C206: 'ds_write_byte': missing function-prototype
+18B20.C(144): error C267: 'ds_write_byte': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(142): warning C206: 'ds_reset': missing function-prototype
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DS_RESET
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DS_RESET
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 023FH
+Program Size: data=13.0 xdata=0 code=635
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=13.0 xdata=0 code=635
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(180): error C202: 'temp': undefined identifier
+18B20.C(181): error C202: 'temp': undefined identifier
+18B20.C(182): error C202: 'temp': undefined identifier
+18B20.C(183): error C202: 'temp': undefined identifier
+18B20.C(184): error C202: 'temp': undefined identifier
+18B20.C(185): error C202: 'temp': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(246): warning C206: 'get_temperature': missing function-prototype
+18B20.C(247): error C202: '_display': undefined identifier
+18B20.C(248): error C202: '_display': undefined identifier
+18B20.C(249): error C202: '_display': undefined identifier
+18B20.C(250): error C202: '_display': undefined identifier
+18B20.C(251): error C202: '_display': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(246): warning C206: 'get_temperature': missing function-prototype
+18B20.C(247): error C202: 'temp': undefined identifier
+18B20.C(248): error C202: 'temp': undefined identifier
+18B20.C(249): error C202: 'temp': undefined identifier
+18B20.C(254): error C202: undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(246): error C202: 'temp': undefined identifier
+18B20.C(247): error C202: 'temp': undefined identifier
+18B20.C(248): error C202: 'temp': undefined identifier
+18B20.C(249): error C202: 'temp': undefined identifier
+18B20.C(254): error C202: undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(246): warning C206: 'get_temperature': missing function-prototype
+18B20.C(254): error C202: undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(246): warning C206: 'get_temperature_18b20': missing function-prototype
+18B20.C(254): error C202: undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(246): warning C206: 'get_temperature_18b20': missing function-prototype
+18B20.C(254): error C202: undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(247): error C141: syntax error near '_display'
+18B20.C(254): error C202: undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(254): error C202: undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(254): warning C206: 'Send_Data': missing function-prototype
+18B20.C(254): error C267: 'Send_Data': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=18.0 xdata=0 code=1393
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=19.0 xdata=0 code=1388
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY1MS?18B20
+Program Size: data=19.0 xdata=0 code=1385
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY1MS?18B20
+Program Size: data=19.0 xdata=0 code=1385
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=19.0 xdata=0 code=1391
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=19.0 xdata=0 code=1387
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=19.0 xdata=0 code=1384
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=19.0 xdata=0 code=1404
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(234): warning C280: 'a': unreferenced local variable
+linking...
+Program Size: data=19.0 xdata=0 code=1392
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(17): error C141: syntax error near 'us', expected ')'
+18B20.C(19): error C202: 'us': undefined identifier
+18B20.C(22): error C141: syntax error near 'count', expected ')'
+18B20.C(24): error C141: syntax error near 'i'
+18B20.C(24): error C202: 'i': undefined identifier
+18B20.C(25): error C202: 'count': undefined identifier
+18B20.C(27): error C202: 'i': undefined identifier
+18B20.C(28): error C202: 'i': undefined identifier
+18B20.C(29): error C202: 'i': undefined identifier
+18B20.C(30): error C202: 'count': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(17): error C141: syntax error near 'us', expected ')'
+18B20.C(19): error C202: 'us': undefined identifier
+18B20.C(22): error C141: syntax error near 'count', expected ')'
+18B20.C(25): error C202: 'count': undefined identifier
+18B20.C(30): error C202: 'count': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(17): error C141: syntax error near 'us', expected ')'
+18B20.C(19): error C202: 'us': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(82): warning C206: 'DempDelay': missing function-prototype
+18B20.C(82): error C267: 'DempDelay': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=19.0 xdata=0 code=1443
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=19.0 xdata=0 code=1443
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=19.0 xdata=0 code=1443
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=19.0 xdata=0 code=1443
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=19.0 xdata=0 code=1475
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(130): error C202: 'uchar': undefined identifier
+18B20.C(130): error C141: syntax error near 'a'
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(131): warning C206: 'ds_reset': missing function-prototype
+18B20.C(133): warning C206: 'ds_write_byte': missing function-prototype
+18B20.C(133): error C267: 'ds_write_byte': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(131): warning C206: 'ds_reset': missing function-prototype
+18B20.C(201): warning C206: 'get_tempreture_18b20': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPERATURE?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DS_RESET
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DS_RESET
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 041CH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 0478H
+Program Size: data=19.0 xdata=0 code=1478
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(201): warning C206: 'get_tempreture_18b20': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPERATURE?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 0475H
+Program Size: data=19.0 xdata=0 code=1475
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(201): warning C206: 'get_tempreture_18b20': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPERATURE_18B20?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE_18B20
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 0475H
+Program Size: data=19.0 xdata=0 code=1475
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(201): warning C206: 'get_tempreture': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPERATURE?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 0475H
+Program Size: data=19.0 xdata=0 code=1475
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(119): warning C206: '_18b20_reset': missing function-prototype
+18B20.C(121): warning C206: '_18b20_write_byte': missing function-prototype
+18B20.C(121): error C267: '_18b20_write_byte': requires ANSI-style prototype
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(201): warning C206: 'get_tempreture': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPERATURE?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 0475H
+Program Size: data=19.0 xdata=0 code=1475
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPERATURE?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 0475H
+Program Size: data=19.0 xdata=0 code=1475
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPERATURE?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 0475H
+Program Size: data=19.0 xdata=0 code=1475
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(201): warning C206: 'get_tempreture': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPERATURE?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPRETURE
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPRETURE
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 0480H
+Program Size: data=20.0 xdata=0 code=1486
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(201): warning C206: 'get_tempreature': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?GET_TEMPERATURE?18B20
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  GET_TEMPREATURE
+    MODULE:  .\output\18B20.obj (18B20)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  GET_TEMPREATURE
+    MODULE:  .\output\18B20.obj (18B20)
+    ADDRESS: 0480H
+Program Size: data=20.0 xdata=0 code=1486
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=20.0 xdata=0 code=1486
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=19.0 xdata=0 code=1475
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=20.0 xdata=0 code=1486
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(137): error C202: 'temp': undefined identifier
+18B20.C(138): error C202: 'temp': undefined identifier
+18B20.C(139): error C202: 'temp': undefined identifier
+18B20.C(140): error C202: 'temp': undefined identifier
+18B20.C(141): error C202: 'temp': undefined identifier
+18B20.C(142): error C202: 'temp': undefined identifier
+18B20.C(202): error C202: 'temp': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+18B20.C(137): error C202: 'temp': undefined identifier
+18B20.C(138): error C202: 'temp': undefined identifier
+18B20.C(139): error C202: 'temp': undefined identifier
+18B20.C(140): error C202: 'temp': undefined identifier
+18B20.C(141): error C202: 'temp': undefined identifier
+18B20.C(142): error C202: 'temp': undefined identifier
+18B20.C(202): error C202: 'temp': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=20.0 xdata=0 code=1493
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY1MS?18B20
+Program Size: data=20.0 xdata=0 code=1479
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling 18B20.c...
+linking...
+Program Size: data=20.0 xdata=0 code=1486
+creating hex file from ".\output\18b20"...
+".\output\18b20" - 0 Error(s), 0 Warning(s).

@@ -1,0 +1,86 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\作业\led部分\作业2\led_to_center.uvproj
+Project File Date:  10/31/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling led_to_center.c...
+led_to_center.c(1): warning C318: can't open file 'reg5.h'
+LED_TO_CENTER.C(3): error C202: 'P0': undefined identifier
+LED_TO_CENTER.C(4): error C202: 'P0': undefined identifier
+LED_TO_CENTER.C(5): error C202: 'P0': undefined identifier
+LED_TO_CENTER.C(14): error C202: 'HC595_RCK': undefined identifier
+LED_TO_CENTER.C(17): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(20): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(24): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(27): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(31): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(34): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(38): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(41): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(43): error C202: 'HC595_RCK': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling led_to_center.c...
+led_to_center.c(1): warning C318: can't open file 'reg5.h'
+LED_TO_CENTER.C(3): error C202: 'P0': undefined identifier
+LED_TO_CENTER.C(4): error C202: 'P0': undefined identifier
+LED_TO_CENTER.C(5): error C202: 'P0': undefined identifier
+LED_TO_CENTER.C(14): error C202: 'HC595_RCK': undefined identifier
+LED_TO_CENTER.C(17): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(20): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(24): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(27): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(31): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(34): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(38): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(41): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(43): error C202: 'HC595_RCK': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling led_to_center.c...
+led_to_center.c(1): warning C318: can't open file 'reg5.h'
+LED_TO_CENTER.C(3): error C202: 'P0': undefined identifier
+LED_TO_CENTER.C(4): error C202: 'P0': undefined identifier
+LED_TO_CENTER.C(5): error C202: 'P0': undefined identifier
+LED_TO_CENTER.C(14): error C202: 'HC595_RCK': undefined identifier
+LED_TO_CENTER.C(17): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(20): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(24): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(27): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(31): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(34): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(38): error C202: 'HC595_DATA': undefined identifier
+LED_TO_CENTER.C(41): error C202: 'HC595_SCK': undefined identifier
+LED_TO_CENTER.C(43): error C202: 'HC595_RCK': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling led_to_center.c...
+linking...
+Program Size: data=9.0 xdata=0 code=180
+creating hex file from ".\output\led_to_center"...
+".\output\led_to_center" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling led_to_center.c...
+linking...
+Program Size: data=9.0 xdata=0 code=180
+creating hex file from ".\output\led_to_center"...
+".\output\led_to_center" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling led_to_center.c...
+linking...
+Program Size: data=9.0 xdata=0 code=180
+creating hex file from ".\output\led_to_center"...
+".\output\led_to_center" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling led_to_center.c...
+linking...
+Program Size: data=9.0 xdata=0 code=180
+creating hex file from ".\output\led_to_center"...
+".\output\led_to_center" - 0 Error(s), 0 Warning(s).

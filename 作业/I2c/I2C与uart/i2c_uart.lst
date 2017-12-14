@@ -1,0 +1,298 @@
+C51 COMPILER V9.01   I2C_UART                                                              11/23/2016 12:27:01 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE I2C_UART
+OBJECT MODULE PLACED IN .\output\i2c_uart.obj
+COMPILER INVOKED BY: F:\51\C51\BIN\C51.EXE source\i2c_uart.c BROWSE DEBUG OBJECTEXTEND PRINT(.\i2c_uart.lst) OBJECT(.\ou
+                    -tput\i2c_uart.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<INTRINS.H>
+   3          
+   4          sbit SCL = P0^6;
+   5          sbit SDA = P0^7;
+   6          
+   7          sbit HC595_SCK = P1^1;
+   8          sbit HC595_RCK = P1^0;
+   9          sbit HC595_DATA = P1^4;
+  10          
+  11          code unsigned char Duan_choose[16]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,
+             -0x79,0x71};
+  12          code unsigned char Wei_choose[8]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+  13          
+  14          /*****************************************************************************
+  15          ** 函数名称：Delay_I2C
+  16          ** 功能描述：延时子程序
+  17          ******************************************************************************/
+  18          void Delay_i2c(void)
+  19          {
+  20   1              _nop_();
+  21   1              _nop_();
+  22   1              _nop_();
+  23   1              _nop_();        
+  24   1      }
+  25          
+  26          void Delay5us()         //@11.0592MHz
+  27          {
+  28   1              unsigned char i;
+  29   1      
+  30   1              _nop_();
+  31   1              i = 11;
+  32   1              while (--i);
+  33   1      }
+  34          
+  35          
+  36          void InitI2C(void)
+  37          {
+  38   1               SDA = 1;
+  39   1               SCL = 1;
+  40   1      }
+  41          
+  42          /*I2C起始信号*/
+  43          void i2c_start_fun()
+  44          {
+  45   1              SDA = 1;
+  46   1              Delay_i2c();
+  47   1              SCL = 1;
+  48   1              Delay_i2c();
+  49   1              SDA = 0;
+  50   1              Delay_i2c();
+  51   1              SCL = 0;
+  52   1      }
+  53          
+C51 COMPILER V9.01   I2C_UART                                                              11/23/2016 12:27:01 PAGE 2   
+
+  54          /*i2c停止信号*/
+  55          void i2c_stop_fun()
+  56          {
+  57   1              SCL = 0;
+  58   1              Delay_i2c();
+  59   1              SDA = 0;
+  60   1              Delay_i2c();
+  61   1              SCL = 1;
+  62   1              Delay_i2c();
+  63   1              SDA = 1;
+  64   1              Delay_i2c();
+  65   1      }
+  66          
+  67          /*读取应答位返回值*/
+  68          void i2c_read_ack()
+  69          {
+  70   1              SCL = 1;
+  71   1              Delay5us();
+  72   1              while(1==SDA);
+  73   1              SCL = 0;
+  74   1              Delay5us();
+  75   1      }       
+  76          
+  77          /*i2c向器件即eeprom中写入数据*/
+  78          void i2c_write_data(unsigned char byte)//i2c先发送高位再发送低位
+  79          {
+  80   1              unsigned char i;
+  81   1              unsigned char j;
+  82   1              unsigned char mask = 0x80;
+  83   1              for(i = 0;i < 8;i++)
+  84   1              {
+  85   2                      SCL = 0; //只有在scl为低电平的时候，sda的状态才能发生变化
+  86   2                      Delay_i2c();
+  87   2                      if(0 == (mask&byte)) //必须得是判断0 == (mask&byte),如果是判断1 == (mask&byte)的话，那么会出错
+  88   2                      {
+  89   3                              SDA = 0;
+  90   3                      }
+  91   2                      else
+  92   2                      {
+  93   3                              SDA = 1;
+  94   3                      }
+  95   2                      mask >>= 1;
+  96   2                      Delay_i2c(); 
+  97   2                      SCL = 1;        //在sda发送数据时，scl必须保持高电平
+  98   2                      Delay_i2c();
+  99   2              }
+ 100   1              SCL = 0;  //最后SCL经历了一个从低电平到高电平再到低电平的变化,而SDA的状态一直不变
+ 101   1              SDA = 1;
+ 102   1              Delay_i2c();    //还缺少接受从机应答位的语句
+ 103   1              SCL = 1;
+ 104   1              j = SDA;
+ 105   1              Delay_i2c();
+ 106   1              SCL = 0;                
+ 107   1      }
+ 108          
+ 109          
+ 110          unsigned char i2c_read_data()
+ 111          {
+ 112   1              unsigned char i;
+ 113   1              unsigned char byte = 0;
+ 114   1              for(i = 0;i < 8;i++)
+ 115   1              {
+C51 COMPILER V9.01   I2C_UART                                                              11/23/2016 12:27:01 PAGE 3   
+
+ 116   2                      SCL = 0;
+ 117   2                      SDA = 1;//每一次必须先将SDA置高电平
+ 118   2                      Delay_i2c();
+ 119   2                      SCL = 1;
+ 120   2                      Delay_i2c();
+ 121   2                      byte <<= 1;     //先左移一位,如果左移放在if语句后面的话，当i=7的时候，最后还会执行一句左移，那么最高位将会被
+             -移出去
+ 122   2                      if(1 == SDA)
+ 123   2                      {
+ 124   3                              byte = byte | 0x01;                     
+ 125   3                      }                                          
+ 126   2                      Delay_i2c();
+ 127   2              }
+ 128   1              SCL = 0;
+ 129   1              SDA = 1;
+ 130   1              Delay_i2c();
+ 131   1              SCL = 1;
+ 132   1              Delay_i2c();
+ 133   1              SCL = 0;
+ 134   1              return byte;
+ 135   1      }
+ 136          
+ 137          
+ 138          
+ 139          
+ 140          /*i2c向eeprom中写入数据*/
+ 141          void i2c_write_eeprom(unsigned char addr,unsigned char databyte)
+ 142          {
+ 143   1              i2c_start_fun();//在写函数的开始需要一个起始信号
+ 144   1              i2c_write_data(0xa0);//先写入器件即eeprom的地址
+ 145   1      //      i2c_read_ack();
+ 146   1              i2c_write_data(addr);//再写入数据存储地址
+ 147   1      //      i2c_read_ack();
+ 148   1              i2c_write_data(databyte);//最后写入要发送的数据
+ 149   1      //  i2c_read_ack();
+ 150   1              i2c_stop_fun();//在写函数的最后需要一个停止信号
+ 151   1      
+ 152   1      }
+ 153          
+ 154          
+ 155          /*i2c从eeprom中读取数据*/
+ 156          unsigned char i2c_read_eeprom(unsigned char addr)
+ 157          {
+ 158   1              unsigned char databyte;
+ 159   1              i2c_start_fun();
+ 160   1              i2c_write_data(0xa0);
+ 161   1              //i2c_read_ack();
+ 162   1              i2c_write_data(addr);
+ 163   1              //i2c_read_ack();
+ 164   1              i2c_start_fun();
+ 165   1              i2c_write_data(0xa1);
+ 166   1              //i2c_read_ack();
+ 167   1              databyte = i2c_read_data();
+ 168   1              i2c_stop_fun();
+ 169   1              return databyte;
+ 170   1      }
+ 171          
+ 172          
+ 173          
+ 174          
+ 175          void Send_data(unsigned char duan,unsigned char wei)
+ 176          {
+C51 COMPILER V9.01   I2C_UART                                                              11/23/2016 12:27:01 PAGE 4   
+
+ 177   1              unsigned char i;           //还是用hc595移位寄存器来进行操作，参照着数码管的原理与时序来写程序
+ 178   1              HC595_RCK = 0;
+ 179   1              for(i = 0;i < 8;i++)
+ 180   1              {
+ 181   2                      HC595_SCK = 0;
+ 182   2                      if(0 != (duan&0x80))
+ 183   2                      {
+ 184   3                              HC595_DATA = 1;
+ 185   3                      }
+ 186   2                      else
+ 187   2                      {
+ 188   3                              HC595_DATA = 0;
+ 189   3                      }
+ 190   2                      HC595_SCK = 1;
+ 191   2                      duan = duan << 1;
+ 192   2              }
+ 193   1              for(i = 0;i < 8;i++)
+ 194   1              {
+ 195   2                      HC595_SCK = 0;
+ 196   2                      if(0 != (wei&0x80))
+ 197   2                      {
+ 198   3                              HC595_DATA = 1;
+ 199   3                      }
+ 200   2                      else 
+ 201   2                      {
+ 202   3                              HC595_DATA = 0;
+ 203   3                      }
+ 204   2                      HC595_SCK = 1;
+ 205   2                      wei = wei << 1;
+ 206   2              }
+ 207   1              HC595_RCK = 1;
+ 208   1      }
+ 209          
+ 210          
+ 211          
+ 212          
+ 213          /*定时器初始化  中断初始化    串口控制寄存器SCON初始化*/
+ 214          void UART_init(void)
+ 215          {
+ 216   1              SCON = 0x50;
+ 217   1              TMOD = 0x20;
+ 218   1              TH1  = 0xFD;
+ 219   1              TL1  = 0xFD;
+ 220   1              TR1  = 1;
+ 221   1      }
+ 222          
+ 223          void UART_Send_Byte(unsigned char dat)
+ 224          {
+ 225   1              SBUF = dat;
+ 226   1              while(!TI);
+ 227   1              TI = 0;
+ 228   1      }
+ 229          
+ 230          
+ 231          
+ 232          
+ 233          
+ 234          main()
+ 235          {
+ 236   1              unsigned char addr = 0x01,read_data; 
+ 237   1              //databyte = 0x56;
+ 238   1              unsigned char value_high = 0;
+C51 COMPILER V9.01   I2C_UART                                                              11/23/2016 12:27:01 PAGE 5   
+
+ 239   1              unsigned char value_low = 0;
+ 240   1              unsigned char temp = 0;
+ 241   1              UART_init();
+ 242   1      
+ 243   1              InitI2C();      
+ 244   1              read_data = i2c_read_eeprom(addr);
+ 245   1              temp = read_data << 4;
+ 246   1              value_low = temp >> 4;
+ 247   1              
+ 248   1              UART_Send_Byte(read_data);
+ 249   1              value_high = read_data >> 4;
+ 250   1              
+ 251   1              read_data += 1;
+ 252   1              /*if(databyte >= 0xff) 
+ 253   1              {
+ 254   1                      databyte = 0;
+ 255   1              } */
+ 256   1              i2c_write_eeprom(addr, read_data);
+ 257   1      
+ 258   1              while(1)
+ 259   1              {       
+ 260   2                      Send_data(Duan_choose[value_high],Wei_choose[0]);
+ 261   2                      Send_data(Duan_choose[value_low],Wei_choose[1]);        
+ 262   2              }
+ 263   1                              
+ 264   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    349    ----
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,6 @@
+".\output\ds1302.obj",
+".\output\lcd1602.obj",
+".\output\main.obj",
+".\output\18b20.obj" 
+TO ".\output\ds1302_clock_lcd1602" 
+PRINT(".\ds1302_clock_lcd1602.m51")

@@ -1,0 +1,19 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\吴鉴鹰单片机编程练习\异步串口通信\电脑向单片机发送数据\UART_RX.uvproj
+Project File Date:  09/13/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling UART_RX.c...
+UART_RX.C(133): error C141: syntax error near 'REN'
+Target not created
+Build target 'Target 1'
+compiling UART_RX.c...
+linking...
+Program Size: data=25.0 xdata=0 code=822
+creating hex file from "UART_RX"...
+"UART_RX" - 0 Error(s), 0 Warning(s).

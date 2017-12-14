@@ -1,0 +1,3 @@
+".\output\send_button_mcu.obj" 
+TO ".\output\send_button_mcu" 
+PRINT(".\send_button_mcu.m51")

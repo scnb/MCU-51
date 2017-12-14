@@ -1,0 +1,3 @@
+".\output\i2c_uart.obj" 
+TO ".\output\i2c_uart" 
+PRINT(".\i2c_uart.m51")
